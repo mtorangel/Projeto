@@ -1,0 +1,9 @@
+id_evento;id_medicamento;id_paciente;id_tempo;tipo_erro;severidade
+40000;2;1058;20250701;Horário Incorreto;Média
+40001;2;1010;20250810;Horário Incorreto;Alta
+40002;1;1098;20250919;Horário Incorreto;Média
+40003;3;1046;20251029;Medicamento Errado;Média
+40004;3;1100;20251208;Dose Incorreta;Alta
+40005;1;1001;20260117;Dose Incorreta;Baixa
+40006;1;1002;20260226;Dose Incorreta;Média
+40007;1;1046;20260407;Medicamento Errado;Baixa

@@ -1,0 +1,4 @@
+id_tipo_procedimento;nome_procedimento;especialidade;valor_base
+1;Consulta Emergência;Clínica Geral;150.0
+2;Cirurgia Cardíaca;Cardiologia;5000.0
+3;Raio-X;Radiologia;80.0

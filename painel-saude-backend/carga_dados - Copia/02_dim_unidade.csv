@@ -1,0 +1,4 @@
+id_unidade;nome_unidade;tipo_leito;capacidade_maxima
+1;Hospital Central;UTI;50
+2;Hospital Norte;Enfermaria;100
+3;Pronto Atendimento Sul;Emergência;30
