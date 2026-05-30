@@ -6,7 +6,7 @@ echo ==========================================
 
 :: 1. Iniciar Back-end (Django)
 echo [1/2] Iniciando Back-end na porta 8000...
-start cmd /k "cd painel-saude-backend && venv\Scripts\activate && python manage.py runserver"
+start cmd /k "cd painel-saude-backend && venv\Scripts\activate && python manage.py runserver 0.0.0.0:8000"
 
 :: 2. Iniciar Front-end (React/Vite)
 echo [2/2] Iniciando Front-end na porta 3000...
