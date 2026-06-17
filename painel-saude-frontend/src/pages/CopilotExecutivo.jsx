@@ -92,6 +92,28 @@ function CopilotExecutivo() {
     });
   };
 
+  const handleGenerateSummary = () => {
+    setSummaryLoading(true);
+
+    const geminiKey = localStorage.getItem('user_gemini_key') || '';
+    const openaiKey = localStorage.getItem('user_openai_key') || '';
+    const reqHeaders = { 'Authorization': `Token ${token}` };
+    if (geminiKey) reqHeaders['X-Gemini-Key'] = geminiKey;
+    if (openaiKey)  reqHeaders['X-OpenAI-Key'] = openaiKey;
+
+    axios.post(`${apiBase}/ai/gerar-resumo-diario/`, {}, {
+      headers: reqHeaders
+    })
+    .then(res => {
+      fetchResumos();
+    })
+    .catch(err => {
+      console.error("Erro ao gerar resumo:", err);
+      alert("Falha ao gerar resumo diário.");
+      setSummaryLoading(false);
+    });
+  };
+
   const handleSendChat = (textToSend = null) => {
     const text = textToSend || inputValue;
     if (!text.trim()) return;
@@ -505,6 +527,26 @@ function CopilotExecutivo() {
                 )}
                 
                 <button
+                  onClick={handleGenerateSummary}
+                  disabled={summaryLoading}
+                  style={{
+                    background: 'rgba(45, 212, 191, 0.15)',
+                    border: '1px solid rgba(45, 212, 191, 0.3)',
+                    color: '#2dd4bf',
+                    cursor: summaryLoading ? 'not-allowed' : 'pointer',
+                    borderRadius: '4px',
+                    padding: '3px 8px',
+                    fontSize: '0.75rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    fontWeight: 'bold',
+                    opacity: summaryLoading ? 0.6 : 1
+                  }}
+                >
+                  {summaryLoading ? 'Gerando...' : 'Gerar Novo Resumo'}
+                </button>
+                
+                <button
                   onClick={() => setIsSummaryExpanded(!isSummaryExpanded)}
                   style={{
                     background: 'rgba(255,255,255,0.05)',
@@ -546,9 +588,9 @@ function CopilotExecutivo() {
                 {summaryLoading ? (
                   <div style={{ color: '#818cf8', fontSize: '0.85rem', padding: '0.5rem 0' }}>Analisando desvios padrão no banco de dados...</div>
                 ) : selectedResumo ? (
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 220px', gap: '1.25rem' }}>
-                    <div style={{ maxHeight: '90px', overflowY: 'auto', paddingRight: '6px', fontSize: '0.8rem', color: '#e2e8f0', borderRight: '1px solid rgba(255,255,255,0.05)' }}>
-                      {renderMarkdown(selectedResumo.conteudo_resumo)}
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 220px', gap: '1.25rem' }}>
+                      <div style={{ maxHeight: '350px', overflowY: 'auto', paddingRight: '6px', fontSize: '0.8rem', color: '#e2e8f0', borderRight: '1px solid rgba(255,255,255,0.05)' }}>
+                        {renderMarkdown(selectedResumo.conteudo_resumo)}
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', justifyContent: 'center' }}>
                       <div style={{ fontSize: '0.7rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Mapeador Analítico</div>
