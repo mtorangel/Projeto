@@ -1,0 +1,750 @@
+3834: # Method Name:       get
+3835: # Filename:          indicadores\views.py
+3836: # Argument count:    2
+3837: # Position-only argument count: 0
+3838: # Keyword-only arguments: 0
+3839: # Number of locals:  35
+3840: # Stack size:        12
+3841: # Flags:             0x00000003 (NEWLOCALS | OPTIMIZED)
+3842: # First Line:        375
+3843: # Constants:
+3844: #    0: None
+3845: #    1: 'ano'
+3846: #    2: 'mes'
+3847: #    3: 'unidade'
+3848: #    4: 0
+3849: #    5: 1
+3850: #    6: '-'
+3851: #    7: '02d'
+3852: #    8: '2026-05-01'
+3853: #    9: 'SELECT MAX(data_registro) FROM indicadores_dimtempo'
+3854: #   10: "\n                SELECT \n                    a.id_unidade_id,\n                    COUNT(*) as active_count\n                FROM indicadores_fatoatendimentos a\n                INNER JOIN indicadores_dimtempo t ON a.id_tempo_id = t.id_tempo\n                WHERE t.data_registro <= %s\n                  AND (t.data_registro + a.tempo_permanencia_dias * INTERVAL '1 day') > %s::date\n                GROUP BY a.id_unidade_id\n            "
+3855: #   11: ('id_tempo__ano',)
+3856: #   12: ('id_tempo__mes',)
+3857: #   13: ('id_unidade',)
+3858: #   14: 'Agendado'
+3859: #   15: ('status_agendamento',)
+3860: #   16: 'Realizado'
+3861: #   17: 'Cancelado'
+3862: #   18: 100
+3863: #   19: 'tempo_permanencia_dias'
+3864: #   20: ('media',)
+3865: #   21: 'media'
+3866: #   22: 5
+3867: #   23: ('id_unidade__in',)
+3868: #   24: 'Solicitado'
+3869: #   25: ('etapa', 'quantidade')
+3870: #   26: 'Fila (Pendente)'
+3871: #   27: 'id_equipamento__nome_maquina'
+3872: #   28: 'id_procedimento_instancia'
+3873: #   29: ('backlog',)
+3874: #   30: '-backlog'
+3875: #   31: 'Sem Equipamento'
+3876: #   32: 'backlog'
+3877: #   33: ('equipamento', 'backlog')
+3878: #   34: 'MT-Hemocentro - UTI'
+3879: #   35: 'CEOPE - Bloco Cir·rgico'
+3880: #   36: ('id_unidade', 'status_agendamento')
+3881: #   37: ('id_unidade', 'unidade', 'tipo_leito', 'capacidade', 'pacientes_ativos', 'ocupacao_atual', 'fila_espera')
+3882: #   38: <Code311 code object <lambda> at 0x1f294e1f570, file indicadores\views.py>, line 497
+3883: #   39: True
+3884: #   40: ('key', 'reverse')
+3885: #   41: 2
+3886: #   42: ('backlog', 'taxa_ocupacao_media', 'taxa_suspensao', 'tmp_medio')
+3887: #   43: ('kpis', 'funil_regulacao', 'gargalos_equipmento', 'tabela_regulacao')
+3888: # Names:
+3889: #    0: query_params
+3890: #    1: get
+3891: #    2: calendar
+3892: #    3: monthrange
+3893: #    4: int
+3894: #    5: Exception
+3895: #    6: connection
+3896: #    7: cursor
+3897: #    8: execute
+3898: #    9: fetchone
+3899: #   10: dict
+3900: #   11: fetchall
+3901: #   12: FatoProcedimentos
+3902: #   13: objects
+3903: #   14: all
+3904: #   15: FatoAtendimentos
+3905: #   16: filter
+3906: #   17: count
+3907: #   18: aggregate
+3908: #   19: Avg
+3909: #   20: DimUnidade
+3910: #   21: capacidade_maxima
+3911: #   22: id_unidade
+3912: #   23: append
+3913: #   24: sum
+3914: #   25: len
+3915: #   26: values
+3916: #   27: annotate
+3917: #   28: Count
+3918: #   29: order_by
+3919: #   30: nome_unidade
+3920: #   31: tipo_leito
+3921: #   32: round
+3922: #   33: sort
+3923: #   34: response
+3924: #   35: Response
+3925: # Varnames:
+3926: #	self, request, ano, mes, unidade_filtro, calendar, last_day, reference_date, cursor, res, active_patients_by_unit, proc_qs, atend_qs, total_procedimentos, agendados, realizados, cancelados, taxa_suspensao, tmp_medio, specialized_ids, units_to_calc, occupancy_rates, u, active, oc_rate, taxa_ocupacao_media, funnel_data, equip_backlog, equip_backlog_data, item, name, all_units, table_data, nome_amigavel, fila_count
+3927: # Positional arguments:
+3928: #	self, request
+3929: # Local variables:
+3930: #    2: ano
+3931: #    3: mes
+3932: #    4: unidade_filtro
+3933: #    5: calendar
+3934: #    6: last_day
+3935: #    7: reference_date
+3936: #    8: cursor
+3937: #    9: res
+3938: #   10: active_patients_by_unit
+3939: #   11: proc_qs
+3940: #   12: atend_qs
+3941: #   13: total_procedimentos
+3942: #   14: agendados
+3943: #   15: realizados
+3944: #   16: cancelados
+3945: #   17: taxa_suspensao
+3946: #   18: tmp_medio
+3947: #   19: specialized_ids
+3948: #   20: units_to_calc
+3949: #   21: occupancy_rates
+3950: #   22: u
+3951: #   23: active
+3952: #   24: oc_rate
+3953: #   25: taxa_ocupacao_media
+3954: #   26: funnel_data
+3955: #   27: equip_backlog
+3956: #   28: equip_backlog_data
+3957: #   29: item
+3958: #   30: name
+3959: #   31: all_units
+3960: #   32: table_data
+3961: #   33: nome_amigavel
+3962: #   34: fila_count
+3963: 
+3964: 375:           0 RESUME               0
+3965: 
+3966: 376:           2 LOAD_FAST            (request)
+3967:                4 LOAD_ATTR            (query_params)
+3968:               24 LOAD_ATTR            (NULL|self + get)
+3969:               44 LOAD_CONST           ("ano")
+3970:               46 CALL                 1
+3971:               54 STORE_FAST           (ano)
+3972: 
+3973: 377:          56 LOAD_FAST            (request)
+3974:               58 LOAD_ATTR            (query_params)
+3975:               78 LOAD_ATTR            (NULL|self + get)
+3976:               98 LOAD_CONST           ("mes")
+3977:              100 CALL                 1
+3978:              108 STORE_FAST           (mes)
+3979: 
+3980: 378:         110 LOAD_FAST            (request)
+3981:              112 LOAD_ATTR            (query_params)
+3982:              132 LOAD_ATTR            (NULL|self + get)
+3983:              152 LOAD_CONST           ("unidade")
+3984:              154 CALL                 1
+3985:              162 STORE_FAST           (unidade_filtro)
+3986: 
+3987: 381:         164 LOAD_FAST            (ano)
+3988:              166 POP_JUMP_IF_FALSE    (to 304)
+3989:              168 LOAD_FAST            (mes)
+3990:              170 POP_JUMP_IF_FALSE    (to 304)
+3991: 
+3992: 382:         172 LOAD_CONST           (0)
+3993:              174 LOAD_CONST           (None)
+3994:              176 IMPORT_NAME          (calendar)
+3995:              178 STORE_FAST           (calendar)
+3996: 
+3997: 383:         180 NOP
+3998: 
+3999: 384:         182 LOAD_FAST            (calendar)
+4000:              184 LOAD_ATTR            (NULL|self + monthrange)
+4001:              204 LOAD_GLOBAL          (NULL + int)
+4002:              214 LOAD_FAST            (ano)
+4003:              216 CALL                 1
+4004:              224 LOAD_GLOBAL          (NULL + int)
+4005:              234 LOAD_FAST            (mes)
+4006:              236 CALL                 1
+4007:              244 CALL                 2
+4008:              252 LOAD_CONST           (1)
+4009:              254 BINARY_SUBSCR
+4010:              258 STORE_FAST           (last_day)
+4011: 
+4012: 385:         260 LOAD_FAST            (ano)
+4013:              262 FORMAT_VALUE         0
+4014:              264 LOAD_CONST           ("-")
+4015:              266 LOAD_GLOBAL          (NULL + int)
+4016:              276 LOAD_FAST            (mes)
+4017:              278 CALL                 1
+4018:              286 LOAD_CONST           ("02d")
+4019:              288 FORMAT_VALUE         4
+4020:              290 LOAD_CONST           ("-")
+4021:              292 LOAD_FAST            (last_day)
+4022:              294 LOAD_CONST           ("02d")
+4023:              296 FORMAT_VALUE         4
+4024:              298 BUILD_STRING         5
+4025:              300 STORE_FAST           (reference_date)
+4026:              302 JUMP_FORWARD         (to 456)
+4027: 
+4028: 389:     >>  304 LOAD_GLOBAL          (NULL + connection)
+4029:              314 LOAD_ATTR            (cursor)
+4030:              334 CALL                 0
+4031:              342 BEFORE_WITH
+4032:              344 STORE_FAST           (cursor)
+4033: 
+4034: 390:         346 LOAD_FAST            (cursor)
+4035:              348 LOAD_ATTR            (NULL|self + execute)
+4036:              368 LOAD_CONST           ("SELECT MAX(data_registro) FROM indicadores_dimtempo")
+4037:              370 CALL                 1
+4038:              378 POP_TOP
+4039: 
+4040: 391:         380 LOAD_FAST            (cursor)
+4041:              382 LOAD_ATTR            (NULL|self + fetchone)
+4042:              402 CALL                 0
+4043:              410 STORE_FAST           (res)
+4044: 
+4045: 392:         412 LOAD_FAST            (res)
+4046:              414 POP_JUMP_IF_FALSE    (to 436)
+4047:              416 LOAD_FAST            (res)
+4048:              418 LOAD_CONST           (0)
+4049:              420 BINARY_SUBSCR
+4050:              424 POP_JUMP_IF_FALSE    (to 436)
+4051:              426 LOAD_FAST            (res)
+4052:              428 LOAD_CONST           (0)
+4053:              430 BINARY_SUBSCR
+4054:              434 JUMP_FORWARD         (to 438)
+4055:          >>  436 LOAD_CONST           ("2026-05-01")
+4056:          >>  438 STORE_FAST           (reference_date)
+4057: 
+4058: 389:         440 LOAD_CONST           (None)
+4059:              442 LOAD_CONST           (None)
+4060:              444 LOAD_CONST           (None)
+4061:              446 CALL                 2
+4062:              454 POP_TOP
+4063: 
+4064: 397:     >>  456 BUILD_MAP            0
+4065:              458 STORE_FAST           (active_patients_by_unit)
+4066: 
+4067: 398:         460 LOAD_GLOBAL          (NULL + connection)
+4068:              470 LOAD_ATTR            (cursor)
+4069:              490 CALL                 0
+4070:              498 BEFORE_WITH
+4071:              500 STORE_FAST           (cursor)
+4072: 
+4073: 399:         502 LOAD_FAST            (cursor)
+4074:              504 LOAD_ATTR            (NULL|self + execute)
+4075:              524 LOAD_CONST           ("\n                SELECT \n                    a.id_unidade_id,\n                    COUNT(*) as active_count\n                FROM indicadores_fatoatendimentos a\n                INNER JOIN indicadores_dimtempo t ON a.id_tempo_id = t.id_tempo\n                WHERE t.data_registro <= %s\n                  AND (t.data_registro + a.tempo_permanencia_dias * INTERVAL '1 day') > %s::date\n                GROUP BY a.id_unidade_id\n            ")
+4076: 
+4077: 408:         526 LOAD_FAST_CHECK      (reference_date)
+4078:              528 LOAD_FAST            (reference_date)
+4079:              530 BUILD_LIST           2
+4080: 
+4081: 399:         532 CALL                 2
+4082:              540 POP_TOP
+4083: 
+4084: 409:         542 LOAD_GLOBAL          (NULL + dict)
+4085:              552 LOAD_FAST            (cursor)
+4086:              554 LOAD_ATTR            (NULL|self + fetchall)
+4087:              574 CALL                 0
+4088:              582 CALL                 1
+4089:              590 STORE_FAST           (active_patients_by_unit)
+4090: 
+4091: 398:         592 LOAD_CONST           (None)
+4092:              594 LOAD_CONST           (None)
+4093:              596 LOAD_CONST           (None)
+4094:              598 CALL                 2
+4095:              606 POP_TOP
+4096: 
+4097: 412:         608 LOAD_GLOBAL          (FatoProcedimentos)
+4098:              618 LOAD_ATTR            (objects)
+4099:              638 LOAD_ATTR            (NULL|self + all)
+4100:              658 CALL                 0
+4101:              666 STORE_FAST           (proc_qs)
+4102: 
+4103: 413:         668 LOAD_GLOBAL          (FatoAtendimentos)
+4104:              678 LOAD_ATTR            (objects)
+4105:              698 LOAD_ATTR            (NULL|self + all)
+4106:              718 CALL                 0
+4107:              726 STORE_FAST           (atend_qs)
+4108: 
+4109: 415:         728 LOAD_FAST            (ano)
+4110:              730 POP_JUMP_IF_FALSE    (to 804)
+4111: 
+4112: 416:         732 LOAD_FAST            (proc_qs)
+4113:              734 LOAD_ATTR            (NULL|self + filter)
+4114:              754 LOAD_FAST            (ano)
+4115:              756 KW_NAMES             (('id_tempo__ano',))
+4116:              758 CALL                 1
+4117:              766 STORE_FAST           (proc_qs)
+4118: 
+4119: 417:         768 LOAD_FAST            (atend_qs)
+4120:              770 LOAD_ATTR            (NULL|self + filter)
+4121:              790 LOAD_FAST            (ano)
+4122:              792 KW_NAMES             (('id_tempo__ano',))
+4123:              794 CALL                 1
+4124:              802 STORE_FAST           (atend_qs)
+4125: 
+4126: 418:     >>  804 LOAD_FAST            (mes)
+4127:              806 POP_JUMP_IF_FALSE    (to 880)
+4128: 
+4129: 419:         808 LOAD_FAST            (proc_qs)
+4130:              810 LOAD_ATTR            (NULL|self + filter)
+4131:              830 LOAD_FAST            (mes)
+4132:              832 KW_NAMES             (('id_tempo__mes',))
+4133:              834 CALL                 1
+4134:              842 STORE_FAST           (proc_qs)
+4135: 
+4136: 420:         844 LOAD_FAST            (atend_qs)
+4137:              846 LOAD_ATTR            (NULL|self + filter)
+4138:              866 LOAD_FAST            (mes)
+4139:              868 KW_NAMES             (('id_tempo__mes',))
+4140:              870 CALL                 1
+4141:              878 STORE_FAST           (atend_qs)
+4142: 
+4143: 421:     >>  880 LOAD_FAST            (unidade_filtro)
+4144:              882 POP_JUMP_IF_FALSE    (to 956)
+4145: 
+4146: 422:         884 LOAD_FAST            (proc_qs)
+4147:              886 LOAD_ATTR            (NULL|self + filter)
+4148:              906 LOAD_FAST            (unidade_filtro)
+4149:              908 KW_NAMES             (('id_unidade',))
+4150:              910 CALL                 1
+4151:              918 STORE_FAST           (proc_qs)
+4152: 
+4153: 423:         920 LOAD_FAST            (atend_qs)
+4154:              922 LOAD_ATTR            (NULL|self + filter)
+4155:              942 LOAD_FAST            (unidade_filtro)
+4156:              944 KW_NAMES             (('id_unidade',))
+4157:              946 CALL                 1
+4158:              954 STORE_FAST           (atend_qs)
+4159: 
+4160: 426:     >>  956 LOAD_FAST            (proc_qs)
+4161:              958 LOAD_ATTR            (NULL|self + count)
+4162:              978 CALL                 0
+4163:              986 STORE_FAST           (total_procedimentos)
+4164: 
+4165: 427:         988 LOAD_FAST            (proc_qs)
+4166:              990 LOAD_ATTR            (NULL|self + filter)
+4167:             1010 LOAD_CONST           ("Agendado")
+4168:             1012 KW_NAMES             (('status_agendamento',))
+4169:             1014 CALL                 1
+4170:             1022 LOAD_ATTR            (NULL|self + count)
+4171:             1042 CALL                 0
+4172:             1050 STORE_FAST           (agendados)
+4173: 
+4174: 428:        1052 LOAD_FAST            (proc_qs)
+4175:             1054 LOAD_ATTR            (NULL|self + filter)
+4176:             1074 LOAD_CONST           ("Realizado")
+4177:             1076 KW_NAMES             (('status_agendamento',))
+4178:             1078 CALL                 1
+4179:             1086 LOAD_ATTR            (NULL|self + count)
+4180:             1106 CALL                 0
+4181:             1114 STORE_FAST           (realizados)
+4182: 
+4183: 429:        1116 LOAD_FAST            (proc_qs)
+4184:             1118 LOAD_ATTR            (NULL|self + filter)
+4185:             1138 LOAD_CONST           ("Cancelado")
+4186:             1140 KW_NAMES             (('status_agendamento',))
+4187:             1142 CALL                 1
+4188:             1150 LOAD_ATTR            (NULL|self + count)
+4189:             1170 CALL                 0
+4190:             1178 STORE_FAST           (cancelados)
+4191: 
+4192: 431:        1180 LOAD_FAST            (total_procedimentos)
+4193:             1182 LOAD_CONST           (0)
+4194:             1184 COMPARE_OP           (>)
+4195:             1188 POP_JUMP_IF_FALSE    (to 1206)
+4196:             1190 LOAD_FAST            (cancelados)
+4197:             1192 LOAD_FAST            (total_procedimentos)
+4198:             1194 BINARY_OP            (/)
+4199:             1198 LOAD_CONST           (100)
+4200:             1200 BINARY_OP            (*)
+4201:             1204 JUMP_FORWARD         (to 1208)
+4202:          >> 1206 LOAD_CONST           (0)
+4203:          >> 1208 STORE_FAST           (taxa_suspensao)
+4204: 
+4205: 432:        1210 LOAD_FAST            (atend_qs)
+4206:             1212 LOAD_ATTR            (NULL|self + aggregate)
+4207:             1232 LOAD_GLOBAL          (NULL + Avg)
+4208:             1242 LOAD_CONST           ("tempo_permanencia_dias")
+4209:             1244 CALL                 1
+4210:             1252 KW_NAMES             (('media',))
+4211:             1254 CALL                 1
+4212:             1262 LOAD_CONST           ("media")
+4213:             1264 BINARY_SUBSCR
+4214:             1268 COPY                 1
+4215:             1270 POP_JUMP_IF_TRUE     (to 1276)
+4216:             1272 POP_TOP
+4217:             1274 LOAD_CONST           (0)
+4218:          >> 1276 STORE_FAST           (tmp_medio)
+4219: 
+4220: 435:        1278 LOAD_CONST           (1)
+4221:             1280 LOAD_CONST           (5)
+4222:             1282 BUILD_LIST           2
+4223:             1284 STORE_FAST           (specialized_ids)
+4224: 
+4225: 436:        1286 LOAD_GLOBAL          (DimUnidade)
+4226:             1296 LOAD_ATTR            (objects)
+4227:             1316 LOAD_ATTR            (NULL|self + all)
+4228:             1336 CALL                 0
+4229:             1344 STORE_FAST           (units_to_calc)
+4230: 
+4231: 437:        1346 LOAD_FAST            (unidade_filtro)
+4232:             1348 POP_JUMP_IF_FALSE    (to 1388)
+4233: 
+4234: 438:        1350 LOAD_FAST            (units_to_calc)
+4235:             1352 LOAD_ATTR            (NULL|self + filter)
+4236:             1372 LOAD_FAST            (unidade_filtro)
+4237:             1374 KW_NAMES             (('id_unidade',))
+4238:             1376 CALL                 1
+4239:             1384 STORE_FAST           (units_to_calc)
+4240:             1386 JUMP_FORWARD         (to 1424)
+4241: 
+4242: 440:     >> 1388 LOAD_FAST            (units_to_calc)
+4243:             1390 LOAD_ATTR            (NULL|self + filter)
+4244:             1410 LOAD_FAST            (specialized_ids)
+4245:             1412 KW_NAMES             (('id_unidade__in',))
+4246:             1414 CALL                 1
+4247:             1422 STORE_FAST           (units_to_calc)
+4248: 
+4249: 442:     >> 1424 BUILD_LIST           0
+4250:             1426 STORE_FAST           (occupancy_rates)
+4251: 
+4252: 443:        1428 LOAD_FAST            (units_to_calc)
+4253:             1430 GET_ITER
+4254:             1432 FOR_ITER             (to 1598)
+4255:             1436 STORE_FAST           (u)
+4256: 
+4257: 444:        1438 LOAD_FAST            (u)
+4258:             1440 LOAD_ATTR            (capacidade_maxima)
+4259:             1460 LOAD_CONST           (0)
+4260:             1462 COMPARE_OP           (>)
+4261:             1466 POP_JUMP_IF_TRUE     (to 1470)
+4262:             1468 JUMP_BACKWARD        (to 1432)
+4263: 
+4264: 445:     >> 1470 LOAD_FAST            (active_patients_by_unit)
+4265:             1472 LOAD_ATTR            (NULL|self + get)
+4266:             1492 LOAD_FAST            (u)
+4267:             1494 LOAD_ATTR            (id_unidade)
+4268:             1514 LOAD_CONST           (0)
+4269:             1516 CALL                 2
+4270:             1524 STORE_FAST           (active)
+4271: 
+4272: 446:        1526 LOAD_FAST            (active)
+4273:             1528 LOAD_FAST            (u)
+4274:             1530 LOAD_ATTR            (capacidade_maxima)
+4275:             1550 BINARY_OP            (/)
+4276:             1554 LOAD_CONST           (100)
+4277:             1556 BINARY_OP            (*)
+4278:             1560 STORE_FAST           (oc_rate)
+4279: 
+4280: 447:        1562 LOAD_FAST            (occupancy_rates)
+4281:             1564 LOAD_ATTR            (NULL|self + append)
+4282:             1584 LOAD_FAST            (oc_rate)
+4283:             1586 CALL                 1
+4284:             1594 POP_TOP
+4285:          >> 1596 JUMP_BACKWARD        (to 1432)
+4286: 
+4287: 443:        1598 END_FOR
+4288: 
+4289: 449:        1600 LOAD_FAST            (occupancy_rates)
+4290:             1602 POP_JUMP_IF_FALSE    (to 1650)
+4291:             1604 LOAD_GLOBAL          (NULL + sum)
+4292:             1614 LOAD_FAST            (occupancy_rates)
+4293:             1616 CALL                 1
+4294:             1624 LOAD_GLOBAL          (NULL + len)
+4295:             1634 LOAD_FAST            (occupancy_rates)
+4296:             1636 CALL                 1
+4297:             1644 BINARY_OP            (/)
+4298:             1648 JUMP_FORWARD         (to 1652)
+4299:          >> 1650 LOAD_CONST           (0)
+4300:          >> 1652 STORE_FAST           (taxa_ocupacao_media)
+4301: 
+4302: 453:        1654 LOAD_CONST           ("Solicitado")
+4303:             1656 LOAD_FAST            (total_procedimentos)
+4304:             1658 LOAD_CONST           (('etapa', 'quantidade'))
+4305:             1660 BUILD_CONST_KEY_MAP  2
+4306: 
+4307: 454:        1662 LOAD_CONST           ("Fila (Pendente)")
+4308:             1664 LOAD_FAST            (agendados)
+4309:             1666 LOAD_CONST           (('etapa', 'quantidade'))
+4310:             1668 BUILD_CONST_KEY_MAP  2
+4311: 
+4312: 455:        1670 LOAD_CONST           ("Realizado")
+4313:             1672 LOAD_FAST            (realizados)
+4314:             1674 LOAD_CONST           (('etapa', 'quantidade'))
+4315:             1676 BUILD_CONST_KEY_MAP  2
+4316: 
+4317: 452:        1678 BUILD_LIST           3
+4318:             1680 STORE_FAST           (funnel_data)
+4319: 
+4320: 459:        1682 LOAD_FAST            (proc_qs)
+4321:             1684 LOAD_ATTR            (NULL|self + filter)
+4322:             1704 LOAD_CONST           ("Agendado")
+4323:             1706 KW_NAMES             (('status_agendamento',))
+4324:             1708 CALL                 1
+4325:             1716 LOAD_ATTR            (NULL|self + values)
+4326:             1736 LOAD_CONST           ("id_equipamento__nome_maquina")
+4327:             1738 CALL                 1
+4328:             1746 LOAD_ATTR            (NULL|self + annotate)
+4329:             1766 LOAD_GLOBAL          (NULL + Count)
+4330:             1776 LOAD_CONST           ("id_procedimento_instancia")
+4331:             1778 CALL                 1
+4332:             1786 KW_NAMES             (('backlog',))
+4333:             1788 CALL                 1
+4334:             1796 LOAD_ATTR            (NULL|self + order_by)
+4335:             1816 LOAD_CONST           ("-backlog")
+4336:             1818 CALL                 1
+4337:             1826 STORE_FAST           (equip_backlog)
+4338: 
+4339: 461:        1828 BUILD_LIST           0
+4340:             1830 STORE_FAST           (equip_backlog_data)
+4341: 
+4342: 462:        1832 LOAD_FAST            (equip_backlog)
+4343:             1834 GET_ITER
+4344:             1836 FOR_ITER             (to 1908)
+4345:             1840 STORE_FAST           (item)
+4346: 
+4347: 463:        1842 LOAD_FAST            (item)
+4348:             1844 LOAD_CONST           ("id_equipamento__nome_maquina")
+4349:             1846 BINARY_SUBSCR
+4350:             1850 COPY                 1
+4351:             1852 POP_JUMP_IF_TRUE     (to 1858)
+4352:             1854 POP_TOP
+4353:             1856 LOAD_CONST           ("Sem Equipamento")
+4354:          >> 1858 STORE_FAST           (name)
+4355: 
+4356: 464:        1860 LOAD_FAST            (equip_backlog_data)
+4357:             1862 LOAD_ATTR            (NULL|self + append)
+4358: 
+4359: 465:        1882 LOAD_FAST            (name)
+4360: 
+4361: 466:        1884 LOAD_FAST            (item)
+4362:             1886 LOAD_CONST           ("backlog")
+4363:             1888 BINARY_SUBSCR
+4364: 
+4365: 464:        1892 LOAD_CONST           (('equipamento', 'backlog'))
+4366:             1894 BUILD_CONST_KEY_MAP  2
+4367:             1896 CALL                 1
+4368:             1904 POP_TOP
+4369:          >> 1906 JUMP_BACKWARD        (to 1836)
+4370: 
+4371: 462:        1908 END_FOR
+4372: 
+4373: 470:        1910 LOAD_GLOBAL          (DimUnidade)
+4374:             1920 LOAD_ATTR            (objects)
+4375:             1940 LOAD_ATTR            (NULL|self + all)
+4376:             1960 CALL                 0
+4377:             1968 STORE_FAST           (all_units)
+4378: 
+4379: 471:        1970 LOAD_FAST            (unidade_filtro)
+4380:             1972 POP_JUMP_IF_FALSE    (to 2010)
+4381: 
+4382: 472:        1974 LOAD_FAST            (all_units)
+4383:             1976 LOAD_ATTR            (NULL|self + filter)
+4384:             1996 LOAD_FAST            (unidade_filtro)
+4385:             1998 KW_NAMES             (('id_unidade',))
+4386:             2000 CALL                 1
+4387:             2008 STORE_FAST           (all_units)
+4388: 
+4389: 474:     >> 2010 BUILD_LIST           0
+4390:             2012 STORE_FAST           (table_data)
+4391: 
+4392: 475:        2014 LOAD_FAST            (all_units)
+4393:             2016 GET_ITER
+4394:             2018 FOR_ITER             (to 2462)
+4395:             2022 STORE_FAST           (u)
+4396: 
+4397: 476:        2024 LOAD_FAST            (u)
+4398:             2026 LOAD_ATTR            (nome_unidade)
+4399:             2046 STORE_FAST           (nome_amigavel)
+4400: 
+4401: 477:        2048 LOAD_FAST            (u)
+4402:             2050 LOAD_ATTR            (id_unidade)
+4403:             2070 LOAD_CONST           (1)
+4404:             2072 COMPARE_OP           (==)
+4405:             2076 POP_JUMP_IF_FALSE    (to 2084)
+4406: 
+4407: 478:        2078 LOAD_CONST           ("MT-Hemocentro - UTI")
+4408:             2080 STORE_FAST           (nome_amigavel)
+4409:             2082 JUMP_FORWARD         (to 2118)
+4410: 
+4411: 479:     >> 2084 LOAD_FAST            (u)
+4412:             2086 LOAD_ATTR            (id_unidade)
+4413:             2106 LOAD_CONST           (5)
+4414:             2108 COMPARE_OP           (==)
+4415:             2112 POP_JUMP_IF_FALSE    (to 2118)
+4416: 
+4417: 480:        2114 LOAD_CONST           ("CEOPE - Bloco Cir·rgico")
+4418:             2116 STORE_FAST           (nome_amigavel)
+4419: 
+4420: 482:     >> 2118 LOAD_FAST            (active_patients_by_unit)
+4421:             2120 LOAD_ATTR            (NULL|self + get)
+4422:             2140 LOAD_FAST            (u)
+4423:             2142 LOAD_ATTR            (id_unidade)
+4424:             2162 LOAD_CONST           (0)
+4425:             2164 CALL                 2
+4426:             2172 STORE_FAST           (active)
+4427: 
+4428: 483:        2174 LOAD_FAST            (u)
+4429:             2176 LOAD_ATTR            (capacidade_maxima)
+4430:             2196 LOAD_CONST           (0)
+4431:             2198 COMPARE_OP           (>)
+4432:             2202 POP_JUMP_IF_FALSE    (to 2240)
+4433:             2204 LOAD_FAST            (active)
+4434:             2206 LOAD_FAST            (u)
+4435:             2208 LOAD_ATTR            (capacidade_maxima)
+4436:             2228 BINARY_OP            (/)
+4437:             2232 LOAD_CONST           (100)
+4438:             2234 BINARY_OP            (*)
+4439:             2238 JUMP_FORWARD         (to 2242)
+4440:          >> 2240 LOAD_CONST           (0)
+4441:          >> 2242 STORE_FAST           (oc_rate)
+4442: 
+4443: 485:        2244 LOAD_FAST            (proc_qs)
+4444:             2246 LOAD_ATTR            (NULL|self + filter)
+4445:             2266 LOAD_FAST            (u)
+4446:             2268 LOAD_ATTR            (id_unidade)
+4447:             2288 LOAD_CONST           ("Agendado")
+4448:             2290 KW_NAMES             (('id_unidade', 'status_agendamento'))
+4449:             2292 CALL                 2
+4450:             2300 LOAD_ATTR            (NULL|self + count)
+4451:             2320 CALL                 0
+4452:             2328 STORE_FAST           (fila_count)
+4453: 
+4454: 487:        2330 LOAD_FAST            (table_data)
+4455:             2332 LOAD_ATTR            (NULL|self + append)
+4456: 
+4457: 488:        2352 LOAD_FAST            (u)
+4458:             2354 LOAD_ATTR            (id_unidade)
+4459: 
+4460: 489:        2374 LOAD_FAST            (nome_amigavel)
+4461: 
+4462: 490:        2376 LOAD_FAST            (u)
+4463:             2378 LOAD_ATTR            (tipo_leito)
+4464: 
+4465: 491:        2398 LOAD_FAST            (u)
+4466:             2400 LOAD_ATTR            (capacidade_maxima)
+4467: 
+4468: 492:        2420 LOAD_FAST            (active)
+4469: 
+4470: 493:        2422 LOAD_GLOBAL          (NULL + round)
+4471:             2432 LOAD_FAST            (oc_rate)
+4472:             2434 LOAD_CONST           (1)
+4473:             2436 CALL                 2
+4474: 
+4475: 494:        2444 LOAD_FAST            (fila_count)
+4476: 
+4477: 487:        2446 LOAD_CONST           (('id_unidade', 'unidade', 'tipo_leito', 'capacidade', 'pacientes_ativos', 'ocupacao_atual', 'fila_espera'))
+4478:             2448 BUILD_CONST_KEY_MAP  7
+4479:             2450 CALL                 1
+4480:             2458 POP_TOP
+4481:          >> 2460 JUMP_BACKWARD        (to 2018)
+4482: 
+4483: 475:        2462 END_FOR
+4484: 
+4485: 497:        2464 LOAD_FAST            (table_data)
+4486:             2466 LOAD_ATTR            (NULL|self + sort)
+4487:             2486 LOAD_CONST           (<Code311 code object <lambda> at 0x1f294e1f570, file indicadores\views.py>, line 497)
+4488:             2488 MAKE_FUNCTION        (No arguments)
+4489:             2490 LOAD_CONST           (True)
+4490:             2492 KW_NAMES             (('key', 'reverse'))
+4491:             2494 CALL                 2
+4492:             2502 POP_TOP
+4493: 
+4494: 499:        2504 LOAD_GLOBAL          (NULL + response)
+4495:             2514 LOAD_ATTR            (Response)
+4496: 
+4497: 501:        2534 LOAD_FAST            (agendados)
+4498: 
+4499: 502:        2536 LOAD_GLOBAL          (NULL + round)
+4500:             2546 LOAD_FAST            (taxa_ocupacao_media)
+4501:             2548 LOAD_CONST           (2)
+4502:             2550 CALL                 2
+4503: 
+4504: 503:        2558 LOAD_GLOBAL          (NULL + round)
+4505:             2568 LOAD_FAST            (taxa_suspensao)
+4506:             2570 LOAD_CONST           (2)
+4507:             2572 CALL                 2
+4508: 
+4509: 504:        2580 LOAD_GLOBAL          (NULL + round)
+4510:             2590 LOAD_FAST            (tmp_medio)
+4511:             2592 LOAD_CONST           (1)
+4512:             2594 CALL                 2
+4513: 
+4514: 500:        2602 LOAD_CONST           (('backlog', 'taxa_ocupacao_media', 'taxa_suspensao', 'tmp_medio'))
+4515:             2604 BUILD_CONST_KEY_MAP  4
+4516: 
+4517: 506:        2606 LOAD_FAST            (funnel_data)
+4518: 
+4519: 507:        2608 LOAD_FAST            (equip_backlog_data)
+4520: 
+4521: 508:        2610 LOAD_FAST            (table_data)
+4522: 
+4523: 499:        2612 LOAD_CONST           (('kpis', 'funil_regulacao', 'gargalos_equipmento', 'tabela_regulacao'))
+4524:             2614 BUILD_CONST_KEY_MAP  4
+4525:             2616 CALL                 1
+4526:             2624 RETURN_VALUE
+4527:             2626 PUSH_EXC_INFO
+4528: 
+4529: 386:        2628 LOAD_GLOBAL          (Exception)
+4530:             2638 CHECK_EXC_MATCH
+4531:             2640 POP_JUMP_IF_FALSE    (to 2654)
+4532:             2642 POP_TOP
+4533: 
+4534: 387:        2644 LOAD_CONST           ("2026-05-01")
+4535:             2646 STORE_FAST           (reference_date)
+4536:             2648 POP_EXCEPT
+4537:             2650 EXTENDED_ARG         (1024)
+4538:             2652 JUMP_BACKWARD        (to 456)
+4539: 
+4540: 386:     >> 2654 RERAISE              0
+4541:             2656 COPY                 3
+4542:             2658 POP_EXCEPT
+4543:             2660 RERAISE              1
+4544: 
+4545: 389:        2662 PUSH_EXC_INFO
+4546:             2664 WITH_EXCEPT_START
+4547:             2666 POP_JUMP_IF_TRUE     (to 2670)
+4548:             2668 RERAISE              2
+4549:          >> 2670 POP_TOP
+4550:             2672 POP_EXCEPT
+4551:             2674 POP_TOP
+4552:             2676 POP_TOP
+4553:             2678 EXTENDED_ARG         (1024)
+4554:             2680 JUMP_BACKWARD        (to 456)
+4555:             2682 COPY                 3
+4556:             2684 POP_EXCEPT
+4557:             2686 RERAISE              1
+4558: 
+4559: 398:        2688 PUSH_EXC_INFO
+4560:             2690 WITH_EXCEPT_START
+4561:             2692 POP_JUMP_IF_TRUE     (to 2696)
+4562:             2694 RERAISE              2
+4563:          >> 2696 POP_TOP
+4564:             2698 POP_EXCEPT
+4565:             2700 POP_TOP
+4566:             2702 POP_TOP
+4567:             2704 EXTENDED_ARG         (1024)
+4568:             2706 JUMP_BACKWARD        (to 608)
+4569:             2708 COPY                 3
+4570:             2710 POP_EXCEPT
+4571:             2712 RERAISE              1
+4572: 
+4573: ExceptionTable:
+4574:   182 to 300 -> 2626 [0]
+4575:   344 to 438 -> 2662 [1] lasti
+4576:   500 to 590 -> 2688 [1] lasti
+4577:   2626 to 2646 -> 2656 [1] lasti
+4578:   2654 to 2654 -> 2656 [1] lasti
+4579:   2662 to 2670 -> 2682 [3] lasti
+4580:   2688 to 2696 -> 2708 [3] lasti
+4581: 
+4582: # Method Name:       get
+4583: # Filename:          indicadores\views.py

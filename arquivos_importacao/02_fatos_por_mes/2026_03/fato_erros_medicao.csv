@@ -1,0 +1,4 @@
+id_evento;id_medicamento;id_paciente;id_tempo;tipo_erro;severidade
+40013;4;1222;20260309;Omissão de Dose;Média
+40014;1;1113;20260315;Dose Duplicada;Alta
+40015;3;1157;20260320;Dose Duplicada;Média

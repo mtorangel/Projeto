@@ -8,6 +8,7 @@ import {
 } from 'recharts';
 import KPICard from '../components/KPICard';
 import FilterBar from '../components/FilterBar';
+import AITrigger from '../components/AITrigger';
 
 function ProcedimentosDashboard() {
   const navigate = useNavigate();
@@ -69,7 +70,7 @@ function ProcedimentosDashboard() {
         <p style={{ color: '#94a3b8' }}>Eficiência de Sala, Suspensão e Produtividade de Equipamentos</p>
       </header>
 
-      <FilterBar filters={filters} setFilters={setFilters} onClear={handleClearFilters} />
+      <FilterBar filters={filters} setFilters={setFilters} onClear={handleClearFilters} filteredCount={stats?.registros_afetados} />
 
       {loading ? (
         <div style={{ padding: '4rem', textAlign: 'center', color: '#2dd4bf' }}>Atualizando indicadores cirúrgicos...</div>
@@ -83,9 +84,13 @@ function ProcedimentosDashboard() {
           </div>
 
           <div className="grid">
-            <div className="glass-card" style={{ padding: '2rem', height: '400px' }}>
-              <h3 style={{ marginBottom: '2rem' }}>Suspensão de Procedimentos</h3>
-              <ResponsiveContainer width="100%" height="80%">
+            <div className="glass-card" style={{ padding: '2rem', height: '400px', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem' }}>
+                <h3 style={{ margin: 0, fontSize: '1.1rem', color: '#f8fafc' }}>Suspensão de Procedimentos</h3>
+                <AITrigger indicador="Taxa de Suspensão" valorAtual="Geral" color="#f87171" iconSize={15} buttonStyle={{ background: 'rgba(248, 113, 113, 0.1)', padding: '4px', borderRadius: '6px' }} />
+              </div>
+              <div style={{ flex: 1, minHeight: 0 }}>
+                <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie data={dataSuspencao} innerRadius={60} outerRadius={80} paddingAngle={5} dataKey="value">
                     {dataSuspencao.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)}
@@ -93,11 +98,16 @@ function ProcedimentosDashboard() {
                   <Tooltip contentStyle={{ backgroundColor: '#1e293b', border: 'none', borderRadius: '8px', color: '#fff' }} itemStyle={{ color: '#fff' }} />
                 </PieChart>
               </ResponsiveContainer>
+              </div>
             </div>
 
-            <div className="glass-card" style={{ padding: '2rem', height: '400px' }}>
-              <h3 style={{ marginBottom: '2rem' }}>Produtividade por Equipamento</h3>
-              <ResponsiveContainer width="100%" height="80%">
+            <div className="glass-card" style={{ padding: '2rem', height: '400px', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem' }}>
+                <h3 style={{ margin: 0, fontSize: '1.1rem', color: '#f8fafc' }}>Produtividade por Equipamento</h3>
+                <AITrigger indicador="Taxa de Suspensão" valorAtual="Geral" color="#818cf8" iconSize={15} buttonStyle={{ background: 'rgba(129, 140, 248, 0.1)', padding: '4px', borderRadius: '6px' }} />
+              </div>
+              <div style={{ flex: 1, minHeight: 0 }}>
+                <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={stats.produtividade_equipamento}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
                   <XAxis dataKey="id_equipamento__nome_maquina" stroke="#94a3b8" fontSize={10} />
@@ -106,6 +116,7 @@ function ProcedimentosDashboard() {
                   <Bar dataKey="total" fill="#818cf8" radius={[5, 5, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
+              </div>
             </div>
           </div>
         </>

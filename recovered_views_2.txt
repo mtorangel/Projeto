@@ -1,0 +1,57 @@
+Created At: 2026-06-16T03:32:49Z
+Completed At: 2026-06-16T03:32:49Z
+File Path: `file:///c:/Users/Administrador/OneDrive/MBACD/Projeto/painel-saude-backend/indicadores/views.py`
+Total Lines: 1068
+Total Bytes: 68997
+Showing lines 1020 to 1068
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1020: 
+1021: 
+1022: # ─────────────────────────────────────────────
+1023: #  Admin: Seed Data via API
+1024: # ─────────────────────────────────────────────
+1025: class SeedDataView(APIView):
+1026:     authentication_classes = [TokenAuthentication]
+1027:     permission_classes = [permissions.IsAuthenticated]
+1028: 
+1029:     def post(self, request):
+1030:         import subprocess
+1031:         import sys
+1032:         import os
+1033: 
+1034:         records = int(request.data.get("records", 100))
+1035:         mode = request.data.get("mode", "db")
+1036:         clear = request.data.get("clear", False)
+1037:         dims_only = request.data.get("dims_only", False)
+1038:         facts_only = request.data.get("facts_only", False)
+1039: 
+1040:             cmd.append("--facts-only")
+1041: 
+1042:         try:
+1043:             result = subprocess.run(
+1044:                 cmd,
+1045:                 capture_output=True,
+1046:                 text=True,
+1047:                 timeout=300,
+1048:                 cwd=os.path.dirname(manage_py)
+1049:             )
+1050:             if result.returncode == 0:
+1051:                 return response.Response({
+1052:                     "status": "ok",
+1053:                     "mensagem": "Geração de dados concluída com sucesso.",
+1054:                     "log": result.stdout,
+1055:                     "records": records,
+1056:                     "mode": mode,
+1057:                 })
+1058:             else:
+1059:                 return response.Response({
+1060:                     "status": "erro",
+1061:                     "mensagem": "Erro durante a geração de dados.",
+1062:                     "log": result.stderr or result.stdout,
+1063:                 }, status=500)
+1064:         except subprocess.TimeoutExpired:
+1065:             return response.Response({"erro": "Timeout: geração demorou mais de 5 minutos."}, status=504)
+1066:         except Exception as e:
+1067:             return response.Response({"erro": str(e)}, status=500)
+1068: 
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

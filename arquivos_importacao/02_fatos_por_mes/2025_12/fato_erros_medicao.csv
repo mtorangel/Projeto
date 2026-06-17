@@ -1,0 +1,5 @@
+id_evento;id_medicamento;id_paciente;id_tempo;tipo_erro;severidade
+40008;1;1215;20251202;Horário Incorreto;Média
+40009;3;1211;20251217;Horário Incorreto;Média
+40010;1;1245;20251219;Horário Incorreto;Média
+40011;4;1254;20251223;Horário Incorreto;Alta

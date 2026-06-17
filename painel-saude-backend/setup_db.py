@@ -1,6 +1,6 @@
 import psycopg
 
-pwd = "admin"
+pwd = "(M5t5o8r6)"
 user = "postgres"
 host = "localhost"
 port = "5432"

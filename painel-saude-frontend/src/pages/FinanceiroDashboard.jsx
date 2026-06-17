@@ -7,6 +7,7 @@ import {
 } from 'recharts';
 import KPICard from '../components/KPICard';
 import FilterBar from '../components/FilterBar';
+import AITrigger from '../components/AITrigger';
 
 function FinanceiroDashboard() {
   const navigate = useNavigate();
@@ -68,7 +69,7 @@ function FinanceiroDashboard() {
         <p style={{ color: '#94a3b8' }}>EBITDA, Fluxo de Caixa e Eficiência em Faturamento</p>
       </header>
 
-      <FilterBar filters={filters} setFilters={setFilters} onClear={handleClearFilters} />
+      <FilterBar filters={filters} setFilters={setFilters} onClear={handleClearFilters} filteredCount={stats?.registros_afetados} />
 
       {loading ? (
         <div style={{ padding: '4rem', textAlign: 'center', color: '#2dd4bf' }}>Atualizando indicadores financeiros...</div>
@@ -82,9 +83,13 @@ function FinanceiroDashboard() {
           </div>
 
           <div className="grid">
-            <div className="glass-card" style={{ padding: '2rem', height: '400px' }}>
-              <h3 style={{ marginBottom: '2rem' }}>Decomposição do EBITDA (Waterfall)</h3>
-              <ResponsiveContainer width="100%" height="80%">
+            <div className="glass-card" style={{ padding: '2rem', height: '400px', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem' }}>
+                <h3 style={{ margin: 0, fontSize: '1.1rem', color: '#f8fafc' }}>Decomposição do EBITDA (Waterfall)</h3>
+                <AITrigger indicador="Evasão de Receita" valorAtual="Geral" color="#2dd4bf" iconSize={15} buttonStyle={{ background: 'rgba(45, 212, 191, 0.1)', padding: '4px', borderRadius: '6px' }} />
+              </div>
+              <div style={{ flex: 1, minHeight: 0 }}>
+                <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={waterfallData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
                   <XAxis dataKey="name" stroke="#94a3b8" />
@@ -95,11 +100,16 @@ function FinanceiroDashboard() {
                   </Bar>
                 </BarChart>
               </ResponsiveContainer>
+              </div>
             </div>
 
-            <div className="glass-card" style={{ padding: '2rem', height: '400px' }}>
-              <h3 style={{ marginBottom: '2rem' }}>Eficiência de Recuperação de Glosas</h3>
-              <ResponsiveContainer width="100%" height="80%">
+            <div className="glass-card" style={{ padding: '2rem', height: '400px', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem' }}>
+                <h3 style={{ margin: 0, fontSize: '1.1rem', color: '#f8fafc' }}>Eficiência de Recuperação de Glosas</h3>
+                <AITrigger indicador="Taxa de Recuperação" valorAtual="Geral" color="#4ade80" iconSize={15} buttonStyle={{ background: 'rgba(74, 222, 128, 0.1)', padding: '4px', borderRadius: '6px' }} />
+              </div>
+              <div style={{ flex: 1, minHeight: 0 }}>
+                <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={stats.glosas_convenio}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
                   <XAxis dataKey="id_convenio__nome_operadora" stroke="#94a3b8" fontSize={10} />
@@ -110,6 +120,7 @@ function FinanceiroDashboard() {
                   <Bar dataKey="recebido" name="Glosa Recuperada" fill="#4ade80" radius={[5, 5, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
+              </div>
             </div>
           </div>
         </>

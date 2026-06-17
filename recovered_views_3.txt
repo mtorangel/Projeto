@@ -1,0 +1,63 @@
+Created At: 2026-06-16T03:32:52Z
+Completed At: 2026-06-16T03:32:52Z
+File Path: `file:///c:/Users/Administrador/OneDrive/MBACD/Projeto/painel-saude-backend/indicadores/views.py`
+Total Lines: 1068
+Total Bytes: 68997
+Showing lines 980 to 1045
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+980:             {"tabela": "DimPaciente",          "label": "Dim. Paciente",          "count": DimPaciente.objects.count(),          "icon": "Users"},
+981:             {"tabela": "DimMedicamento",       "label": "Dim. Medicamento",       "count": DimMedicamento.objects.count(),       "icon": "Pill"},
+982:             {"tabela": "DimTipoProcedimento",  "label": "Dim. Tipo Procedimento", "count": DimTipoProcedimento.objects.count(),  "icon": "Stethoscope"},
+983:             {"tabela": "DimEquipamento",       "label": "Dim. Equipamento",       "count": DimEquipamento.objects.count(),       "icon": "Wrench"},
+984:             {"tabela": "DimMedico",            "label": "Dim. Médico",            "count": DimMedico.objects.count(),            "icon": "UserCheck"},
+985:             {"tabela": "DimProtocolo",         "label": "Dim. Protocolo",         "count": DimProtocolo.objects.count(),         "icon": "FileText"},
+986:             {"tabela": "DimConvenio",          "label": "Dim. Convênio",          "count": DimConvenio.objects.count(),          "icon": "CreditCard"},
+987:         ]
+988: 
+989:         fatos = [
+990:             {"tabela": "FatoAtendimentos",       "label": "Fato Atendimentos",        "count": FatoAtendimentos.objects.count(),       "icon": "Activity"},
+991:             {"tabela": "FatoEstoque",            "label": "Fato Estoque",             "count": FatoEstoque.objects.count(),            "icon": "Package"},
+992:             {"tabela": "FatoErrosMedicao",       "label": "Fato Erros Medicação",     "count": Fat
+<truncated 1261 bytes>
+        all_tables = dimensoes + fatos
+1006:         maior_tabela = max(all_tables, key=lambda x: x["count"]) if all_tables else {"label": "N/A", "count": 0}
+1007: 
+1008:         return response.Response({
+1009:             "dimensoes": dimensoes,
+1010:             "fatos": fatos,
+1011:             "summary": {
+1012:                 "total_dimensoes": total_dimensoes,
+1013:                 "total_fatos": total_fatos,
+1014:                 "total_geral": total_geral,
+1015:                 "maior_tabela_label": maior_tabela["label"],
+1016:                 "maior_tabela_count": maior_tabela["count"],
+1017:                 "ultima_atualizacao": timezone.now().isoformat(),
+1018:             }
+1019:         })
+1020: 
+1021: 
+1022: # ─────────────────────────────────────────────
+1023: #  Admin: Seed Data via API
+1024: # ─────────────────────────────────────────────
+1025: class SeedDataView(APIView):
+1026:     authentication_classes = [TokenAuthentication]
+1027:     permission_classes = [permissions.IsAuthenticated]
+1028: 
+1029:     def post(self, request):
+1030:         import subprocess
+1031:         import sys
+1032:         import os
+1033: 
+1034:         records = int(request.data.get("records", 100))
+1035:         mode = request.data.get("mode", "db")
+1036:         clear = request.data.get("clear", False)
+1037:         dims_only = request.data.get("dims_only", False)
+1038:         facts_only = request.data.get("facts_only", False)
+1039: 
+1040:             cmd.append("--facts-only")
+1041: 
+1042:         try:
+1043:             result = subprocess.run(
+1044:                 cmd,
+1045:                 capture_output=True,
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

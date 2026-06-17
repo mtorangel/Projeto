@@ -1,0 +1,779 @@
+# Method Name:       get
+# Filename:          indicadores\views.py
+# Argument count:    2
+# Position-only argument count: 0
+# Keyword-only arguments: 0
+# Number of locals:  35
+# Stack size:        14
+# Flags:             0x00000003 (NEWLOCALS | OPTIMIZED)
+# First Line:        230
+# Constants:
+#    0: None
+#    1: "\n            SELECT \n                f.receita_bruta,\n                f.valor_glosa_inicial,\n                f.valor_glosa_recuperada,\n                u.nome_unidade,\n                COALESCE(m.especialidade, 'ClÝnica Geral') as especialidade,\n                COALESCE(d.tempo_fechamento_prontuario_min, 0) as tempo_fechamento_prontuario_min,\n                t.data_registro,\n                t.mes,\n                t.ano\n            FROM indicadores_fatofinanceiro f\n            INNER JOIN indicadores_dimconvenio c ON f.id_convenio_id = c.id_convenio\n            INNER JOIN indicadores_dimunidade u ON f.id_unidade_id = u.id_unidade\n            INNER JOIN indicadores_dimtempo t ON f.id_tempo_id = t.id_tempo\n            LEFT JOIN indicadores_fatodesempenhoclinico d ON d.id_registro = (f.id_transacao - 20000)\n            LEFT JOIN indicadores_dimmedico m ON d.id_medico_id = m.id_medico\n            WHERE c.nome_operadora ILIKE '%%SUS%%'\n        "
+#    2: 0
+#    3: 0.0
+#    4: ('faturamento_sus', 'indice_glosa_inicial', 'taxa_recuperacao', 'evasao_receita')
+#    5: ('kpis', 'evolucao_temporal', 'correlacao_prontuario', 'tabela_analitica')
+#    6: <Code311 code object <genexpr> at 0x1f294e1ecf0, file indicadores\views.py>, line 272
+#    7: <Code311 code object <genexpr> at 0x1f294e1ee00, file indicadores\views.py>, line 273
+#    8: <Code311 code object <genexpr> at 0x1f294e1ef10, file indicadores\views.py>, line 274
+#    9: 100
+#   10: 'mes'
+#   11: '02d'
+#   12: '/'
+#   13: 'ano'
+#   14: ('receita_bruta', 'glosa_inicial')
+#   15: 'receita_bruta'
+#   16: 'glosa_inicial'
+#   17: 'valor_glosa_inicial'
+#   18: <Code311 code object parse_mes_ano at 0x1f294e1f020, file indicadores\views.py>, line 290
+#   19: ('key',)
+#   20: 2
+#   21: ('mes_ano', 'receita_bruta', 'indice_glosa_inicial')
+#   22: 'data_registro'
+#   23: ('tempo_fechamento', 'glosa_total')
+#   24: 'tempo_fechamento'
+#   25: 'tempo_fechamento_prontuario_min'
+#   26: 'glosa_total'
+#   27: 1
+#   28: ('tempo_prontuario', 'valor_glosado', 'data')
+#   29: 'nome_unidade'
+#   30: 'especialidade'
+#   31: ('receita_bruta', 'glosa_inicial', 'glosa_recuperada')
+#   32: 'glosa_recuperada'
+#   33: 'valor_glosa_recuperada'
+#   34: ('unidade', 'especialidade', 'receita_bruta', 'glosa_inicial', 'glosa_recuperada', 'evasao_receita', 'indice_glosa_inicial', 'taxa_recuperacao')
+#   35: <Code311 code object <lambda> at 0x1f294e1f240, file indicadores\views.py>, line 356
+#   36: True
+#   37: ('key', 'reverse')
+# Names:
+#    0: connection
+#    1: cursor
+#    2: execute
+#    3: description
+#    4: fetchall
+#    5: dict
+#    6: zip
+#    7: response
+#    8: Response
+#    9: sum
+#   10: sorted
+#   11: items
+#   12: append
+#   13: round
+#   14: str
+#   15: len
+#   16: sort
+# Varnames:
+#	self, request, query, cursor, col, columns, row, rows, total_faturamento, total_glosa_inicial, total_glosa_recuperada, evasao_receita, indice_glosa_inicial, taxa_recuperacao, evolucao, r, mes_ano, parse_mes_ano, sorted_evolucao, evolucao_temporal_data, vals, receita, glosa, ind_glosa, correlacao, data_str, correlacao_data, avg_tempo, tabela, key, tabela_data, unidade, especialidade, evasao, taxa_rec
+# Positional arguments:
+#	self, request
+# Local variables:
+#    2: query
+#    3: cursor
+#    4: col
+#    5: columns
+#    6: row
+#    7: rows
+#    8: total_faturamento
+#    9: total_glosa_inicial
+#   10: total_glosa_recuperada
+#   11: evasao_receita
+#   12: indice_glosa_inicial
+#   13: taxa_recuperacao
+#   14: evolucao
+#   15: r
+#   16: mes_ano
+#   17: parse_mes_ano
+#   18: sorted_evolucao
+#   19: evolucao_temporal_data
+#   20: vals
+#   21: receita
+#   22: glosa
+#   23: ind_glosa
+#   24: correlacao
+#   25: data_str
+#   26: correlacao_data
+#   27: avg_tempo
+#   28: tabela
+#   29: key
+#   30: tabela_data
+#   31: unidade
+#   32: especialidade
+#   33: evasao
+#   34: taxa_rec
+
+230:           0 RESUME               0
+
+232:           2 LOAD_CONST           ("\n            SELECT \n                f.receita_bruta,\n                f.valor_glosa_inicial,\n                f.valor_glosa_recuperada,\n                u.nome_unidade,\n                COALESCE(m.especialidade, 'ClÝnica Geral') as especialidade,\n                COALESCE(d.tempo_fechamento_prontuario_min, 0) as tempo_fechamento_prontuario_min,\n                t.data_registro,\n                t.mes,\n                t.ano\n            FROM indicadores_fatofinanceiro f\n            INNER JOIN indicadores_dimconvenio c ON f.id_convenio_id = c.id_convenio\n            INNER JOIN indicadores_dimunidade u ON f.id_unidade_id = u.id_unidade\n            INNER JOIN indicadores_dimtempo t ON f.id_tempo_id = t.id_tempo\n            LEFT JOIN indicadores_fatodesempenhoclinico d ON d.id_registro = (f.id_transacao - 20000)\n            LEFT JOIN indicadores_dimmedico m ON d.id_medico_id = m.id_medico\n            WHERE c.nome_operadora ILIKE '%%SUS%%'\n        ")
+               4 STORE_FAST           (query)
+
+252:           6 LOAD_GLOBAL          (NULL + connection)
+              16 LOAD_ATTR            (cursor)
+              36 CALL                 0
+              44 BEFORE_WITH
+              46 STORE_FAST           (cursor)
+
+253:          48 LOAD_FAST            (cursor)
+              50 LOAD_ATTR            (NULL|self + execute)
+              70 LOAD_FAST            (query)
+              72 CALL                 1
+              80 POP_TOP
+
+254:          82 LOAD_FAST            (cursor)
+              84 LOAD_ATTR            (description)
+             104 GET_ITER
+             106 LOAD_FAST_AND_CLEAR  (col)
+             108 SWAP                 (TOS <-> TOS1)
+             110 BUILD_LIST           0
+             112 SWAP                 (TOS <-> TOS1)
+             114 FOR_ITER             (to 132)
+             118 STORE_FAST           (col)
+             120 LOAD_FAST            (col)
+             122 LOAD_CONST           (0)
+             124 BINARY_SUBSCR
+             128 LIST_APPEND          2
+         >>  130 JUMP_BACKWARD        (to 114)
+             132 END_FOR
+             134 STORE_FAST           (columns)
+             136 STORE_FAST           (col)
+
+255:         138 LOAD_FAST            (cursor)
+             140 LOAD_ATTR            (NULL|self + fetchall)
+             160 CALL                 0
+             168 GET_ITER
+             170 LOAD_FAST_AND_CLEAR  (row)
+             172 SWAP                 (TOS <-> TOS1)
+             174 BUILD_LIST           0
+             176 SWAP                 (TOS <-> TOS1)
+             178 FOR_ITER             (to 228)
+             182 STORE_FAST           (row)
+             184 LOAD_GLOBAL          (NULL + dict)
+             194 LOAD_GLOBAL          (NULL + zip)
+             204 LOAD_FAST            (columns)
+             206 LOAD_FAST            (row)
+             208 CALL                 2
+             216 CALL                 1
+             224 LIST_APPEND          2
+         >>  226 JUMP_BACKWARD        (to 178)
+             228 END_FOR
+             230 STORE_FAST           (rows)
+             232 STORE_FAST           (row)
+
+252:         234 LOAD_CONST           (None)
+             236 LOAD_CONST           (None)
+             238 LOAD_CONST           (None)
+             240 CALL                 2
+             248 POP_TOP
+
+258:         250 LOAD_FAST_CHECK      (rows)
+             252 POP_JUMP_IF_TRUE     (to 316)
+
+259:         254 LOAD_GLOBAL          (NULL + response)
+             264 LOAD_ATTR            (Response)
+
+261:         284 LOAD_CONST           (0.0)
+
+262:         286 LOAD_CONST           (0.0)
+
+263:         288 LOAD_CONST           (0.0)
+
+264:         290 LOAD_CONST           (0.0)
+
+260:         292 LOAD_CONST           (('faturamento_sus', 'indice_glosa_inicial', 'taxa_recuperacao', 'evasao_receita'))
+             294 BUILD_CONST_KEY_MAP  4
+
+266:         296 BUILD_LIST           0
+
+267:         298 BUILD_LIST           0
+
+268:         300 BUILD_LIST           0
+
+259:         302 LOAD_CONST           (('kpis', 'evolucao_temporal', 'correlacao_prontuario', 'tabela_analitica'))
+             304 BUILD_CONST_KEY_MAP  4
+             306 CALL                 1
+             314 RETURN_VALUE
+
+272:     >>  316 LOAD_GLOBAL          (NULL + sum)
+             326 LOAD_CONST           (<Code311 code object <genexpr> at 0x1f294e1ecf0, file indicadores\views.py>, line 272)
+             328 MAKE_FUNCTION        (No arguments)
+             330 LOAD_FAST            (rows)
+             332 GET_ITER
+             334 CALL                 0
+             342 CALL                 1
+             350 STORE_FAST           (total_faturamento)
+
+273:         352 LOAD_GLOBAL          (NULL + sum)
+             362 LOAD_CONST           (<Code311 code object <genexpr> at 0x1f294e1ee00, file indicadores\views.py>, line 273)
+             364 MAKE_FUNCTION        (No arguments)
+             366 LOAD_FAST            (rows)
+             368 GET_ITER
+             370 CALL                 0
+             378 CALL                 1
+             386 STORE_FAST           (total_glosa_inicial)
+
+274:         388 LOAD_GLOBAL          (NULL + sum)
+             398 LOAD_CONST           (<Code311 code object <genexpr> at 0x1f294e1ef10, file indicadores\views.py>, line 274)
+             400 MAKE_FUNCTION        (No arguments)
+             402 LOAD_FAST            (rows)
+             404 GET_ITER
+             406 CALL                 0
+             414 CALL                 1
+             422 STORE_FAST           (total_glosa_recuperada)
+
+276:         424 LOAD_FAST            (total_glosa_inicial)
+             426 LOAD_FAST            (total_glosa_recuperada)
+             428 BINARY_OP            (-)
+             432 STORE_FAST           (evasao_receita)
+
+277:         434 LOAD_FAST            (total_faturamento)
+             436 LOAD_CONST           (0)
+             438 COMPARE_OP           (>)
+             442 POP_JUMP_IF_FALSE    (to 460)
+             444 LOAD_FAST            (total_glosa_inicial)
+             446 LOAD_FAST            (total_faturamento)
+             448 BINARY_OP            (/)
+             452 LOAD_CONST           (100)
+             454 BINARY_OP            (*)
+             458 JUMP_FORWARD         (to 462)
+         >>  460 LOAD_CONST           (0)
+         >>  462 STORE_FAST           (indice_glosa_inicial)
+
+278:         464 LOAD_FAST            (total_glosa_inicial)
+             466 LOAD_CONST           (0)
+             468 COMPARE_OP           (>)
+             472 POP_JUMP_IF_FALSE    (to 490)
+             474 LOAD_FAST            (total_glosa_recuperada)
+             476 LOAD_FAST            (total_glosa_inicial)
+             478 BINARY_OP            (/)
+             482 LOAD_CONST           (100)
+             484 BINARY_OP            (*)
+             488 JUMP_FORWARD         (to 492)
+         >>  490 LOAD_CONST           (0)
+         >>  492 STORE_FAST           (taxa_recuperacao)
+
+281:         494 BUILD_MAP            0
+             496 STORE_FAST           (evolucao)
+
+282:         498 LOAD_FAST            (rows)
+             500 GET_ITER
+             502 FOR_ITER             (to 638)
+             506 STORE_FAST           (r)
+
+283:         508 LOAD_FAST            (r)
+             510 LOAD_CONST           ("mes")
+             512 BINARY_SUBSCR
+             516 LOAD_CONST           ("02d")
+             518 FORMAT_VALUE         4
+             520 LOAD_CONST           ("/")
+             522 LOAD_FAST            (r)
+             524 LOAD_CONST           ("ano")
+             526 BINARY_SUBSCR
+             530 FORMAT_VALUE         0
+             532 BUILD_STRING         3
+             534 STORE_FAST           (mes_ano)
+
+284:         536 LOAD_FAST            (mes_ano)
+             538 LOAD_FAST            (evolucao)
+             540 CONTAINS_OP          (not in)
+             542 POP_JUMP_IF_FALSE    (to 560)
+
+285:         544 LOAD_CONST           (0.0)
+             546 LOAD_CONST           (0.0)
+             548 LOAD_CONST           (('receita_bruta', 'glosa_inicial'))
+             550 BUILD_CONST_KEY_MAP  2
+             552 LOAD_FAST            (evolucao)
+             554 LOAD_FAST            (mes_ano)
+             556 STORE_SUBSCR
+
+286:     >>  560 LOAD_FAST            (evolucao)
+             562 LOAD_FAST            (mes_ano)
+             564 BINARY_SUBSCR
+             568 LOAD_CONST           ("receita_bruta")
+             570 COPY                 2
+             572 COPY                 2
+             574 BINARY_SUBSCR
+             578 LOAD_FAST            (r)
+             580 LOAD_CONST           ("receita_bruta")
+             582 BINARY_SUBSCR
+             586 BINARY_OP            (+=)
+             590 SWAP                 (TOS <-> TOS2)
+             592 SWAP                 (TOS <-> TOS1)
+             594 STORE_SUBSCR
+
+287:         598 LOAD_FAST            (evolucao)
+             600 LOAD_FAST            (mes_ano)
+             602 BINARY_SUBSCR
+             606 LOAD_CONST           ("glosa_inicial")
+             608 COPY                 2
+             610 COPY                 2
+             612 BINARY_SUBSCR
+             616 LOAD_FAST            (r)
+             618 LOAD_CONST           ("valor_glosa_inicial")
+             620 BINARY_SUBSCR
+             624 BINARY_OP            (+=)
+             628 SWAP                 (TOS <-> TOS2)
+             630 SWAP                 (TOS <-> TOS1)
+             632 STORE_SUBSCR
+         >>  636 JUMP_BACKWARD        (to 502)
+
+282:         638 END_FOR
+
+290:         640 LOAD_CONST           (<Code311 code object parse_mes_ano at 0x1f294e1f020, file indicadores\views.py>, line 290)
+             642 MAKE_FUNCTION        (No arguments)
+             644 STORE_FAST           (parse_mes_ano)
+
+294:         646 LOAD_GLOBAL          (NULL + sorted)
+             656 LOAD_FAST            (evolucao)
+             658 LOAD_ATTR            (NULL|self + items)
+             678 CALL                 0
+             686 LOAD_FAST            (parse_mes_ano)
+             688 KW_NAMES             (('key',))
+             690 CALL                 2
+             698 STORE_FAST           (sorted_evolucao)
+
+295:         700 BUILD_LIST           0
+             702 STORE_FAST           (evolucao_temporal_data)
+
+296:         704 LOAD_FAST            (sorted_evolucao)
+             706 GET_ITER
+             708 FOR_ITER             (to 854)
+             712 UNPACK_SEQUENCE      2
+             716 STORE_FAST           (mes_ano)
+             718 STORE_FAST           (vals)
+
+297:         720 LOAD_FAST            (vals)
+             722 LOAD_CONST           ("receita_bruta")
+             724 BINARY_SUBSCR
+             728 STORE_FAST           (receita)
+
+298:         730 LOAD_FAST            (vals)
+             732 LOAD_CONST           ("glosa_inicial")
+             734 BINARY_SUBSCR
+             738 STORE_FAST           (glosa)
+
+299:         740 LOAD_FAST            (receita)
+             742 LOAD_CONST           (0)
+             744 COMPARE_OP           (>)
+             748 POP_JUMP_IF_FALSE    (to 766)
+             750 LOAD_FAST            (glosa)
+             752 LOAD_FAST            (receita)
+             754 BINARY_OP            (/)
+             758 LOAD_CONST           (100)
+             760 BINARY_OP            (*)
+             764 JUMP_FORWARD         (to 768)
+         >>  766 LOAD_CONST           (0)
+         >>  768 STORE_FAST           (ind_glosa)
+
+300:         770 LOAD_FAST            (evolucao_temporal_data)
+             772 LOAD_ATTR            (NULL|self + append)
+
+301:         792 LOAD_FAST            (mes_ano)
+
+302:         794 LOAD_GLOBAL          (NULL + round)
+             804 LOAD_FAST            (receita)
+             806 LOAD_CONST           (2)
+             808 CALL                 2
+
+303:         816 LOAD_GLOBAL          (NULL + round)
+             826 LOAD_FAST            (ind_glosa)
+             828 LOAD_CONST           (2)
+             830 CALL                 2
+
+300:         838 LOAD_CONST           (('mes_ano', 'receita_bruta', 'indice_glosa_inicial'))
+             840 BUILD_CONST_KEY_MAP  3
+             842 CALL                 1
+             850 POP_TOP
+         >>  852 JUMP_BACKWARD        (to 708)
+
+296:         854 END_FOR
+
+308:         856 BUILD_MAP            0
+             858 STORE_FAST           (correlacao)
+
+309:         860 LOAD_FAST            (rows)
+             862 GET_ITER
+             864 FOR_ITER             (to 1014)
+             868 STORE_FAST           (r)
+
+310:         870 LOAD_GLOBAL          (NULL + str)
+             880 LOAD_FAST            (r)
+             882 LOAD_CONST           ("data_registro")
+             884 BINARY_SUBSCR
+             888 CALL                 1
+             896 STORE_FAST           (data_str)
+
+311:         898 LOAD_FAST            (data_str)
+             900 LOAD_FAST            (correlacao)
+             902 CONTAINS_OP          (not in)
+             904 POP_JUMP_IF_FALSE    (to 922)
+
+312:         906 BUILD_LIST           0
+             908 LOAD_CONST           (0.0)
+             910 LOAD_CONST           (('tempo_fechamento', 'glosa_total'))
+             912 BUILD_CONST_KEY_MAP  2
+             914 LOAD_FAST            (correlacao)
+             916 LOAD_FAST            (data_str)
+             918 STORE_SUBSCR
+
+313:     >>  922 LOAD_FAST            (correlacao)
+             924 LOAD_FAST            (data_str)
+             926 BINARY_SUBSCR
+             930 LOAD_CONST           ("tempo_fechamento")
+             932 BINARY_SUBSCR
+             936 LOAD_ATTR            (NULL|self + append)
+             956 LOAD_FAST            (r)
+             958 LOAD_CONST           ("tempo_fechamento_prontuario_min")
+             960 BINARY_SUBSCR
+             964 CALL                 1
+             972 POP_TOP
+
+314:         974 LOAD_FAST            (correlacao)
+             976 LOAD_FAST            (data_str)
+             978 BINARY_SUBSCR
+             982 LOAD_CONST           ("glosa_total")
+             984 COPY                 2
+             986 COPY                 2
+             988 BINARY_SUBSCR
+             992 LOAD_FAST            (r)
+             994 LOAD_CONST           ("valor_glosa_inicial")
+             996 BINARY_SUBSCR
+         >> 1000 BINARY_OP            (+=)
+            1004 SWAP                 (TOS <-> TOS2)
+            1006 SWAP                 (TOS <-> TOS1)
+            1008 STORE_SUBSCR
+         >> 1012 JUMP_BACKWARD        (to 864)
+
+309:        1014 END_FOR
+
+316:        1016 BUILD_LIST           0
+            1018 STORE_FAST           (correlacao_data)
+
+317:        1020 LOAD_FAST            (correlacao)
+            1022 LOAD_ATTR            (NULL|self + items)
+            1042 CALL                 0
+            1050 GET_ITER
+            1052 FOR_ITER             (to 1226)
+            1056 UNPACK_SEQUENCE      2
+            1060 STORE_FAST           (data_str)
+            1062 STORE_FAST           (vals)
+
+318:        1064 LOAD_FAST            (vals)
+            1066 LOAD_CONST           ("tempo_fechamento")
+            1068 BINARY_SUBSCR
+            1072 POP_JUMP_IF_FALSE    (to 1132)
+            1074 LOAD_GLOBAL          (NULL + sum)
+            1084 LOAD_FAST            (vals)
+            1086 LOAD_CONST           ("tempo_fechamento")
+            1088 BINARY_SUBSCR
+            1092 CALL                 1
+            1100 LOAD_GLOBAL          (NULL + len)
+            1110 LOAD_FAST            (vals)
+            1112 LOAD_CONST           ("tempo_fechamento")
+            1114 BINARY_SUBSCR
+            1118 CALL                 1
+            1126 BINARY_OP            (/)
+            1130 JUMP_FORWARD         (to 1134)
+         >> 1132 LOAD_CONST           (0)
+         >> 1134 STORE_FAST           (avg_tempo)
+
+319:        1136 LOAD_FAST            (correlacao_data)
+            1138 LOAD_ATTR            (NULL|self + append)
+
+320:        1158 LOAD_GLOBAL          (NULL + round)
+            1168 LOAD_FAST            (avg_tempo)
+            1170 LOAD_CONST           (1)
+            1172 CALL                 2
+
+321:        1180 LOAD_GLOBAL          (NULL + round)
+            1190 LOAD_FAST            (vals)
+            1192 LOAD_CONST           ("glosa_total")
+            1194 BINARY_SUBSCR
+            1198 LOAD_CONST           (2)
+            1200 CALL                 2
+
+322:        1208 LOAD_FAST            (data_str)
+
+319:        1210 LOAD_CONST           (('tempo_prontuario', 'valor_glosado', 'data'))
+            1212 BUILD_CONST_KEY_MAP  3
+            1214 CALL                 1
+            1222 POP_TOP
+         >> 1224 JUMP_BACKWARD        (to 1052)
+
+317:        1226 END_FOR
+
+326:        1228 BUILD_MAP            0
+            1230 STORE_FAST           (tabela)
+
+327:        1232 LOAD_FAST            (rows)
+            1234 GET_ITER
+            1236 FOR_ITER             (to 1404)
+            1240 STORE_FAST           (r)
+
+328:        1242 LOAD_FAST            (r)
+            1244 LOAD_CONST           ("nome_unidade")
+            1246 BINARY_SUBSCR
+            1250 LOAD_FAST            (r)
+            1252 LOAD_CONST           ("especialidade")
+            1254 BINARY_SUBSCR
+            1258 BUILD_TUPLE          2
+            1260 STORE_FAST           (key)
+
+329:        1262 LOAD_FAST            (key)
+            1264 LOAD_FAST            (tabela)
+            1266 CONTAINS_OP          (not in)
+            1268 POP_JUMP_IF_FALSE    (to 1288)
+
+331:        1270 LOAD_CONST           (0.0)
+
+332:        1272 LOAD_CONST           (0.0)
+
+333:        1274 LOAD_CONST           (0.0)
+
+330:        1276 LOAD_CONST           (('receita_bruta', 'glosa_inicial', 'glosa_recuperada'))
+            1278 BUILD_CONST_KEY_MAP  3
+            1280 LOAD_FAST            (tabela)
+            1282 LOAD_FAST            (key)
+            1284 STORE_SUBSCR
+
+335:     >> 1288 LOAD_FAST            (tabela)
+            1290 LOAD_FAST            (key)
+            1292 BINARY_SUBSCR
+            1296 LOAD_CONST           ("receita_bruta")
+            1298 COPY                 2
+            1300 COPY                 2
+            1302 BINARY_SUBSCR
+            1306 LOAD_FAST            (r)
+            1308 LOAD_CONST           ("receita_bruta")
+            1310 BINARY_SUBSCR
+            1314 BINARY_OP            (+=)
+            1318 SWAP                 (TOS <-> TOS2)
+            1320 SWAP                 (TOS <-> TOS1)
+            1322 STORE_SUBSCR
+
+336:        1326 LOAD_FAST            (tabela)
+            1328 LOAD_FAST            (key)
+            1330 BINARY_SUBSCR
+            1334 LOAD_CONST           ("glosa_inicial")
+            1336 COPY                 2
+            1338 COPY                 2
+            1340 BINARY_SUBSCR
+            1344 LOAD_FAST            (r)
+            1346 LOAD_CONST           ("valor_glosa_inicial")
+            1348 BINARY_SUBSCR
+            1352 BINARY_OP            (+=)
+            1356 SWAP                 (TOS <-> TOS2)
+            1358 SWAP                 (TOS <-> TOS1)
+            1360 STORE_SUBSCR
+
+337:        1364 LOAD_FAST            (tabela)
+            1366 LOAD_FAST            (key)
+            1368 BINARY_SUBSCR
+            1372 LOAD_CONST           ("glosa_recuperada")
+            1374 COPY                 2
+            1376 COPY                 2
+            1378 BINARY_SUBSCR
+            1382 LOAD_FAST            (r)
+            1384 LOAD_CONST           ("valor_glosa_recuperada")
+            1386 BINARY_SUBSCR
+            1390 BINARY_OP            (+=)
+            1394 SWAP                 (TOS <-> TOS2)
+            1396 SWAP                 (TOS <-> TOS1)
+            1398 STORE_SUBSCR
+         >> 1402 JUMP_BACKWARD        (to 1236)
+
+327:        1404 END_FOR
+
+339:        1406 BUILD_LIST           0
+            1408 STORE_FAST           (tabela_data)
+
+340:        1410 LOAD_FAST            (tabela)
+            1412 LOAD_ATTR            (NULL|self + items)
+            1432 CALL                 0
+            1440 GET_ITER
+            1442 FOR_ITER             (to 1770)
+            1446 UNPACK_SEQUENCE      2
+            1450 UNPACK_SEQUENCE      2
+            1454 STORE_FAST           (unidade)
+            1456 STORE_FAST           (especialidade)
+            1458 STORE_FAST           (vals)
+
+341:        1460 LOAD_FAST            (vals)
+            1462 LOAD_CONST           ("glosa_inicial")
+            1464 BINARY_SUBSCR
+            1468 LOAD_FAST            (vals)
+            1470 LOAD_CONST           ("glosa_recuperada")
+            1472 BINARY_SUBSCR
+            1476 BINARY_OP            (-)
+            1480 STORE_FAST           (evasao)
+
+342:        1482 LOAD_FAST            (vals)
+            1484 LOAD_CONST           ("receita_bruta")
+            1486 BINARY_SUBSCR
+            1490 LOAD_CONST           (0)
+            1492 COMPARE_OP           (>)
+            1496 POP_JUMP_IF_FALSE    (to 1526)
+            1498 LOAD_FAST            (vals)
+            1500 LOAD_CONST           ("glosa_inicial")
+            1502 BINARY_SUBSCR
+            1506 LOAD_FAST            (vals)
+            1508 LOAD_CONST           ("receita_bruta")
+            1510 BINARY_SUBSCR
+            1514 BINARY_OP            (/)
+            1518 LOAD_CONST           (100)
+            1520 BINARY_OP            (*)
+            1524 JUMP_FORWARD         (to 1528)
+         >> 1526 LOAD_CONST           (0)
+         >> 1528 STORE_FAST           (ind_glosa)
+
+343:        1530 LOAD_FAST            (vals)
+            1532 LOAD_CONST           ("glosa_inicial")
+            1534 BINARY_SUBSCR
+            1538 LOAD_CONST           (0)
+            1540 COMPARE_OP           (>)
+            1544 POP_JUMP_IF_FALSE    (to 1574)
+            1546 LOAD_FAST            (vals)
+            1548 LOAD_CONST           ("glosa_recuperada")
+            1550 BINARY_SUBSCR
+            1554 LOAD_FAST            (vals)
+            1556 LOAD_CONST           ("glosa_inicial")
+            1558 BINARY_SUBSCR
+            1562 BINARY_OP            (/)
+            1566 LOAD_CONST           (100)
+            1568 BINARY_OP            (*)
+         >> 1572 JUMP_FORWARD         (to 1576)
+         >> 1574 LOAD_CONST           (0)
+         >> 1576 STORE_FAST           (taxa_rec)
+
+344:        1578 LOAD_FAST            (tabela_data)
+            1580 LOAD_ATTR            (NULL|self + append)
+
+345:        1600 LOAD_FAST            (unidade)
+
+346:        1602 LOAD_FAST            (especialidade)
+
+347:        1604 LOAD_GLOBAL          (NULL + round)
+            1614 LOAD_FAST            (vals)
+            1616 LOAD_CONST           ("receita_bruta")
+            1618 BINARY_SUBSCR
+            1622 LOAD_CONST           (2)
+            1624 CALL                 2
+
+348:        1632 LOAD_GLOBAL          (NULL + round)
+            1642 LOAD_FAST            (vals)
+            1644 LOAD_CONST           ("glosa_inicial")
+            1646 BINARY_SUBSCR
+            1650 LOAD_CONST           (2)
+            1652 CALL                 2
+
+349:        1660 LOAD_GLOBAL          (NULL + round)
+            1670 LOAD_FAST            (vals)
+            1672 LOAD_CONST           ("glosa_recuperada")
+            1674 BINARY_SUBSCR
+            1678 LOAD_CONST           (2)
+            1680 CALL                 2
+
+350:        1688 LOAD_GLOBAL          (NULL + round)
+            1698 LOAD_FAST            (evasao)
+            1700 LOAD_CONST           (2)
+            1702 CALL                 2
+
+351:        1710 LOAD_GLOBAL          (NULL + round)
+            1720 LOAD_FAST            (ind_glosa)
+            1722 LOAD_CONST           (2)
+            1724 CALL                 2
+
+352:        1732 LOAD_GLOBAL          (NULL + round)
+            1742 LOAD_FAST            (taxa_rec)
+            1744 LOAD_CONST           (2)
+            1746 CALL                 2
+
+344:        1754 LOAD_CONST           (('unidade', 'especialidade', 'receita_bruta', 'glosa_inicial', 'glosa_recuperada', 'evasao_receita', 'indice_glosa_inicial', 'taxa_recuperacao'))
+            1756 BUILD_CONST_KEY_MAP  8
+            1758 CALL                 1
+            1766 POP_TOP
+         >> 1768 JUMP_BACKWARD        (to 1442)
+
+340:        1770 END_FOR
+
+356:        1772 LOAD_FAST            (tabela_data)
+            1774 LOAD_ATTR            (NULL|self + sort)
+            1794 LOAD_CONST           (<Code311 code object <lambda> at 0x1f294e1f240, file indicadores\views.py>, line 356)
+            1796 MAKE_FUNCTION        (No arguments)
+            1798 LOAD_CONST           (True)
+            1800 KW_NAMES             (('key', 'reverse'))
+            1802 CALL                 2
+            1810 POP_TOP
+
+358:        1812 LOAD_GLOBAL          (NULL + response)
+            1822 LOAD_ATTR            (Response)
+
+360:        1842 LOAD_GLOBAL          (NULL + round)
+            1852 LOAD_FAST            (total_faturamento)
+            1854 LOAD_CONST           (2)
+            1856 CALL                 2
+
+361:        1864 LOAD_GLOBAL          (NULL + round)
+            1874 LOAD_FAST            (indice_glosa_inicial)
+            1876 LOAD_CONST           (2)
+            1878 CALL                 2
+
+362:        1886 LOAD_GLOBAL          (NULL + round)
+            1896 LOAD_FAST            (taxa_recuperacao)
+            1898 LOAD_CONST           (2)
+            1900 CALL                 2
+
+363:        1908 LOAD_GLOBAL          (NULL + round)
+            1918 LOAD_FAST            (evasao_receita)
+            1920 LOAD_CONST           (2)
+            1922 CALL                 2
+
+359:        1930 LOAD_CONST           (('faturamento_sus', 'indice_glosa_inicial', 'taxa_recuperacao', 'evasao_receita'))
+            1932 BUILD_CONST_KEY_MAP  4
+
+365:        1934 LOAD_FAST            (evolucao_temporal_data)
+
+366:        1936 LOAD_FAST            (correlacao_data)
+
+367:        1938 LOAD_FAST            (tabela_data)
+
+358:        1940 LOAD_CONST           (('kpis', 'evolucao_temporal', 'correlacao_prontuario', 'tabela_analitica'))
+            1942 BUILD_CONST_KEY_MAP  4
+            1944 CALL                 1
+            1952 RETURN_VALUE
+            1954 SWAP                 (TOS <-> TOS1)
+            1956 POP_TOP
+
+254:        1958 SWAP                 (TOS <-> TOS1)
+            1960 STORE_FAST           (col)
+            1962 RERAISE              0
+            1964 SWAP                 (TOS <-> TOS1)
+            1966 POP_TOP
+
+255:        1968 SWAP                 (TOS <-> TOS1)
+            1970 STORE_FAST           (row)
+            1972 RERAISE              0
+
+252:        1974 PUSH_EXC_INFO
+            1976 WITH_EXCEPT_START
+            1978 POP_JUMP_IF_TRUE     (to 1982)
+            1980 RERAISE              2
+         >> 1982 POP_TOP
+            1984 POP_EXCEPT
+            1986 POP_TOP
+            1988 POP_TOP
+            1990 EXTENDED_ARG         (768)
+            1992 JUMP_BACKWARD        (to 250)
+            1994 COPY                 3
+            1996 POP_EXCEPT
+            1998 RERAISE              1
+
+ExceptionTable:
+  46 to 108 -> 1974 [1] lasti
+  110 to 132 -> 1954 [3]
+  134 to 172 -> 1974 [1] lasti
+  174 to 228 -> 1964 [3]
+  230 to 232 -> 1974 [1] lasti
+  1954 to 1972 -> 1974 [1] lasti
+  1974 to 1982 -> 1994 [3] lasti
+

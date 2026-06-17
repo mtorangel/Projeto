@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Filter, X, Calendar, Building2, CreditCard } from 'lucide-react';
 
-const FilterBar = ({ filters, setFilters, onClear }) => {
+const FilterBar = ({ filters, setFilters, onClear, filteredCount }) => {
   const years = ['2025', '2026'];
   const months = [
     { v: '1', n: 'Janeiro' }, { v: '2', n: 'Fevereiro' }, { v: '3', n: 'Março' }, 
@@ -9,6 +10,24 @@ const FilterBar = ({ filters, setFilters, onClear }) => {
     { v: '7', n: 'Julho' }, { v: '8', n: 'Agosto' }, { v: '9', n: 'Setembro' },
     { v: '10', n: 'Outubro' }, { v: '11', n: 'Novembro' }, { v: '12', n: 'Dezembro' }
   ];
+
+  const [unidades, setUnidades] = useState([]);
+  const [convenios, setConvenios] = useState([]);
+
+  useEffect(() => {
+    // Buscar unidades e convênios dinamicamente da API
+    axios.get(`http://${window.location.hostname}:8000/api/unidades/`)
+      .then(res => {
+        setUnidades(res.data);
+      })
+      .catch(err => console.error("Erro ao carregar unidades:", err));
+
+    axios.get(`http://${window.location.hostname}:8000/api/convenios/`)
+      .then(res => {
+        setConvenios(res.data);
+      })
+      .catch(err => console.error("Erro ao carregar convênios:", err));
+  }, []);
 
   const handleChange = (key, value) => {
     const newFilters = { ...filters, [key]: value };
@@ -70,9 +89,9 @@ const FilterBar = ({ filters, setFilters, onClear }) => {
             style={{ background: '#1e293b', color: '#f8fafc', border: '1px solid #334155', borderRadius: '6px', padding: '5px 10px', fontSize: '0.85rem' }}
           >
             <option value="">Todas as Unidades</option>
-            <option value="1">Hospital Central</option>
-            <option value="2">Hospital Norte</option>
-            <option value="3">PA Sul</option>
+            {unidades.map(u => (
+              <option key={u.id_unidade} value={u.id_unidade}>{u.nome_unidade}</option>
+            ))}
           </select>
         </div>
 
@@ -85,11 +104,41 @@ const FilterBar = ({ filters, setFilters, onClear }) => {
             style={{ background: '#1e293b', color: '#f8fafc', border: '1px solid #334155', borderRadius: '6px', padding: '5px 10px', fontSize: '0.85rem' }}
           >
             <option value="">Todos os Convênios</option>
-            <option value="1">Saúde Total</option>
-            <option value="2">Vida Plena</option>
+            {convenios.map(c => (
+              <option key={c.id_convenio} value={c.id_convenio}>{c.nome_operadora}</option>
+            ))}
           </select>
         </div>
       </div>
+
+      {filteredCount !== undefined && (
+        <div style={{
+          background: 'rgba(45, 212, 191, 0.1)',
+          border: '1px solid rgba(45, 212, 191, 0.2)',
+          padding: '6px 16px',
+          borderRadius: '20px',
+          fontSize: '0.85rem',
+          color: '#2dd4bf',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          fontWeight: '500',
+          boxShadow: '0 4px 12px rgba(45, 212, 191, 0.05)',
+          whiteSpace: 'nowrap'
+        }}>
+          <span 
+            className="pulse-dot"
+            style={{
+              width: '8px',
+              height: '8px',
+              borderRadius: '50%',
+              background: '#2dd4bf',
+              display: 'inline-block'
+            }}
+          ></span>
+          Fatos Afetados: <strong>{filteredCount.toLocaleString('pt-BR')}</strong>
+        </div>
+      )}
 
       <button 
         onClick={onClear}

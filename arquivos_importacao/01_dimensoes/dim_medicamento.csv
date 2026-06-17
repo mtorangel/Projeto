@@ -1,0 +1,7 @@
+id_medicamento;nome_farmaco;classe_terapeutica;custo_unitario;item_essencial
+1;Dipirona Sódica 500mg;Analgésico;1.5;True
+2;Amoxicilina + Clavulanato 1g;Antibiótico;12.8;True
+3;Propofol 10mg/mL;Anestésico;45.0;False
+4;Heparina Sódica 5000UI;Anticoagulante;18.5;True
+5;Omeprazol 40mg EV;Antiácido;4.2;True
+6;Morfina 10mg/mL;Analgésico Opioide;8.9;False

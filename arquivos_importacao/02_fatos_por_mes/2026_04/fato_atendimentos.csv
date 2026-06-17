@@ -1,0 +1,57 @@
+id_atendimento;id_tempo;id_unidade;id_paciente;tempo_permanencia_dias;status_alta;reinternacao_30d
+20535;20260401;5;1278;2;Alta Médica;True
+20536;20260401;4;1272;12;Alta Médica;False
+20537;20260402;4;1219;9;Alta Médica;False
+20538;20260402;4;1267;6;Transferência;False
+20539;20260403;4;1011;1;Alta Médica;True
+20540;20260403;2;1139;4;Óbito;False
+20541;20260403;2;1181;7;Alta Médica;False
+20542;20260404;4;1011;7;Transferência;True
+20543;20260404;1;1060;8;Óbito;False
+20544;20260404;5;1088;10;Alta Médica;True
+20545;20260405;5;1077;7;Óbito;False
+20546;20260405;3;1021;7;Transferência;False
+20547;20260405;5;1277;9;Alta Médica;True
+20548;20260406;4;1058;11;Alta Médica;False
+20549;20260407;3;1218;5;Alta Médica;False
+20550;20260407;1;1040;3;Óbito;True
+20551;20260408;3;1117;10;Alta Médica;False
+20552;20260409;5;1263;8;Óbito;True
+20553;20260410;3;1236;10;Óbito;False
+20554;20260410;5;1038;12;Alta Médica;True
+20555;20260411;4;1051;5;Alta Médica;True
+20556;20260411;1;1128;10;Alta Médica;False
+20557;20260412;3;1080;7;Alta Médica;False
+20558;20260413;4;1063;9;Óbito;False
+20559;20260413;3;1125;11;Alta Médica;False
+20560;20260414;4;1122;6;Óbito;False
+20561;20260415;4;1179;4;Óbito;False
+20562;20260416;5;1279;8;Alta Médica;False
+20563;20260416;1;1071;7;Alta Médica;False
+20564;20260417;2;1018;11;Transferência;False
+20565;20260418;5;1073;12;Alta Médica;True
+20566;20260419;1;1290;2;Óbito;False
+20567;20260420;3;1076;1;Alta Médica;False
+20568;20260420;1;1096;2;Transferência;False
+20569;20260420;4;1227;2;Óbito;False
+20570;20260421;5;1184;6;Transferência;False
+20571;20260421;1;1184;10;Alta Médica;True
+20572;20260422;1;1210;1;Alta Médica;True
+20573;20260422;1;1219;2;Alta Médica;True
+20574;20260423;4;1052;12;Alta Médica;False
+20575;20260423;4;1142;2;Óbito;False
+20576;20260424;1;1079;9;Óbito;True
+20577;20260425;4;1218;1;Alta Médica;True
+20578;20260425;3;1026;2;Alta Médica;True
+20579;20260425;1;1080;6;Óbito;True
+20580;20260426;1;1181;8;Óbito;True
+20581;20260426;1;1204;11;Transferência;False
+20582;20260427;2;1039;1;Alta Médica;False
+20583;20260427;1;1001;6;Alta Médica;False
+20584;20260427;1;1057;3;Óbito;False
+20585;20260428;4;1230;11;Alta Médica;False
+20586;20260428;3;1083;10;Alta Médica;False
+20587;20260428;5;1085;6;Alta Médica;False
+20588;20260429;2;1174;6;Alta Médica;False
+20589;20260429;4;1041;2;Alta Médica;False
+20590;20260430;1;1229;1;Alta Médica;False

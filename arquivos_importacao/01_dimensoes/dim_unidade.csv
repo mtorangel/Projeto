@@ -1,0 +1,6 @@
+id_unidade;nome_unidade;tipo_leito;capacidade_maxima
+1;Hospital Central - UTI;UTI;50
+2;Hospital Central - Pediátrico;UTI Pediátrica;20
+3;Hospital Norte - Enfermaria;Enfermaria;120
+4;PA Sul - Emergência;Observação;40
+5;Ala Leste - Recuperação;Recuperação;30

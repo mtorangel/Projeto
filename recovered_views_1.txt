@@ -1,0 +1,49 @@
+Created At: 2026-06-16T03:32:47Z
+Completed At: 2026-06-16T03:32:47Z
+File Path: `file:///c:/Users/Administrador/OneDrive/MBACD/Projeto/painel-saude-backend/indicadores/views.py`
+Total Lines: 1068
+Total Bytes: 68997
+Showing lines 269 to 1068
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+269:             })
+270: 
+271:         # 1. KPIs Globais
+272:         total_faturamento = sum(r['receita_bruta'] for r in rows)
+273:         total_glosa_inicial = sum(r['valor_glosa_inicial'] for r in rows)
+274:         total_glosa_recuperada = sum(r['valor_glosa_recuperada'] for r in rows)
+275:         
+276:         evasao_receita = total_glosa_inicial - total_glosa_recuperada
+277:         indice_glosa_inicial = (total_glosa_inicial / total_faturamento * 100) if total_faturamento > 0 else 0
+278:         taxa_recuperacao = (total_glosa_recuperada / total_glosa_inicial * 100) if total_glosa_inicial > 0 else 0
+279: 
+280:         # 2. Evolução Temporal (Agrupada por mês)
+281:         evolucao = {}
+282:         for r in rows:
+283:             mes_ano = f"{r['mes']:02d}/{r['ano']}"
+284:             if mes_ano not in evolucao:
+285:                 evolucao[mes_ano] = {"receita_bruta": 0.0, "glosa_inicial": 0.0}
+286:             evolucao[mes_ano]["receita_bruta"] += r['receita_bruta']
+287:             evolucao[mes_ano]["glosa_inicial"] += r['valor_glosa_inicial']
+288: 
+289:         # Converter para array ordenado cronologicamente (ex: 07/2025, 08/2025, ...)
+290:         def parse_mes_ano(item):
+291:             parts = item[0].split('/')
+292:             return int(parts[1]), int(parts[0])
+293: 
+294:         sorted_evolucao = sorted(evolucao.items(), key=parse_mes_ano)
+295:         evolucao_temporal_data = []
+296:         for mes_ano, vals in sorted_evolucao:
+297:             receita = vals["receita_bruta"]
+298:    
+<truncated 45283 bytes>
+einterna": "A taxa de reinternação atual de **{valor_atual}** na unidade **{unidade}** exige revisão. Sugere-se implantar um acompanhamento telefônico pós-alta de 48 horas para tirar dúvidas de prescrição e mitigar retornos evitáveis.",
+922:             "consumo": "O consumo registrado de **{valor_atual}** na unidade **{unidade}** indica o nível de utilização de recursos prediais. Recomenda-se realizar uma auditoria de desperdício e checar contratos de demanda de energia para otimizar os custos fixos.",
+923:             "giro de estoque": "O giro atual de **{valor_atual}** na unidade **{unidade}** aponta para a velocidade de escoamento. Recomenda-se ajustar a curva ABC de compras e calibrar os estoques mínimos de medicamentos de alto custo para evitar vencimentos.",
+924:             "giro de sala": "O giro de sala atual de **{valor_atual}** na unidade **{unidade}** exige otimização. Recomenda-se paralelizar a limpeza física com o preparo anestésico da próxima cirurgia em sala contígua para reduzir a ociosidade do bloco.",
+925:             "giro": "O giro atual de **{valor_atual}** na unidade **{unidade}** aponta para a velocidade de escoamento. Recomenda-se ajustar a curva ABC de compras e calibrar os estoques mínimos de medicamentos de alto custo para evitar vencimentos.",
+926:             "custo": "O custo total acumulado de **{valor_atual}** na unidade **{unidade}** exige conciliação orçamentária. Recomenda-se auditar prescrições de alta variabilidade clínica e padronizar o uso de genéricos de alta eficácia.",
+927:             "erro": "O volume atual de **{valor_atual}** erros de medicação na unidade **{unidade}** exige revisão imediata. Recomenda-se reforçar a dupla checagem na enfermagem e revisar a clareza da prescrição no prontuário eletrônico.",
+928:             "ruptura": "A taxa de ruptura de **{valor_a
+<truncated 10845 bytes>
+
+NOTE: The output was truncated because it was too long. Use a more targeted query or a smaller range to get the information you need.

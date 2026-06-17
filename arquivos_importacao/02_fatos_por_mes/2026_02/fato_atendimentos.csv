@@ -1,0 +1,60 @@
+id_atendimento;id_tempo;id_unidade;id_paciente;tempo_permanencia_dias;status_alta;reinternacao_30d
+20410;20260201;4;1191;11;Alta Médica;True
+20411;20260202;2;1168;3;Alta Médica;False
+20412;20260202;3;1201;12;Óbito;False
+20413;20260203;2;1122;1;Transferência;False
+20414;20260203;5;1130;12;Alta Médica;False
+20415;20260203;3;1008;7;Alta Médica;False
+20416;20260204;2;1245;7;Alta Médica;False
+20417;20260204;5;1207;1;Alta Médica;False
+20418;20260205;4;1024;6;Alta Médica;False
+20419;20260205;2;1240;9;Transferência;False
+20420;20260206;2;1099;3;Alta Médica;False
+20421;20260206;2;1299;11;Transferência;False
+20422;20260207;1;1239;2;Óbito;False
+20423;20260207;5;1019;9;Óbito;True
+20424;20260207;5;1072;4;Alta Médica;False
+20425;20260208;4;1241;1;Óbito;False
+20426;20260208;1;1074;6;Alta Médica;False
+20427;20260209;2;1205;10;Alta Médica;False
+20428;20260209;2;1150;11;Transferência;False
+20429;20260209;4;1237;2;Transferência;False
+20430;20260210;4;1033;12;Óbito;False
+20431;20260211;3;1164;11;Transferência;False
+20432;20260211;3;1064;9;Óbito;False
+20433;20260212;5;1022;4;Alta Médica;True
+20434;20260213;1;1192;10;Alta Médica;False
+20435;20260213;2;1232;5;Óbito;False
+20436;20260213;5;1082;3;Alta Médica;False
+20437;20260214;5;1061;3;Óbito;True
+20438;20260214;2;1051;11;Alta Médica;False
+20439;20260215;4;1009;8;Transferência;False
+20440;20260215;2;1243;7;Alta Médica;False
+20441;20260216;1;1098;4;Transferência;False
+20442;20260217;3;1059;10;Óbito;False
+20443;20260217;2;1210;1;Alta Médica;True
+20444;20260217;2;1121;7;Óbito;False
+20445;20260218;5;1018;10;Alta Médica;False
+20446;20260218;4;1081;9;Transferência;False
+20447;20260219;3;1144;9;Alta Médica;True
+20448;20260220;3;1237;8;Óbito;True
+20449;20260220;1;1222;8;Alta Médica;False
+20450;20260221;1;1269;8;Óbito;False
+20451;20260221;4;1167;10;Óbito;True
+20452;20260221;5;1217;6;Alta Médica;False
+20453;20260222;1;1112;3;Óbito;False
+20454;20260222;4;1009;9;Alta Médica;True
+20455;20260222;4;1296;11;Transferência;False
+20456;20260223;4;1042;8;Transferência;False
+20457;20260223;5;1060;3;Transferência;False
+20458;20260224;2;1264;6;Alta Médica;False
+20459;20260224;2;1298;3;Óbito;False
+20460;20260224;2;1052;7;Alta Médica;False
+20461;20260225;3;1234;9;Alta Médica;False
+20462;20260225;4;1299;12;Óbito;True
+20463;20260225;4;1073;8;Alta Médica;False
+20464;20260226;5;1034;6;Transferência;False
+20465;20260226;5;1009;12;Transferência;True
+20466;20260227;5;1219;12;Transferência;False
+20467;20260227;4;1087;7;Transferência;False
+20468;20260228;5;1022;5;Óbito;True

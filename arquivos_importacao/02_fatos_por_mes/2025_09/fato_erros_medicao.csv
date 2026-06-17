@@ -1,0 +1,3 @@
+id_evento;id_medicamento;id_paciente;id_tempo;tipo_erro;severidade
+40002;6;1227;20250903;Dose Duplicada;Média
+40003;6;1163;20250922;Omissão de Dose;Média

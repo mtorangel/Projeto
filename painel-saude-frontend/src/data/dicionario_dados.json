@@ -1,0 +1,422 @@
+{
+  "DimTempo": [
+    {
+      "campo": "id_tempo",
+      "descricao": "Código do dia no formato `YYYYMMDD` (ex: `20250701`)."
+    },
+    {
+      "campo": "data_registro",
+      "descricao": "Data completa correspondente (ex: `2025-07-01`)."
+    },
+    {
+      "campo": "mes",
+      "descricao": "Número do mês de competência (variando de `1` a `12`)."
+    },
+    {
+      "campo": "ano",
+      "descricao": "Ano da competência temporal correspondente (ex: `2025`)."
+    }
+  ],
+  "DimUnidade": [
+    {
+      "campo": "id_unidade",
+      "descricao": "Identificador único autoincrementável da unidade física."
+    },
+    {
+      "campo": "nome_unidade",
+      "descricao": "Nome fantasia da unidade (ex: `Hospital Central - UTI`)."
+    },
+    {
+      "campo": "tipo_leito",
+      "descricao": "Classificação de leito/atendimento (ex: `UTI`, `Enfermaria`, `Observação`)."
+    },
+    {
+      "campo": "capacidade_maxima",
+      "descricao": "Quantidade de leitos ativos disponíveis para alocação."
+    }
+  ],
+  "DimPaciente": [
+    {
+      "campo": "id_paciente",
+      "descricao": "Código de identificação do paciente (ex: `1001`)."
+    },
+    {
+      "campo": "pontuacao_nps",
+      "descricao": "Nota dada pelo paciente na alta (de `0` a `10`). Utilizado para cálculo de satisfação."
+    },
+    {
+      "campo": "faixa_etaria",
+      "descricao": "Faixa etária consolidada (`0-18`, `19-40`, `41-60`, `60+`)."
+    }
+  ],
+  "DimMedicamento": [
+    {
+      "campo": "id_medicamento",
+      "descricao": "Código de barras interno / ID do medicamento."
+    },
+    {
+      "campo": "nome_farmaco",
+      "descricao": "Nome científico e dosagem (ex: `Dipirona Sódica 500mg`)."
+    },
+    {
+      "campo": "classe_terapeutica",
+      "descricao": "Categoria farmacológica (ex: `Analgésico`, `Antibiótico`, `Anestésico`)."
+    },
+    {
+      "campo": "custo_unitario",
+      "descricao": "Preço médio unitário pago pela instituição (para valoração de saídas)."
+    },
+    {
+      "campo": "item_essencial",
+      "descricao": "Flag indicando se o medicamento é padronizado como vital (crítico para faltas)."
+    }
+  ],
+  "DimTipoProcedimento": [
+    {
+      "campo": "id_tipo_procedimento",
+      "descricao": "Código do procedimento na tabela SUS / TUSS."
+    },
+    {
+      "campo": "nome_procedimento",
+      "descricao": "Descrição do procedimento (ex: `Angioplastia Coronária`)."
+    },
+    {
+      "campo": "especialidade",
+      "descricao": "Especialidade médica responsável (ex: `Cardiologia`, `Radiologia`)."
+    },
+    {
+      "campo": "valor_base",
+      "descricao": "Preço padrão tabelado do procedimento para posterior auditoria."
+    }
+  ],
+  "DimEquipamento": [
+    {
+      "campo": "id_equipamento",
+      "descricao": "Código de tombamento / inventário do equipamento."
+    },
+    {
+      "campo": "nome_maquina",
+      "descricao": "Descrição do equipamento (ex: `Tomógrafo Computadorizado 64 Canais`)."
+    },
+    {
+      "campo": "modelo",
+      "descricao": "Marca e modelo técnico do aparelho (ex: `GE Optima`)."
+    },
+    {
+      "campo": "ultima_manutencao",
+      "descricao": "Data e hora em que a máquina passou pela última calibração/manutenção."
+    }
+  ],
+  "DimProtocolo": [
+    {
+      "campo": "id_protocolo",
+      "descricao": "Código de identificação do protocolo clínico institucional."
+    },
+    {
+      "campo": "nome_protocolo",
+      "descricao": "Nome da conduta (ex: `Protocolo de Sepse (Diretrizes Clínicas)`)."
+    },
+    {
+      "campo": "area_medica",
+      "descricao": "Categoria médica responsável pelo protocolo (ex: `Infectologia`)."
+    }
+  ],
+  "DimMedico": [
+    {
+      "campo": "id_medico",
+      "descricao": "Código do médico no cadastro corporativo."
+    },
+    {
+      "campo": "nome_medico",
+      "descricao": "Nome completo do profissional de saúde."
+    },
+    {
+      "campo": "especialidade",
+      "descricao": "Categoria de especialização ativa do profissional (ex: `Pediatria`)."
+    },
+    {
+      "campo": "crm",
+      "descricao": "Registro no Conselho Regional de Medicina (CRM) + UF (ex: `12345-SP`)."
+    }
+  ],
+  "DimConvenio": [
+    {
+      "campo": "id_convenio",
+      "descricao": "Código identificador da operadora de saúde."
+    },
+    {
+      "campo": "nome_operadora",
+      "descricao": "Nome comercial do plano (ex: `Saúde Total Nacional`, `Vida Plena`)."
+    },
+    {
+      "campo": "tipo_contrato",
+      "descricao": "Modalidade comercial do plano (ex: `Premium`, `Básico`, `Público`)."
+    },
+    {
+      "campo": "prazo_contratual_pagamento",
+      "descricao": "Prazo legal em dias contratado para que o convênio pague as faturas."
+    }
+  ],
+  "FatoAtendimentos": [
+    {
+      "campo": "id_atendimento",
+      "descricao": "Código sequencial único do atendimento de internação."
+    },
+    {
+      "campo": "id_tempo",
+      "descricao": "Data da admissão do paciente. Liga à `DimTempo`."
+    },
+    {
+      "campo": "id_unidade",
+      "descricao": "Unidade física onde ocorreu a internação. Liga à `DimUnidade`."
+    },
+    {
+      "campo": "id_paciente",
+      "descricao": "Identificação do paciente assistido. Liga à `DimPaciente`."
+    },
+    {
+      "campo": "tempo_permanencia_dias",
+      "descricao": "Quantidade de diárias gastas até a desocupação do leito."
+    },
+    {
+      "campo": "status_alta",
+      "descricao": "Desfecho clínico final da internação (`Alta Médica`, `Transferência`, `Óbito`)."
+    },
+    {
+      "campo": "reinternacao_30d",
+      "descricao": "**Calculado:** `True` se o paciente possuir nova admissão nos últimos 30 dias."
+    }
+  ],
+  "FatoEstoque": [
+    {
+      "campo": "id_movimentacao",
+      "descricao": "Código sequencial da movimentação de estoque."
+    },
+    {
+      "campo": "id_medicamento",
+      "descricao": "Medicamento que sofreu a movimentação. Liga à `DimMedicamento`."
+    },
+    {
+      "campo": "id_tempo",
+      "descricao": "Data da transação de saída. Liga à `DimTempo`."
+    },
+    {
+      "campo": "id_unidade",
+      "descricao": "Setor que demandou o item de estoque. Liga à `DimUnidade`."
+    },
+    {
+      "campo": "quantidade_saida",
+      "descricao": "Quantidade dispensada física do insumo (ex: frascos, ampolas, pílulas)."
+    },
+    {
+      "campo": "saldo_atual",
+      "descricao": "**Calculado:** Quantidade residual de segurança no armário físico da ala."
+    }
+  ],
+  "FatoErrosMedicao": [
+    {
+      "campo": "id_evento",
+      "descricao": "Registro do incidente do Núcleo de Segurança do Paciente."
+    },
+    {
+      "campo": "id_medicamento",
+      "descricao": "Insumo envolvido no incidente adverso. Liga à `DimMedicamento`."
+    },
+    {
+      "campo": "id_paciente",
+      "descricao": "Paciente que foi alvo da ocorrência. Liga à `DimPaciente`."
+    },
+    {
+      "campo": "id_tempo",
+      "descricao": "Data da notificação/ocorrência do evento. Liga à `DimTempo`."
+    },
+    {
+      "campo": "tipo_erro",
+      "descricao": "Classificação do erro (ex: `Dose Duplicada`, `Omissão de Dose`)."
+    },
+    {
+      "campo": "severidade",
+      "descricao": "Impacto clínico gerado no paciente (`Baixa`, `Média`, `Alta`)."
+    }
+  ],
+  "FatoProcedimentos": [
+    {
+      "campo": "id_procedimento_instancia",
+      "descricao": "Identificador único da ocorrência do procedimento."
+    },
+    {
+      "campo": "id_tipo_procedimento",
+      "descricao": "Categoria/tipo de cirurgia efetuada. Liga à `DimTipoProcedimento`."
+    },
+    {
+      "campo": "id_unidade",
+      "descricao": "Bloco físico onde ocorreu o procedimento. Liga à `DimUnidade`."
+    },
+    {
+      "campo": "id_tempo",
+      "descricao": "Data de agendamento/realização da sala. Liga à `DimTempo`."
+    },
+    {
+      "campo": "id_equipamento",
+      "descricao": "Máquina de alta complexidade utilizada (opcional). Liga à `DimEquipamento`."
+    },
+    {
+      "campo": "tempo_preparo_minutos",
+      "descricao": "Duração em minutos para indução anestésica / preparo pré-operatório."
+    },
+    {
+      "campo": "tempo_execucao_minutos",
+      "descricao": "Tempo real de duração da cirurgia / exame (tempo cirúrgico de pele a pele)."
+    },
+    {
+      "campo": "tempo_limpeza_minutos",
+      "descricao": "Tempo de sala ociosa gasto pela enfermagem para higienização e setup."
+    },
+    {
+      "campo": "status_agendamento",
+      "descricao": "Status operacional do procedimento (`Realizado`, `Cancelado`)."
+    }
+  ],
+  "FatoInfraestrutura": [
+    {
+      "campo": "id_registro",
+      "descricao": "Identificador único de medição de sustentabilidade."
+    },
+    {
+      "campo": "id_unidade",
+      "descricao": "Ala ou hospital central mensurado. Liga à `DimUnidade`."
+    },
+    {
+      "campo": "id_tempo",
+      "descricao": "Data de fechamento da medição. Liga à `DimTempo`."
+    },
+    {
+      "campo": "consumo_agua_m3",
+      "descricao": "Volume de água consumido em metros cúbicos na semana."
+    },
+    {
+      "campo": "consumo_energia_kwh",
+      "descricao": "Consumo total de eletricidade em kWh."
+    },
+    {
+      "campo": "total_colaboradores_ativos",
+      "descricao": "Quantidade de colaboradores de escala ativa no período."
+    },
+    {
+      "campo": "eventos_infeccao",
+      "descricao": "Quantidade de infecções IRAS registradas no setor na semana."
+    }
+  ],
+  "FatoHigienizacao": [
+    {
+      "campo": "id_higienizacao",
+      "descricao": "Identificador sequencial do processo de setups de leito."
+    },
+    {
+      "campo": "id_unidade",
+      "descricao": "Unidade onde o leito desocupado foi limpo. Liga à `DimUnidade`."
+    },
+    {
+      "campo": "id_tempo",
+      "descricao": "Data correspondente à saída do paciente anterior. Liga à `DimTempo`."
+    },
+    {
+      "campo": "data_hora_saida_paciente",
+      "descricao": "Data e hora exatas do fechamento do prontuário/alta do leito."
+    },
+    {
+      "campo": "data_hora_liberacao_leito",
+      "descricao": "Data e hora exatas de liberação da governança para nova internação."
+    }
+  ],
+  "FatoDesempenhoClinico": [
+    {
+      "campo": "id_registro",
+      "descricao": "Sequencial único do scorecard clínico."
+    },
+    {
+      "campo": "id_medico",
+      "descricao": "Médico avaliado na conduta clínica. Liga à `DimMedico`."
+    },
+    {
+      "campo": "id_tempo",
+      "descricao": "Data correspondente à avaliação da conduta. Liga à `DimTempo`."
+    },
+    {
+      "campo": "id_protocolo",
+      "descricao": "Diretriz do protocolo clínico avaliado. Liga à `DimProtocolo`."
+    },
+    {
+      "campo": "aderente_ao_protocolo",
+      "descricao": "Indica se o médico seguiu 100% da conduta prescrita del protocolo."
+    },
+    {
+      "campo": "tempo_fechamento_prontuario_min",
+      "descricao": "Tempo decorrido (em minutos) entre a alta clínica e a assinatura digital do prontuário."
+    }
+  ],
+  "FatoEscalaMedica": [
+    {
+      "campo": "id_escala",
+      "descricao": "Código do registro de ponto eletrônico do plantonista."
+    },
+    {
+      "campo": "id_medico",
+      "descricao": "Médico escalado para o turno. Liga à `DimMedico`."
+    },
+    {
+      "campo": "id_tempo",
+      "descricao": "Data de ocorrência do plantão. Liga à `DimTempo`."
+    },
+    {
+      "campo": "status_presenca",
+      "descricao": "Status do plantão (`Presente`, `Atraso`, `Falta Justificada`)."
+    },
+    {
+      "campo": "horas_atraso",
+      "descricao": "**Regra:** Horas acumuladas de atraso (somente se status = `Atraso`)."
+    }
+  ],
+  "FatoFinanceiro": [
+    {
+      "campo": "id_transacao",
+      "descricao": "Código identificador da fatura emitida ao convênio."
+    },
+    {
+      "campo": "id_tempo",
+      "descricao": "Data da emissão da cobrança/fechamento da conta. Liga à `DimTempo`."
+    },
+    {
+      "campo": "id_unidade",
+      "descricao": "Setor que originou a receita. Liga à `DimUnidade`."
+    },
+    {
+      "campo": "id_convenio",
+      "descricao": "Operadora de saúde faturada. Liga à `DimConvenio`."
+    },
+    {
+      "campo": "receita_bruta",
+      "descricao": "Valor bruto total faturado no encerramento da internação."
+    },
+    {
+      "campo": "valor_glosa_inicial",
+      "descricao": "Valor inicial recusado/glosado pela auditoria da operadora."
+    },
+    {
+      "campo": "valor_glosa_recuperada",
+      "descricao": "Fração do valor de glosa inicial recuperada após recurso administrativo."
+    },
+    {
+      "campo": "custos_operacionais",
+      "descricao": "Despesas internas brutas (materiais, medicamentos, honorários)."
+    },
+    {
+      "campo": "data_pagamento_prevista",
+      "descricao": "Data de liquidação padrão calculada a partir do prazo do convênio."
+    },
+    {
+      "campo": "data_pagamento_real",
+      "descricao": "Data em que a operadora efetuou o depósito em conta (opcional)."
+    }
+  ]
+}

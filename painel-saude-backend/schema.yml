@@ -1,0 +1,3677 @@
+openapi: 3.0.3
+info:
+  title: Health Analytics API (BI Hospitalar)
+  version: 1.0.0
+  description: Documentacao interativa da API de Business Intelligence Hospitalar
+    baseada no Star Schema.
+paths:
+  /api/atendimentos/:
+    get:
+      operationId: atendimentos_list
+      tags:
+      - atendimentos
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FatoAtendimentos'
+          description: ''
+    post:
+      operationId: atendimentos_create
+      tags:
+      - atendimentos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FatoAtendimentos'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FatoAtendimentos'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FatoAtendimentos'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoAtendimentos'
+          description: ''
+  /api/atendimentos/{id_atendimento}/:
+    get:
+      operationId: atendimentos_retrieve
+      parameters:
+      - in: path
+        name: id_atendimento
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Atendimento.
+        required: true
+      tags:
+      - atendimentos
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoAtendimentos'
+          description: ''
+    put:
+      operationId: atendimentos_update
+      parameters:
+      - in: path
+        name: id_atendimento
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Atendimento.
+        required: true
+      tags:
+      - atendimentos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FatoAtendimentos'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FatoAtendimentos'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FatoAtendimentos'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoAtendimentos'
+          description: ''
+    patch:
+      operationId: atendimentos_partial_update
+      parameters:
+      - in: path
+        name: id_atendimento
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Atendimento.
+        required: true
+      tags:
+      - atendimentos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoAtendimentos'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoAtendimentos'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoAtendimentos'
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoAtendimentos'
+          description: ''
+    delete:
+      operationId: atendimentos_destroy
+      parameters:
+      - in: path
+        name: id_atendimento
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Atendimento.
+        required: true
+      tags:
+      - atendimentos
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/atendimentos/dashboard_stats/:
+    get:
+      operationId: atendimentos_dashboard_stats_retrieve
+      tags:
+      - atendimentos
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoAtendimentos'
+          description: ''
+  /api/atendimentos/medication_stats/:
+    get:
+      operationId: atendimentos_medication_stats_retrieve
+      tags:
+      - atendimentos
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoAtendimentos'
+          description: ''
+  /api/atendimentos/occupancy_trend/:
+    get:
+      operationId: atendimentos_occupancy_trend_retrieve
+      tags:
+      - atendimentos
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoAtendimentos'
+          description: ''
+  /api/convenios/:
+    get:
+      operationId: convenios_list
+      tags:
+      - convenios
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DimConvenio'
+          description: ''
+    post:
+      operationId: convenios_create
+      tags:
+      - convenios
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DimConvenio'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DimConvenio'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DimConvenio'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimConvenio'
+          description: ''
+  /api/convenios/{id_convenio}/:
+    get:
+      operationId: convenios_retrieve
+      parameters:
+      - in: path
+        name: id_convenio
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Convênio.
+        required: true
+      tags:
+      - convenios
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimConvenio'
+          description: ''
+    put:
+      operationId: convenios_update
+      parameters:
+      - in: path
+        name: id_convenio
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Convênio.
+        required: true
+      tags:
+      - convenios
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DimConvenio'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DimConvenio'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DimConvenio'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimConvenio'
+          description: ''
+    patch:
+      operationId: convenios_partial_update
+      parameters:
+      - in: path
+        name: id_convenio
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Convênio.
+        required: true
+      tags:
+      - convenios
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDimConvenio'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDimConvenio'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDimConvenio'
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimConvenio'
+          description: ''
+    delete:
+      operationId: convenios_destroy
+      parameters:
+      - in: path
+        name: id_convenio
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Convênio.
+        required: true
+      tags:
+      - convenios
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/desempenho-clinico/:
+    get:
+      operationId: desempenho_clinico_list
+      tags:
+      - desempenho-clinico
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FatoDesempenhoClinico'
+          description: ''
+    post:
+      operationId: desempenho_clinico_create
+      tags:
+      - desempenho-clinico
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FatoDesempenhoClinico'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FatoDesempenhoClinico'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FatoDesempenhoClinico'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoDesempenhoClinico'
+          description: ''
+  /api/desempenho-clinico/{id_registro}/:
+    get:
+      operationId: desempenho_clinico_retrieve
+      parameters:
+      - in: path
+        name: id_registro
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Desempenho Clínico.
+        required: true
+      tags:
+      - desempenho-clinico
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoDesempenhoClinico'
+          description: ''
+    put:
+      operationId: desempenho_clinico_update
+      parameters:
+      - in: path
+        name: id_registro
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Desempenho Clínico.
+        required: true
+      tags:
+      - desempenho-clinico
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FatoDesempenhoClinico'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FatoDesempenhoClinico'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FatoDesempenhoClinico'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoDesempenhoClinico'
+          description: ''
+    patch:
+      operationId: desempenho_clinico_partial_update
+      parameters:
+      - in: path
+        name: id_registro
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Desempenho Clínico.
+        required: true
+      tags:
+      - desempenho-clinico
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoDesempenhoClinico'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoDesempenhoClinico'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoDesempenhoClinico'
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoDesempenhoClinico'
+          description: ''
+    delete:
+      operationId: desempenho_clinico_destroy
+      parameters:
+      - in: path
+        name: id_registro
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Desempenho Clínico.
+        required: true
+      tags:
+      - desempenho-clinico
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/desempenho-clinico/medical_stats/:
+    get:
+      operationId: desempenho_clinico_medical_stats_retrieve
+      tags:
+      - desempenho-clinico
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoDesempenhoClinico'
+          description: ''
+  /api/equipamentos/:
+    get:
+      operationId: equipamentos_list
+      tags:
+      - equipamentos
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DimEquipamento'
+          description: ''
+    post:
+      operationId: equipamentos_create
+      tags:
+      - equipamentos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DimEquipamento'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DimEquipamento'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DimEquipamento'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimEquipamento'
+          description: ''
+  /api/equipamentos/{id_equipamento}/:
+    get:
+      operationId: equipamentos_retrieve
+      parameters:
+      - in: path
+        name: id_equipamento
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Equipamento.
+        required: true
+      tags:
+      - equipamentos
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimEquipamento'
+          description: ''
+    put:
+      operationId: equipamentos_update
+      parameters:
+      - in: path
+        name: id_equipamento
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Equipamento.
+        required: true
+      tags:
+      - equipamentos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DimEquipamento'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DimEquipamento'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DimEquipamento'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimEquipamento'
+          description: ''
+    patch:
+      operationId: equipamentos_partial_update
+      parameters:
+      - in: path
+        name: id_equipamento
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Equipamento.
+        required: true
+      tags:
+      - equipamentos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDimEquipamento'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDimEquipamento'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDimEquipamento'
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimEquipamento'
+          description: ''
+    delete:
+      operationId: equipamentos_destroy
+      parameters:
+      - in: path
+        name: id_equipamento
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Equipamento.
+        required: true
+      tags:
+      - equipamentos
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/erros-medicao/:
+    get:
+      operationId: erros_medicao_list
+      tags:
+      - erros-medicao
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FatoErrosMedicao'
+          description: ''
+    post:
+      operationId: erros_medicao_create
+      tags:
+      - erros-medicao
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FatoErrosMedicao'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FatoErrosMedicao'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FatoErrosMedicao'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoErrosMedicao'
+          description: ''
+  /api/erros-medicao/{id_evento}/:
+    get:
+      operationId: erros_medicao_retrieve
+      parameters:
+      - in: path
+        name: id_evento
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Erro Medicação.
+        required: true
+      tags:
+      - erros-medicao
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoErrosMedicao'
+          description: ''
+    put:
+      operationId: erros_medicao_update
+      parameters:
+      - in: path
+        name: id_evento
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Erro Medicação.
+        required: true
+      tags:
+      - erros-medicao
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FatoErrosMedicao'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FatoErrosMedicao'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FatoErrosMedicao'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoErrosMedicao'
+          description: ''
+    patch:
+      operationId: erros_medicao_partial_update
+      parameters:
+      - in: path
+        name: id_evento
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Erro Medicação.
+        required: true
+      tags:
+      - erros-medicao
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoErrosMedicao'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoErrosMedicao'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoErrosMedicao'
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoErrosMedicao'
+          description: ''
+    delete:
+      operationId: erros_medicao_destroy
+      parameters:
+      - in: path
+        name: id_evento
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Erro Medicação.
+        required: true
+      tags:
+      - erros-medicao
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/escala-medica/:
+    get:
+      operationId: escala_medica_list
+      tags:
+      - escala-medica
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FatoEscalaMedica'
+          description: ''
+    post:
+      operationId: escala_medica_create
+      tags:
+      - escala-medica
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FatoEscalaMedica'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FatoEscalaMedica'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FatoEscalaMedica'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoEscalaMedica'
+          description: ''
+  /api/escala-medica/{id_escala}/:
+    get:
+      operationId: escala_medica_retrieve
+      parameters:
+      - in: path
+        name: id_escala
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Escala Médica.
+        required: true
+      tags:
+      - escala-medica
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoEscalaMedica'
+          description: ''
+    put:
+      operationId: escala_medica_update
+      parameters:
+      - in: path
+        name: id_escala
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Escala Médica.
+        required: true
+      tags:
+      - escala-medica
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FatoEscalaMedica'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FatoEscalaMedica'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FatoEscalaMedica'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoEscalaMedica'
+          description: ''
+    patch:
+      operationId: escala_medica_partial_update
+      parameters:
+      - in: path
+        name: id_escala
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Escala Médica.
+        required: true
+      tags:
+      - escala-medica
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoEscalaMedica'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoEscalaMedica'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoEscalaMedica'
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoEscalaMedica'
+          description: ''
+    delete:
+      operationId: escala_medica_destroy
+      parameters:
+      - in: path
+        name: id_escala
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Escala Médica.
+        required: true
+      tags:
+      - escala-medica
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/estoque/:
+    get:
+      operationId: estoque_list
+      tags:
+      - estoque
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FatoEstoque'
+          description: ''
+    post:
+      operationId: estoque_create
+      tags:
+      - estoque
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FatoEstoque'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FatoEstoque'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FatoEstoque'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoEstoque'
+          description: ''
+  /api/estoque/{id_movimentacao}/:
+    get:
+      operationId: estoque_retrieve
+      parameters:
+      - in: path
+        name: id_movimentacao
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Estoque.
+        required: true
+      tags:
+      - estoque
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoEstoque'
+          description: ''
+    put:
+      operationId: estoque_update
+      parameters:
+      - in: path
+        name: id_movimentacao
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Estoque.
+        required: true
+      tags:
+      - estoque
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FatoEstoque'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FatoEstoque'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FatoEstoque'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoEstoque'
+          description: ''
+    patch:
+      operationId: estoque_partial_update
+      parameters:
+      - in: path
+        name: id_movimentacao
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Estoque.
+        required: true
+      tags:
+      - estoque
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoEstoque'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoEstoque'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoEstoque'
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoEstoque'
+          description: ''
+    delete:
+      operationId: estoque_destroy
+      parameters:
+      - in: path
+        name: id_movimentacao
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Estoque.
+        required: true
+      tags:
+      - estoque
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/financeiro/:
+    get:
+      operationId: financeiro_list
+      tags:
+      - financeiro
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FatoFinanceiro'
+          description: ''
+    post:
+      operationId: financeiro_create
+      tags:
+      - financeiro
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FatoFinanceiro'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FatoFinanceiro'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FatoFinanceiro'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoFinanceiro'
+          description: ''
+  /api/financeiro/{id_transacao}/:
+    get:
+      operationId: financeiro_retrieve
+      parameters:
+      - in: path
+        name: id_transacao
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Financeiro.
+        required: true
+      tags:
+      - financeiro
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoFinanceiro'
+          description: ''
+    put:
+      operationId: financeiro_update
+      parameters:
+      - in: path
+        name: id_transacao
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Financeiro.
+        required: true
+      tags:
+      - financeiro
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FatoFinanceiro'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FatoFinanceiro'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FatoFinanceiro'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoFinanceiro'
+          description: ''
+    patch:
+      operationId: financeiro_partial_update
+      parameters:
+      - in: path
+        name: id_transacao
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Financeiro.
+        required: true
+      tags:
+      - financeiro
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoFinanceiro'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoFinanceiro'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoFinanceiro'
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoFinanceiro'
+          description: ''
+    delete:
+      operationId: financeiro_destroy
+      parameters:
+      - in: path
+        name: id_transacao
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Financeiro.
+        required: true
+      tags:
+      - financeiro
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/financeiro/financial_stats/:
+    get:
+      operationId: financeiro_financial_stats_retrieve
+      tags:
+      - financeiro
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoFinanceiro'
+          description: ''
+  /api/higienizacao/:
+    get:
+      operationId: higienizacao_list
+      tags:
+      - higienizacao
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FatoHigienizacao'
+          description: ''
+    post:
+      operationId: higienizacao_create
+      tags:
+      - higienizacao
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FatoHigienizacao'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FatoHigienizacao'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FatoHigienizacao'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoHigienizacao'
+          description: ''
+  /api/higienizacao/{id_higienizacao}/:
+    get:
+      operationId: higienizacao_retrieve
+      parameters:
+      - in: path
+        name: id_higienizacao
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Higienização.
+        required: true
+      tags:
+      - higienizacao
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoHigienizacao'
+          description: ''
+    put:
+      operationId: higienizacao_update
+      parameters:
+      - in: path
+        name: id_higienizacao
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Higienização.
+        required: true
+      tags:
+      - higienizacao
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FatoHigienizacao'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FatoHigienizacao'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FatoHigienizacao'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoHigienizacao'
+          description: ''
+    patch:
+      operationId: higienizacao_partial_update
+      parameters:
+      - in: path
+        name: id_higienizacao
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Higienização.
+        required: true
+      tags:
+      - higienizacao
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoHigienizacao'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoHigienizacao'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoHigienizacao'
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoHigienizacao'
+          description: ''
+    delete:
+      operationId: higienizacao_destroy
+      parameters:
+      - in: path
+        name: id_higienizacao
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Higienização.
+        required: true
+      tags:
+      - higienizacao
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/infraestrutura/:
+    get:
+      operationId: infraestrutura_list
+      tags:
+      - infraestrutura
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FatoInfraestrutura'
+          description: ''
+    post:
+      operationId: infraestrutura_create
+      tags:
+      - infraestrutura
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FatoInfraestrutura'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FatoInfraestrutura'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FatoInfraestrutura'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoInfraestrutura'
+          description: ''
+  /api/infraestrutura/{id_registro}/:
+    get:
+      operationId: infraestrutura_retrieve
+      parameters:
+      - in: path
+        name: id_registro
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Infraestrutura.
+        required: true
+      tags:
+      - infraestrutura
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoInfraestrutura'
+          description: ''
+    put:
+      operationId: infraestrutura_update
+      parameters:
+      - in: path
+        name: id_registro
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Infraestrutura.
+        required: true
+      tags:
+      - infraestrutura
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FatoInfraestrutura'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FatoInfraestrutura'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FatoInfraestrutura'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoInfraestrutura'
+          description: ''
+    patch:
+      operationId: infraestrutura_partial_update
+      parameters:
+      - in: path
+        name: id_registro
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Infraestrutura.
+        required: true
+      tags:
+      - infraestrutura
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoInfraestrutura'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoInfraestrutura'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoInfraestrutura'
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoInfraestrutura'
+          description: ''
+    delete:
+      operationId: infraestrutura_destroy
+      parameters:
+      - in: path
+        name: id_registro
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Infraestrutura.
+        required: true
+      tags:
+      - infraestrutura
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/infraestrutura/hospital_stats/:
+    get:
+      operationId: infraestrutura_hospital_stats_retrieve
+      tags:
+      - infraestrutura
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoInfraestrutura'
+          description: ''
+  /api/integracoes/status/:
+    get:
+      operationId: integracoes_status_retrieve
+      tags:
+      - integracoes
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/integracoes/sync/{model_name}/:
+    post:
+      operationId: integracoes_sync_create
+      description: |-
+        Endpoint universal para integração de qualquer tabela do sistema.
+        Suporta Dimensões e Fatos com lógica de Upsert.
+      parameters:
+      - in: path
+        name: model_name
+        schema:
+          type: string
+        required: true
+      tags:
+      - integracoes
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/medicamentos/:
+    get:
+      operationId: medicamentos_list
+      tags:
+      - medicamentos
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DimMedicamento'
+          description: ''
+    post:
+      operationId: medicamentos_create
+      tags:
+      - medicamentos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DimMedicamento'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DimMedicamento'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DimMedicamento'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimMedicamento'
+          description: ''
+  /api/medicamentos/{id_medicamento}/:
+    get:
+      operationId: medicamentos_retrieve
+      parameters:
+      - in: path
+        name: id_medicamento
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Medicamento.
+        required: true
+      tags:
+      - medicamentos
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimMedicamento'
+          description: ''
+    put:
+      operationId: medicamentos_update
+      parameters:
+      - in: path
+        name: id_medicamento
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Medicamento.
+        required: true
+      tags:
+      - medicamentos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DimMedicamento'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DimMedicamento'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DimMedicamento'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimMedicamento'
+          description: ''
+    patch:
+      operationId: medicamentos_partial_update
+      parameters:
+      - in: path
+        name: id_medicamento
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Medicamento.
+        required: true
+      tags:
+      - medicamentos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDimMedicamento'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDimMedicamento'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDimMedicamento'
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimMedicamento'
+          description: ''
+    delete:
+      operationId: medicamentos_destroy
+      parameters:
+      - in: path
+        name: id_medicamento
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Medicamento.
+        required: true
+      tags:
+      - medicamentos
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/medicos/:
+    get:
+      operationId: medicos_list
+      tags:
+      - medicos
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DimMedico'
+          description: ''
+    post:
+      operationId: medicos_create
+      tags:
+      - medicos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DimMedico'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DimMedico'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DimMedico'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimMedico'
+          description: ''
+  /api/medicos/{id_medico}/:
+    get:
+      operationId: medicos_retrieve
+      parameters:
+      - in: path
+        name: id_medico
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Médico.
+        required: true
+      tags:
+      - medicos
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimMedico'
+          description: ''
+    put:
+      operationId: medicos_update
+      parameters:
+      - in: path
+        name: id_medico
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Médico.
+        required: true
+      tags:
+      - medicos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DimMedico'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DimMedico'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DimMedico'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimMedico'
+          description: ''
+    patch:
+      operationId: medicos_partial_update
+      parameters:
+      - in: path
+        name: id_medico
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Médico.
+        required: true
+      tags:
+      - medicos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDimMedico'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDimMedico'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDimMedico'
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimMedico'
+          description: ''
+    delete:
+      operationId: medicos_destroy
+      parameters:
+      - in: path
+        name: id_medico
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Médico.
+        required: true
+      tags:
+      - medicos
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/pacientes/:
+    get:
+      operationId: pacientes_list
+      tags:
+      - pacientes
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DimPaciente'
+          description: ''
+    post:
+      operationId: pacientes_create
+      tags:
+      - pacientes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DimPaciente'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DimPaciente'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DimPaciente'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimPaciente'
+          description: ''
+  /api/pacientes/{id_paciente}/:
+    get:
+      operationId: pacientes_retrieve
+      parameters:
+      - in: path
+        name: id_paciente
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Paciente.
+        required: true
+      tags:
+      - pacientes
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimPaciente'
+          description: ''
+    put:
+      operationId: pacientes_update
+      parameters:
+      - in: path
+        name: id_paciente
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Paciente.
+        required: true
+      tags:
+      - pacientes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DimPaciente'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DimPaciente'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DimPaciente'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimPaciente'
+          description: ''
+    patch:
+      operationId: pacientes_partial_update
+      parameters:
+      - in: path
+        name: id_paciente
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Paciente.
+        required: true
+      tags:
+      - pacientes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDimPaciente'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDimPaciente'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDimPaciente'
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimPaciente'
+          description: ''
+    delete:
+      operationId: pacientes_destroy
+      parameters:
+      - in: path
+        name: id_paciente
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Paciente.
+        required: true
+      tags:
+      - pacientes
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/procedimentos/:
+    get:
+      operationId: procedimentos_list
+      tags:
+      - procedimentos
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FatoProcedimentos'
+          description: ''
+    post:
+      operationId: procedimentos_create
+      tags:
+      - procedimentos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FatoProcedimentos'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FatoProcedimentos'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FatoProcedimentos'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoProcedimentos'
+          description: ''
+  /api/procedimentos/{id_procedimento_instancia}/:
+    get:
+      operationId: procedimentos_retrieve
+      parameters:
+      - in: path
+        name: id_procedimento_instancia
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Procedimento.
+        required: true
+      tags:
+      - procedimentos
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoProcedimentos'
+          description: ''
+    put:
+      operationId: procedimentos_update
+      parameters:
+      - in: path
+        name: id_procedimento_instancia
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Procedimento.
+        required: true
+      tags:
+      - procedimentos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FatoProcedimentos'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FatoProcedimentos'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FatoProcedimentos'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoProcedimentos'
+          description: ''
+    patch:
+      operationId: procedimentos_partial_update
+      parameters:
+      - in: path
+        name: id_procedimento_instancia
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Procedimento.
+        required: true
+      tags:
+      - procedimentos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoProcedimentos'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoProcedimentos'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFatoProcedimentos'
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoProcedimentos'
+          description: ''
+    delete:
+      operationId: procedimentos_destroy
+      parameters:
+      - in: path
+        name: id_procedimento_instancia
+        schema:
+          type: integer
+        description: A unique integer value identifying this Fato Procedimento.
+        required: true
+      tags:
+      - procedimentos
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/procedimentos/procedure_stats/:
+    get:
+      operationId: procedimentos_procedure_stats_retrieve
+      tags:
+      - procedimentos
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FatoProcedimentos'
+          description: ''
+  /api/protocolos/:
+    get:
+      operationId: protocolos_list
+      tags:
+      - protocolos
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DimProtocolo'
+          description: ''
+    post:
+      operationId: protocolos_create
+      tags:
+      - protocolos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DimProtocolo'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DimProtocolo'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DimProtocolo'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimProtocolo'
+          description: ''
+  /api/protocolos/{id_protocolo}/:
+    get:
+      operationId: protocolos_retrieve
+      parameters:
+      - in: path
+        name: id_protocolo
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Protocolo.
+        required: true
+      tags:
+      - protocolos
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimProtocolo'
+          description: ''
+    put:
+      operationId: protocolos_update
+      parameters:
+      - in: path
+        name: id_protocolo
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Protocolo.
+        required: true
+      tags:
+      - protocolos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DimProtocolo'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DimProtocolo'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DimProtocolo'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimProtocolo'
+          description: ''
+    patch:
+      operationId: protocolos_partial_update
+      parameters:
+      - in: path
+        name: id_protocolo
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Protocolo.
+        required: true
+      tags:
+      - protocolos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDimProtocolo'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDimProtocolo'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDimProtocolo'
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimProtocolo'
+          description: ''
+    delete:
+      operationId: protocolos_destroy
+      parameters:
+      - in: path
+        name: id_protocolo
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Protocolo.
+        required: true
+      tags:
+      - protocolos
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/tempo/:
+    get:
+      operationId: tempo_list
+      tags:
+      - tempo
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DimTempo'
+          description: ''
+    post:
+      operationId: tempo_create
+      tags:
+      - tempo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DimTempo'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DimTempo'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DimTempo'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimTempo'
+          description: ''
+  /api/tempo/{id_tempo}/:
+    get:
+      operationId: tempo_retrieve
+      parameters:
+      - in: path
+        name: id_tempo
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Tempo.
+        required: true
+      tags:
+      - tempo
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimTempo'
+          description: ''
+    put:
+      operationId: tempo_update
+      parameters:
+      - in: path
+        name: id_tempo
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Tempo.
+        required: true
+      tags:
+      - tempo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DimTempo'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DimTempo'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DimTempo'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimTempo'
+          description: ''
+    patch:
+      operationId: tempo_partial_update
+      parameters:
+      - in: path
+        name: id_tempo
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Tempo.
+        required: true
+      tags:
+      - tempo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDimTempo'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDimTempo'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDimTempo'
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimTempo'
+          description: ''
+    delete:
+      operationId: tempo_destroy
+      parameters:
+      - in: path
+        name: id_tempo
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Tempo.
+        required: true
+      tags:
+      - tempo
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/tipos-procedimento/:
+    get:
+      operationId: tipos_procedimento_list
+      tags:
+      - tipos-procedimento
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DimTipoProcedimento'
+          description: ''
+    post:
+      operationId: tipos_procedimento_create
+      tags:
+      - tipos-procedimento
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DimTipoProcedimento'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DimTipoProcedimento'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DimTipoProcedimento'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimTipoProcedimento'
+          description: ''
+  /api/tipos-procedimento/{id_tipo_procedimento}/:
+    get:
+      operationId: tipos_procedimento_retrieve
+      parameters:
+      - in: path
+        name: id_tipo_procedimento
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Tipo Procedimento.
+        required: true
+      tags:
+      - tipos-procedimento
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimTipoProcedimento'
+          description: ''
+    put:
+      operationId: tipos_procedimento_update
+      parameters:
+      - in: path
+        name: id_tipo_procedimento
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Tipo Procedimento.
+        required: true
+      tags:
+      - tipos-procedimento
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DimTipoProcedimento'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DimTipoProcedimento'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DimTipoProcedimento'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimTipoProcedimento'
+          description: ''
+    patch:
+      operationId: tipos_procedimento_partial_update
+      parameters:
+      - in: path
+        name: id_tipo_procedimento
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Tipo Procedimento.
+        required: true
+      tags:
+      - tipos-procedimento
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDimTipoProcedimento'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDimTipoProcedimento'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDimTipoProcedimento'
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimTipoProcedimento'
+          description: ''
+    delete:
+      operationId: tipos_procedimento_destroy
+      parameters:
+      - in: path
+        name: id_tipo_procedimento
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Tipo Procedimento.
+        required: true
+      tags:
+      - tipos-procedimento
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/unidades/:
+    get:
+      operationId: unidades_list
+      tags:
+      - unidades
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DimUnidade'
+          description: ''
+    post:
+      operationId: unidades_create
+      tags:
+      - unidades
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DimUnidade'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DimUnidade'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DimUnidade'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimUnidade'
+          description: ''
+  /api/unidades/{id_unidade}/:
+    get:
+      operationId: unidades_retrieve
+      parameters:
+      - in: path
+        name: id_unidade
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Unidade.
+        required: true
+      tags:
+      - unidades
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimUnidade'
+          description: ''
+    put:
+      operationId: unidades_update
+      parameters:
+      - in: path
+        name: id_unidade
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Unidade.
+        required: true
+      tags:
+      - unidades
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DimUnidade'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DimUnidade'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DimUnidade'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimUnidade'
+          description: ''
+    patch:
+      operationId: unidades_partial_update
+      parameters:
+      - in: path
+        name: id_unidade
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Unidade.
+        required: true
+      tags:
+      - unidades
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDimUnidade'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDimUnidade'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDimUnidade'
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DimUnidade'
+          description: ''
+    delete:
+      operationId: unidades_destroy
+      parameters:
+      - in: path
+        name: id_unidade
+        schema:
+          type: integer
+        description: A unique integer value identifying this Dimensão Unidade.
+        required: true
+      tags:
+      - unidades
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    DimConvenio:
+      type: object
+      properties:
+        id_convenio:
+          type: integer
+          readOnly: true
+        nome_operadora:
+          type: string
+          maxLength: 255
+        tipo_contrato:
+          type: string
+          maxLength: 100
+        prazo_contratual_pagamento:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+      required:
+      - id_convenio
+      - nome_operadora
+      - prazo_contratual_pagamento
+      - tipo_contrato
+    DimEquipamento:
+      type: object
+      properties:
+        id_equipamento:
+          type: integer
+          readOnly: true
+        nome_maquina:
+          type: string
+          maxLength: 255
+        modelo:
+          type: string
+          maxLength: 100
+        ultima_manutencao:
+          type: string
+          format: date-time
+      required:
+      - id_equipamento
+      - modelo
+      - nome_maquina
+      - ultima_manutencao
+    DimMedicamento:
+      type: object
+      properties:
+        id_medicamento:
+          type: integer
+          readOnly: true
+        nome_farmaco:
+          type: string
+          maxLength: 255
+        classe_terapeutica:
+          type: string
+          maxLength: 100
+        custo_unitario:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        item_essencial:
+          type: boolean
+      required:
+      - classe_terapeutica
+      - custo_unitario
+      - id_medicamento
+      - nome_farmaco
+    DimMedico:
+      type: object
+      properties:
+        id_medico:
+          type: integer
+          readOnly: true
+        nome_medico:
+          type: string
+          maxLength: 255
+        especialidade:
+          type: string
+          maxLength: 100
+        crm:
+          type: string
+          maxLength: 20
+      required:
+      - crm
+      - especialidade
+      - id_medico
+      - nome_medico
+    DimPaciente:
+      type: object
+      properties:
+        id_paciente:
+          type: integer
+          readOnly: true
+        pontuacao_nps:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        faixa_etaria:
+          type: string
+          maxLength: 50
+      required:
+      - faixa_etaria
+      - id_paciente
+      - pontuacao_nps
+    DimProtocolo:
+      type: object
+      properties:
+        id_protocolo:
+          type: integer
+          readOnly: true
+        nome_protocolo:
+          type: string
+          maxLength: 255
+        area_medica:
+          type: string
+          maxLength: 100
+      required:
+      - area_medica
+      - id_protocolo
+      - nome_protocolo
+    DimTempo:
+      type: object
+      properties:
+        id_tempo:
+          type: integer
+          readOnly: true
+        data_registro:
+          type: string
+          format: date
+        mes:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        ano:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+      required:
+      - ano
+      - data_registro
+      - id_tempo
+      - mes
+    DimTipoProcedimento:
+      type: object
+      properties:
+        id_tipo_procedimento:
+          type: integer
+          readOnly: true
+        nome_procedimento:
+          type: string
+          maxLength: 255
+        especialidade:
+          type: string
+          maxLength: 100
+        valor_base:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+      required:
+      - especialidade
+      - id_tipo_procedimento
+      - nome_procedimento
+      - valor_base
+    DimUnidade:
+      type: object
+      properties:
+        id_unidade:
+          type: integer
+          readOnly: true
+        nome_unidade:
+          type: string
+          maxLength: 255
+        tipo_leito:
+          type: string
+          maxLength: 100
+        capacidade_maxima:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+      required:
+      - capacidade_maxima
+      - id_unidade
+      - nome_unidade
+      - tipo_leito
+    FatoAtendimentos:
+      type: object
+      properties:
+        id_atendimento:
+          type: integer
+          readOnly: true
+        tempo_permanencia_dias:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        status_alta:
+          type: string
+          maxLength: 100
+        reinternacao_30d:
+          type: boolean
+        id_tempo:
+          type: integer
+        id_unidade:
+          type: integer
+        id_paciente:
+          type: integer
+      required:
+      - id_atendimento
+      - id_paciente
+      - id_tempo
+      - id_unidade
+      - reinternacao_30d
+      - status_alta
+      - tempo_permanencia_dias
+    FatoDesempenhoClinico:
+      type: object
+      properties:
+        id_registro:
+          type: integer
+          readOnly: true
+        aderente_ao_protocolo:
+          type: boolean
+        tempo_fechamento_prontuario_min:
+          type: number
+          format: double
+        id_medico:
+          type: integer
+        id_tempo:
+          type: integer
+        id_protocolo:
+          type: integer
+      required:
+      - id_medico
+      - id_protocolo
+      - id_registro
+      - id_tempo
+      - tempo_fechamento_prontuario_min
+    FatoErrosMedicao:
+      type: object
+      properties:
+        id_evento:
+          type: integer
+          readOnly: true
+        tipo_erro:
+          type: string
+          maxLength: 100
+        severidade:
+          type: string
+          maxLength: 50
+        id_medicamento:
+          type: integer
+        id_paciente:
+          type: integer
+        id_tempo:
+          type: integer
+      required:
+      - id_evento
+      - id_medicamento
+      - id_paciente
+      - id_tempo
+      - severidade
+      - tipo_erro
+    FatoEscalaMedica:
+      type: object
+      properties:
+        id_escala:
+          type: integer
+          readOnly: true
+        status_presenca:
+          type: string
+          maxLength: 50
+        horas_atraso:
+          type: number
+          format: double
+        id_medico:
+          type: integer
+        id_tempo:
+          type: integer
+      required:
+      - id_escala
+      - id_medico
+      - id_tempo
+      - status_presenca
+    FatoEstoque:
+      type: object
+      properties:
+        id_movimentacao:
+          type: integer
+          readOnly: true
+        quantidade_saida:
+          type: number
+          format: double
+        saldo_atual:
+          type: number
+          format: double
+        id_medicamento:
+          type: integer
+        id_tempo:
+          type: integer
+        id_unidade:
+          type: integer
+      required:
+      - id_medicamento
+      - id_movimentacao
+      - id_tempo
+      - id_unidade
+      - quantidade_saida
+      - saldo_atual
+    FatoFinanceiro:
+      type: object
+      properties:
+        id_transacao:
+          type: integer
+          readOnly: true
+        receita_bruta:
+          type: number
+          format: double
+        valor_glosa_inicial:
+          type: number
+          format: double
+        valor_glosa_recuperada:
+          type: number
+          format: double
+        custos_operacionais:
+          type: number
+          format: double
+        data_pagamento_prevista:
+          type: string
+          format: date
+        data_pagamento_real:
+          type: string
+          format: date
+          nullable: true
+        id_tempo:
+          type: integer
+        id_unidade:
+          type: integer
+        id_convenio:
+          type: integer
+      required:
+      - custos_operacionais
+      - data_pagamento_prevista
+      - id_convenio
+      - id_tempo
+      - id_transacao
+      - id_unidade
+      - receita_bruta
+      - valor_glosa_inicial
+      - valor_glosa_recuperada
+    FatoHigienizacao:
+      type: object
+      properties:
+        id_higienizacao:
+          type: integer
+          readOnly: true
+        data_hora_saida_paciente:
+          type: string
+          format: date-time
+        data_hora_liberacao_leito:
+          type: string
+          format: date-time
+        id_unidade:
+          type: integer
+        id_tempo:
+          type: integer
+      required:
+      - data_hora_liberacao_leito
+      - data_hora_saida_paciente
+      - id_higienizacao
+      - id_tempo
+      - id_unidade
+    FatoInfraestrutura:
+      type: object
+      properties:
+        id_registro:
+          type: integer
+          readOnly: true
+        consumo_agua_m3:
+          type: number
+          format: double
+        consumo_energia_kwh:
+          type: number
+          format: double
+        total_colaboradores_ativos:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        eventos_infeccao:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        id_unidade:
+          type: integer
+        id_tempo:
+          type: integer
+      required:
+      - consumo_agua_m3
+      - consumo_energia_kwh
+      - eventos_infeccao
+      - id_registro
+      - id_tempo
+      - id_unidade
+      - total_colaboradores_ativos
+    FatoProcedimentos:
+      type: object
+      properties:
+        id_procedimento_instancia:
+          type: integer
+          readOnly: true
+        tempo_preparo_minutos:
+          type: number
+          format: double
+        tempo_execucao_minutos:
+          type: number
+          format: double
+        tempo_limpeza_minutos:
+          type: number
+          format: double
+        status_agendamento:
+          type: string
+          maxLength: 50
+        id_tipo_procedimento:
+          type: integer
+        id_unidade:
+          type: integer
+        id_tempo:
+          type: integer
+        id_equipamento:
+          type: integer
+          nullable: true
+      required:
+      - id_procedimento_instancia
+      - id_tempo
+      - id_tipo_procedimento
+      - id_unidade
+      - status_agendamento
+      - tempo_execucao_minutos
+      - tempo_limpeza_minutos
+      - tempo_preparo_minutos
+    PatchedDimConvenio:
+      type: object
+      properties:
+        id_convenio:
+          type: integer
+          readOnly: true
+        nome_operadora:
+          type: string
+          maxLength: 255
+        tipo_contrato:
+          type: string
+          maxLength: 100
+        prazo_contratual_pagamento:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+    PatchedDimEquipamento:
+      type: object
+      properties:
+        id_equipamento:
+          type: integer
+          readOnly: true
+        nome_maquina:
+          type: string
+          maxLength: 255
+        modelo:
+          type: string
+          maxLength: 100
+        ultima_manutencao:
+          type: string
+          format: date-time
+    PatchedDimMedicamento:
+      type: object
+      properties:
+        id_medicamento:
+          type: integer
+          readOnly: true
+        nome_farmaco:
+          type: string
+          maxLength: 255
+        classe_terapeutica:
+          type: string
+          maxLength: 100
+        custo_unitario:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        item_essencial:
+          type: boolean
+    PatchedDimMedico:
+      type: object
+      properties:
+        id_medico:
+          type: integer
+          readOnly: true
+        nome_medico:
+          type: string
+          maxLength: 255
+        especialidade:
+          type: string
+          maxLength: 100
+        crm:
+          type: string
+          maxLength: 20
+    PatchedDimPaciente:
+      type: object
+      properties:
+        id_paciente:
+          type: integer
+          readOnly: true
+        pontuacao_nps:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        faixa_etaria:
+          type: string
+          maxLength: 50
+    PatchedDimProtocolo:
+      type: object
+      properties:
+        id_protocolo:
+          type: integer
+          readOnly: true
+        nome_protocolo:
+          type: string
+          maxLength: 255
+        area_medica:
+          type: string
+          maxLength: 100
+    PatchedDimTempo:
+      type: object
+      properties:
+        id_tempo:
+          type: integer
+          readOnly: true
+        data_registro:
+          type: string
+          format: date
+        mes:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        ano:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+    PatchedDimTipoProcedimento:
+      type: object
+      properties:
+        id_tipo_procedimento:
+          type: integer
+          readOnly: true
+        nome_procedimento:
+          type: string
+          maxLength: 255
+        especialidade:
+          type: string
+          maxLength: 100
+        valor_base:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+    PatchedDimUnidade:
+      type: object
+      properties:
+        id_unidade:
+          type: integer
+          readOnly: true
+        nome_unidade:
+          type: string
+          maxLength: 255
+        tipo_leito:
+          type: string
+          maxLength: 100
+        capacidade_maxima:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+    PatchedFatoAtendimentos:
+      type: object
+      properties:
+        id_atendimento:
+          type: integer
+          readOnly: true
+        tempo_permanencia_dias:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        status_alta:
+          type: string
+          maxLength: 100
+        reinternacao_30d:
+          type: boolean
+        id_tempo:
+          type: integer
+        id_unidade:
+          type: integer
+        id_paciente:
+          type: integer
+    PatchedFatoDesempenhoClinico:
+      type: object
+      properties:
+        id_registro:
+          type: integer
+          readOnly: true
+        aderente_ao_protocolo:
+          type: boolean
+        tempo_fechamento_prontuario_min:
+          type: number
+          format: double
+        id_medico:
+          type: integer
+        id_tempo:
+          type: integer
+        id_protocolo:
+          type: integer
+    PatchedFatoErrosMedicao:
+      type: object
+      properties:
+        id_evento:
+          type: integer
+          readOnly: true
+        tipo_erro:
+          type: string
+          maxLength: 100
+        severidade:
+          type: string
+          maxLength: 50
+        id_medicamento:
+          type: integer
+        id_paciente:
+          type: integer
+        id_tempo:
+          type: integer
+    PatchedFatoEscalaMedica:
+      type: object
+      properties:
+        id_escala:
+          type: integer
+          readOnly: true
+        status_presenca:
+          type: string
+          maxLength: 50
+        horas_atraso:
+          type: number
+          format: double
+        id_medico:
+          type: integer
+        id_tempo:
+          type: integer
+    PatchedFatoEstoque:
+      type: object
+      properties:
+        id_movimentacao:
+          type: integer
+          readOnly: true
+        quantidade_saida:
+          type: number
+          format: double
+        saldo_atual:
+          type: number
+          format: double
+        id_medicamento:
+          type: integer
+        id_tempo:
+          type: integer
+        id_unidade:
+          type: integer
+    PatchedFatoFinanceiro:
+      type: object
+      properties:
+        id_transacao:
+          type: integer
+          readOnly: true
+        receita_bruta:
+          type: number
+          format: double
+        valor_glosa_inicial:
+          type: number
+          format: double
+        valor_glosa_recuperada:
+          type: number
+          format: double
+        custos_operacionais:
+          type: number
+          format: double
+        data_pagamento_prevista:
+          type: string
+          format: date
+        data_pagamento_real:
+          type: string
+          format: date
+          nullable: true
+        id_tempo:
+          type: integer
+        id_unidade:
+          type: integer
+        id_convenio:
+          type: integer
+    PatchedFatoHigienizacao:
+      type: object
+      properties:
+        id_higienizacao:
+          type: integer
+          readOnly: true
+        data_hora_saida_paciente:
+          type: string
+          format: date-time
+        data_hora_liberacao_leito:
+          type: string
+          format: date-time
+        id_unidade:
+          type: integer
+        id_tempo:
+          type: integer
+    PatchedFatoInfraestrutura:
+      type: object
+      properties:
+        id_registro:
+          type: integer
+          readOnly: true
+        consumo_agua_m3:
+          type: number
+          format: double
+        consumo_energia_kwh:
+          type: number
+          format: double
+        total_colaboradores_ativos:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        eventos_infeccao:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        id_unidade:
+          type: integer
+        id_tempo:
+          type: integer
+    PatchedFatoProcedimentos:
+      type: object
+      properties:
+        id_procedimento_instancia:
+          type: integer
+          readOnly: true
+        tempo_preparo_minutos:
+          type: number
+          format: double
+        tempo_execucao_minutos:
+          type: number
+          format: double
+        tempo_limpeza_minutos:
+          type: number
+          format: double
+        status_agendamento:
+          type: string
+          maxLength: 50
+        id_tipo_procedimento:
+          type: integer
+        id_unidade:
+          type: integer
+        id_tempo:
+          type: integer
+        id_equipamento:
+          type: integer
+          nullable: true
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"

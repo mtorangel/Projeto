@@ -1,0 +1,400 @@
+7371: # Method Name:       post
+7372: # Filename:          indicadores\views.py
+7373: # Argument count:    2
+7374: # Position-only argument count: 0
+7375: # Keyword-only arguments: 0
+7376: # Number of locals:  14
+7377: # Stack size:        9
+7378: # Flags:             0x00000003 (NEWLOCALS | OPTIMIZED)
+7379: # First Line:        1029
+7380: # Constants:
+7381: #    0: None
+7382: #    1: 0
+7383: #    2: 'records'
+7384: #    3: 100
+7385: #    4: 'mode'
+7386: #    5: 'db'
+7387: #    6: 'clear'
+7388: #    7: False
+7389: #    8: 'dims_only'
+7390: #    9: 'facts_only'
+7391: #   10: 1
+7392: #   11: 50000
+7393: #   12: 'erro'
+7394: #   13: 'Quantidade de registros deve ser entre 1 e 50000.'
+7395: #   14: 400
+7396: #   15: ('status',)
+7397: #   16: ('db', 'csv', 'both')
+7398: #   17: "Modo invßlido. Use 'db', 'csv' ou 'both'."
+7399: #   18: '..'
+7400: #   19: 'manage.py'
+7401: #   20: 'generate_data'
+7402: #   21: '--records='
+7403: #   22: '--mode='
+7404: #   23: '--clear'
+7405: #   24: '--dims-only'
+7406: #   25: '--facts-only'
+7407: #   26: True
+7408: #   27: 300
+7409: #   28: ('capture_output', 'text', 'timeout', 'cwd')
+7410: #   29: 'ok'
+7411: #   30: 'GeraþÒo de dados concluÝda com sucesso.'
+7412: #   31: ('status', 'mensagem', 'log', 'records', 'mode')
+7413: #   32: 'Erro durante a geraþÒo de dados.'
+7414: #   33: ('status', 'mensagem', 'log')
+7415: #   34: 500
+7416: #   35: 'Timeout: geraþÒo demorou mais de 5 minutos.'
+7417: #   36: 504
+7418: # Names:
+7419: #    0: subprocess
+7420: #    1: sys
+7421: #    2: os
+7422: #    3: int
+7423: #    4: data
+7424: #    5: get
+7425: #    6: response
+7426: #    7: Response
+7427: #    8: path
+7428: #    9: join
+7429: #   10: dirname
+7430: #   11: abspath
+7431: #   12: __file__
+7432: #   13: executable
+7433: #   14: append
+7434: #   15: run
+7435: #   16: returncode
+7436: #   17: stdout
+7437: #   18: stderr
+7438: #   19: TimeoutExpired
+7439: #   20: Exception
+7440: #   21: str
+7441: # Varnames:
+7442: #	self, request, subprocess, sys, os, records, mode, clear, dims_only, facts_only, manage_py, cmd, result, e
+7443: # Positional arguments:
+7444: #	self, request
+7445: # Local variables:
+7446: #    2: subprocess
+7447: #    3: sys
+7448: #    4: os
+7449: #    5: records
+7450: #    6: mode
+7451: #    7: clear
+7452: #    8: dims_only
+7453: #    9: facts_only
+7454: #   10: manage_py
+7455: #   11: cmd
+7456: #   12: result
+7457: #   13: e
+7458: 
+7459: 1029:           0 RESUME               0
+7460: 
+7461: 1030:           2 LOAD_CONST           (0)
+7462:                4 LOAD_CONST           (None)
+7463:                6 IMPORT_NAME          (subprocess)
+7464:                8 STORE_FAST           (subprocess)
+7465: 
+7466: 1031:          10 LOAD_CONST           (0)
+7467:               12 LOAD_CONST           (None)
+7468:               14 IMPORT_NAME          (sys)
+7469:               16 STORE_FAST           (sys)
+7470: 
+7471: 1032:          18 LOAD_CONST           (0)
+7472:               20 LOAD_CONST           (None)
+7473:               22 IMPORT_NAME          (os)
+7474:               24 STORE_FAST           (os)
+7475: 
+7476: 1034:          26 LOAD_GLOBAL          (NULL + int)
+7477:               36 LOAD_FAST            (request)
+7478:               38 LOAD_ATTR            (data)
+7479:               58 LOAD_ATTR            (NULL|self + get)
+7480:               78 LOAD_CONST           ("records")
+7481:               80 LOAD_CONST           (100)
+7482:               82 CALL                 2
+7483:               90 CALL                 1
+7484:               98 STORE_FAST           (records)
+7485: 
+7486: 1035:         100 LOAD_FAST            (request)
+7487:              102 LOAD_ATTR            (data)
+7488:              122 LOAD_ATTR            (NULL|self + get)
+7489:              142 LOAD_CONST           ("mode")
+7490:              144 LOAD_CONST           ("db")
+7491:              146 CALL                 2
+7492:              154 STORE_FAST           (mode)
+7493: 
+7494: 1036:         156 LOAD_FAST            (request)
+7495:              158 LOAD_ATTR            (data)
+7496:              178 LOAD_ATTR            (NULL|self + get)
+7497:              198 LOAD_CONST           ("clear")
+7498:              200 LOAD_CONST           (False)
+7499:              202 CALL                 2
+7500:              210 STORE_FAST           (clear)
+7501: 
+7502: 1037:         212 LOAD_FAST            (request)
+7503:              214 LOAD_ATTR            (data)
+7504:              234 LOAD_ATTR            (NULL|self + get)
+7505:              254 LOAD_CONST           ("dims_only")
+7506:              256 LOAD_CONST           (False)
+7507:              258 CALL                 2
+7508:              266 STORE_FAST           (dims_only)
+7509: 
+7510: 1038:         268 LOAD_FAST            (request)
+7511:              270 LOAD_ATTR            (data)
+7512:              290 LOAD_ATTR            (NULL|self + get)
+7513:              310 LOAD_CONST           ("facts_only")
+7514:              312 LOAD_CONST           (False)
+7515:              314 CALL                 2
+7516:              322 STORE_FAST           (facts_only)
+7517: 
+7518: 1040:         324 LOAD_FAST            (records)
+7519:              326 LOAD_CONST           (1)
+7520:              328 COMPARE_OP           (<)
+7521:              332 POP_JUMP_IF_TRUE     (to 344)
+7522:              334 LOAD_FAST            (records)
+7523:              336 LOAD_CONST           (50000)
+7524:              338 COMPARE_OP           (>)
+7525:              342 POP_JUMP_IF_FALSE    (to 394)
+7526: 
+7527: 1041:     >>  344 LOAD_GLOBAL          (NULL + response)
+7528:              354 LOAD_ATTR            (Response)
+7529:              374 LOAD_CONST           ("erro")
+7530:              376 LOAD_CONST           ("Quantidade de registros deve ser entre 1 e 50000.")
+7531:              378 BUILD_MAP            1
+7532:              380 LOAD_CONST           (400)
+7533:              382 KW_NAMES             (('status',))
+7534:              384 CALL                 2
+7535:              392 RETURN_VALUE
+7536: 
+7537: 1042:     >>  394 LOAD_FAST            (mode)
+7538:              396 LOAD_CONST           (('db', 'csv', 'both'))
+7539:              398 CONTAINS_OP          (not in)
+7540:              400 POP_JUMP_IF_FALSE    (to 452)
+7541: 
+7542: 1043:         402 LOAD_GLOBAL          (NULL + response)
+7543:              412 LOAD_ATTR            (Response)
+7544:              432 LOAD_CONST           ("erro")
+7545:              434 LOAD_CONST           ("Modo invßlido. Use 'db', 'csv' ou 'both'.")
+7546:              436 BUILD_MAP            1
+7547:              438 LOAD_CONST           (400)
+7548:              440 KW_NAMES             (('status',))
+7549:              442 CALL                 2
+7550:              450 RETURN_VALUE
+7551: 
+7552: 1046:     >>  452 LOAD_FAST            (os)
+7553:              454 LOAD_ATTR            (path)
+7554:              474 LOAD_ATTR            (NULL|self + join)
+7555:              494 LOAD_FAST            (os)
+7556:              496 LOAD_ATTR            (path)
+7557:              516 LOAD_ATTR            (NULL|self + dirname)
+7558:              536 LOAD_FAST            (os)
+7559:              538 LOAD_ATTR            (path)
+7560:              558 LOAD_ATTR            (NULL|self + dirname)
+7561:              578 LOAD_FAST            (os)
+7562:              580 LOAD_ATTR            (path)
+7563:              600 LOAD_ATTR            (NULL|self + abspath)
+7564:              620 LOAD_GLOBAL          (__file__)
+7565:              630 CALL                 1
+7566:              638 CALL                 1
+7567:              646 CALL                 1
+7568:              654 LOAD_CONST           ("..")
+7569:              656 LOAD_CONST           ("manage.py")
+7570:              658 CALL                 3
+7571:              666 STORE_FAST           (manage_py)
+7572: 
+7573: 1047:         668 LOAD_FAST            (sys)
+7574:              670 LOAD_ATTR            (executable)
+7575:              690 LOAD_FAST            (manage_py)
+7576:              692 LOAD_CONST           ("generate_data")
+7577:              694 LOAD_CONST           ("--records=")
+7578:              696 LOAD_FAST            (records)
+7579:              698 FORMAT_VALUE         0
+7580:              700 BUILD_STRING         2
+7581:              702 LOAD_CONST           ("--mode=")
+7582:              704 LOAD_FAST            (mode)
+7583:              706 FORMAT_VALUE         0
+7584:              708 BUILD_STRING         2
+7585:              710 BUILD_LIST           5
+7586:              712 STORE_FAST           (cmd)
+7587: 
+7588: 1048:         714 LOAD_FAST            (clear)
+7589:              716 POP_JUMP_IF_FALSE    (to 752)
+7590: 
+7591: 1049:         718 LOAD_FAST            (cmd)
+7592:              720 LOAD_ATTR            (NULL|self + append)
+7593:              740 LOAD_CONST           ("--clear")
+7594:              742 CALL                 1
+7595:              750 POP_TOP
+7596: 
+7597: 1050:     >>  752 LOAD_FAST            (dims_only)
+7598:              754 POP_JUMP_IF_FALSE    (to 790)
+7599: 
+7600: 1051:         756 LOAD_FAST            (cmd)
+7601:              758 LOAD_ATTR            (NULL|self + append)
+7602:              778 LOAD_CONST           ("--dims-only")
+7603:              780 CALL                 1
+7604:              788 POP_TOP
+7605: 
+7606: 1052:     >>  790 LOAD_FAST            (facts_only)
+7607:              792 POP_JUMP_IF_FALSE    (to 828)
+7608: 
+7609: 1053:         794 LOAD_FAST            (cmd)
+7610:              796 LOAD_ATTR            (NULL|self + append)
+7611:              816 LOAD_CONST           ("--facts-only")
+7612:              818 CALL                 1
+7613:              826 POP_TOP
+7614: 
+7615: 1055:     >>  828 NOP
+7616: 
+7617: 1056:         830 LOAD_FAST            (subprocess)
+7618:              832 LOAD_ATTR            (NULL|self + run)
+7619: 
+7620: 1057:         852 LOAD_FAST            (cmd)
+7621: 
+7622: 1058:         854 LOAD_CONST           (True)
+7623: 
+7624: 1059:         856 LOAD_CONST           (True)
+7625: 
+7626: 1060:         858 LOAD_CONST           (300)
+7627: 
+7628: 1061:         860 LOAD_FAST            (os)
+7629:              862 LOAD_ATTR            (path)
+7630:              882 LOAD_ATTR            (NULL|self + dirname)
+7631:              902 LOAD_FAST            (manage_py)
+7632:              904 CALL                 1
+7633: 
+7634: 1056:         912 KW_NAMES             (('capture_output', 'text', 'timeout', 'cwd'))
+7635:              914 CALL                 5
+7636:              922 STORE_FAST           (result)
+7637: 
+7638: 1063:         924 LOAD_FAST            (result)
+7639:              926 LOAD_ATTR            (returncode)
+7640:              946 LOAD_CONST           (0)
+7641:              948 COMPARE_OP           (==)
+7642:              952 POP_JUMP_IF_FALSE    (to 1028)
+7643: 
+7644: 1064:         954 LOAD_GLOBAL          (NULL + response)
+7645:              964 LOAD_ATTR            (Response)
+7646: 
+7647: 1065:         984 LOAD_CONST           ("ok")
+7648: 
+7649: 1066:         986 LOAD_CONST           ("GeraþÒo de dados concluÝda com sucesso.")
+7650: 
+7651: 1067:         988 LOAD_FAST            (result)
+7652:              990 LOAD_ATTR            (stdout)
+7653: 
+7654: 1068:        1010 LOAD_FAST            (records)
+7655: 
+7656: 1069:        1012 LOAD_FAST            (mode)
+7657: 
+7658: 1064:        1014 LOAD_CONST           (('status', 'mensagem', 'log', 'records', 'mode'))
+7659:             1016 BUILD_CONST_KEY_MAP  5
+7660:             1018 CALL                 1
+7661:             1026 RETURN_VALUE
+7662: 
+7663: 1072:     >> 1028 LOAD_GLOBAL          (NULL + response)
+7664:             1038 LOAD_ATTR            (Response)
+7665: 
+7666: 1073:        1058 LOAD_CONST           ("erro")
+7667: 
+7668: 1074:        1060 LOAD_CONST           ("Erro durante a geraþÒo de dados.")
+7669: 
+7670: 1075:        1062 LOAD_FAST            (result)
+7671:             1064 LOAD_ATTR            (stderr)
+7672:             1084 COPY                 1
+7673:             1086 POP_JUMP_IF_TRUE     (to 1112)
+7674:             1088 POP_TOP
+7675:             1090 LOAD_FAST            (result)
+7676:             1092 LOAD_ATTR            (stdout)
+7677: 
+7678: 1072:     >> 1112 LOAD_CONST           (('status', 'mensagem', 'log'))
+7679:             1114 BUILD_CONST_KEY_MAP  3
+7680: 
+7681: 1076:        1116 LOAD_CONST           (500)
+7682: 
+7683: 1072:        1118 KW_NAMES             (('status',))
+7684:             1120 CALL                 2
+7685:             1128 RETURN_VALUE
+7686:             1130 PUSH_EXC_INFO
+7687: 
+7688: 1077:        1132 LOAD_FAST            (subprocess)
+7689:             1134 LOAD_ATTR            (TimeoutExpired)
+7690:             1154 CHECK_EXC_MATCH
+7691:             1156 POP_JUMP_IF_FALSE    (to 1214)
+7692:             1158 POP_TOP
+7693: 
+7694: 1078:        1160 LOAD_GLOBAL          (NULL + response)
+7695:             1170 LOAD_ATTR            (Response)
+7696:             1190 LOAD_CONST           ("erro")
+7697:             1192 LOAD_CONST           ("Timeout: geraþÒo demorou mais de 5 minutos.")
+7698:             1194 BUILD_MAP            1
+7699:             1196 LOAD_CONST           (504)
+7700:             1198 KW_NAMES             (('status',))
+7701:             1200 CALL                 2
+7702:             1208 SWAP                 (TOS <-> TOS1)
+7703:             1210 POP_EXCEPT
+7704:             1212 RETURN_VALUE
+7705: 
+7706: 1079:     >> 1214 LOAD_GLOBAL          (Exception)
+7707:             1224 CHECK_EXC_MATCH
+7708:             1226 POP_JUMP_IF_FALSE    (to 1316)
+7709:             1228 STORE_FAST           (e)
+7710: 
+7711: 1080:        1230 LOAD_GLOBAL          (NULL + response)
+7712:             1240 LOAD_ATTR            (Response)
+7713:             1260 LOAD_CONST           ("erro")
+7714:             1262 LOAD_GLOBAL          (NULL + str)
+7715:             1272 LOAD_FAST            (e)
+7716:             1274 CALL                 1
+7717:             1282 BUILD_MAP            1
+7718:             1284 LOAD_CONST           (500)
+7719:             1286 KW_NAMES             (('status',))
+7720:             1288 CALL                 2
+7721:             1296 SWAP                 (TOS <-> TOS1)
+7722:             1298 POP_EXCEPT
+7723:             1300 LOAD_CONST           (None)
+7724:             1302 STORE_FAST           (e)
+7725:             1304 DELETE_FAST          (e)
+7726:             1306 RETURN_VALUE
+7727:             1308 LOAD_CONST           (None)
+7728:             1310 STORE_FAST           (e)
+7729:             1312 DELETE_FAST          (e)
+7730:             1314 RERAISE              1
+7731: 
+7732: 1079:     >> 1316 RERAISE              0
+7733:             1318 COPY                 3
+7734:             1320 POP_EXCEPT
+7735:             1322 RERAISE              1
+7736: 
+7737: ExceptionTable:
+7738:   830 to 1024 -> 1130 [0]
+7739:   1028 to 1126 -> 1130 [0]
+7740:   1130 to 1208 -> 1318 [1] lasti
+7741:   1214 to 1228 -> 1318 [1] lasti
+7742:   1230 to 1294 -> 1308 [1] lasti
+7743:   1296 to 1296 -> 1318 [1] lasti
+7744:   1308 to 1316 -> 1318 [1] lasti
+7745: 
+7746: # Method Name:       <genexpr>
+7747: # Filename:          indicadores\views.py
+7748: # Argument count:    1
+7749: # Position-only argument count: 0
+7750: # Keyword-only arguments: 0
+7751: # Number of locals:  2
+7752: # Stack size:        3
+7753: # Flags:             0x00000033 (GENERATOR | NESTED | NEWLOCALS | OPTIMIZED)
+7754: # First Line:        272
+7755: # Constants:
+7756: #    0: 'receita_bruta'
+7757: #    1: None
+7758: # Varnames:
+7759: #	.0, r
+7760: # Positional arguments:
+7761: #	.0
+7762: # Local variables:
+7763: #    1: r
+7764: 
+7765: 272:           0 RETURN_GENERATOR
+7766:                2 POP_TOP
+7767:                4 RESUME               0
+7768:                6 LOAD_FAST            (.0)
+7769:                8 FOR_ITER             (to 30)
+7770:               12 STORE_FAST           (r)

@@ -1,0 +1,56 @@
+id_atendimento;id_tempo;id_unidade;id_paciente;tempo_permanencia_dias;status_alta;reinternacao_30d
+20121;20250901;3;1270;10;Óbito;False
+20122;20250901;5;1213;6;Alta Médica;False
+20123;20250902;1;1230;7;Alta Médica;False
+20124;20250902;3;1080;3;Alta Médica;False
+20125;20250903;5;1202;8;Óbito;False
+20126;20250903;2;1250;7;Óbito;True
+20127;20250903;4;1227;10;Alta Médica;False
+20128;20250904;3;1185;2;Alta Médica;False
+20129;20250904;4;1157;6;Transferência;False
+20130;20250904;4;1116;3;Alta Médica;False
+20131;20250905;4;1014;6;Alta Médica;False
+20132;20250905;3;1225;10;Transferência;False
+20133;20250905;4;1020;9;Alta Médica;False
+20134;20250906;4;1064;2;Alta Médica;False
+20135;20250907;4;1045;1;Alta Médica;False
+20136;20250907;5;1269;4;Alta Médica;False
+20137;20250908;3;1154;9;Óbito;False
+20138;20250908;4;1070;8;Alta Médica;False
+20139;20250909;4;1228;9;Alta Médica;False
+20140;20250910;2;1146;10;Alta Médica;False
+20141;20250911;1;1233;8;Alta Médica;False
+20142;20250911;3;1247;7;Alta Médica;False
+20143;20250912;1;1156;7;Alta Médica;False
+20144;20250912;4;1163;12;Transferência;False
+20145;20250912;4;1070;2;Alta Médica;True
+20146;20250913;1;1028;6;Óbito;False
+20147;20250913;1;1047;3;Óbito;False
+20148;20250914;3;1139;5;Alta Médica;False
+20149;20250914;3;1180;4;Alta Médica;False
+20150;20250915;1;1099;11;Transferência;False
+20151;20250916;1;1188;9;Alta Médica;False
+20152;20250917;4;1019;12;Alta Médica;False
+20153;20250918;1;1009;8;Alta Médica;False
+20154;20250919;4;1187;5;Alta Médica;False
+20155;20250919;2;1118;2;Alta Médica;False
+20156;20250919;1;1066;1;Óbito;False
+20157;20250920;2;1286;1;Transferência;False
+20158;20250921;4;1033;6;Alta Médica;False
+20159;20250922;3;1172;7;Óbito;False
+20160;20250922;5;1146;8;Alta Médica;True
+20161;20250922;3;1163;6;Alta Médica;True
+20162;20250923;5;1255;11;Alta Médica;False
+20163;20250924;5;1252;1;Alta Médica;False
+20164;20250924;3;1253;2;Óbito;False
+20165;20250924;1;1205;7;Alta Médica;False
+20166;20250925;3;1246;6;Alta Médica;False
+20167;20250926;1;1035;2;Óbito;False
+20168;20250926;4;1110;9;Alta Médica;False
+20169;20250926;1;1149;7;Alta Médica;False
+20170;20250927;1;1119;11;Alta Médica;False
+20171;20250927;5;1252;9;Alta Médica;True
+20172;20250928;1;1160;10;Alta Médica;True
+20173;20250929;3;1276;7;Alta Médica;False
+20174;20250929;3;1110;11;Transferência;True
+20175;20250930;5;1029;2;Alta Médica;False

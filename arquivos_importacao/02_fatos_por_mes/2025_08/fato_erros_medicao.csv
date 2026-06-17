@@ -1,0 +1,3 @@
+id_evento;id_medicamento;id_paciente;id_tempo;tipo_erro;severidade
+40000;6;1189;20250803;Horário Incorreto;Média
+40001;2;1132;20250813;Omissão de Dose;Média

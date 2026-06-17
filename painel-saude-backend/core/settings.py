@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # Third party apps
     'rest_framework',
     'rest_framework.authtoken',
+    'drf_spectacular',
     'corsheaders',
     'indicadores',
     'integracoes',
@@ -50,6 +51,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 MIDDLEWARE = [
@@ -91,7 +93,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "indicadores_db",
         "USER": "postgres",
-        "PASSWORD": "admin",
+        "PASSWORD": "(M5t5o8r6)",
         "HOST": "localhost",
         "PORT": "5432",
         "OPTIONS": {
@@ -144,3 +146,24 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # CORS configuration
 CORS_ALLOW_ALL_ORIGINS = True
+
+from corsheaders.defaults import default_headers
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    "x-gemini-key",
+    "x-openai-key",
+    "X-Gemini-Key",
+    "X-OpenAI-Key",
+]
+
+# DRF Spectacular settings
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Health Analytics API (BI Hospitalar)',
+    'DESCRIPTION': 'Documentacao interativa da API de Business Intelligence Hospitalar baseada no Star Schema.',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}
+
+# Max upload sizes (50MB)
+DATA_UPLOAD_MAX_MEMORY_SIZE = 52428800
+FILE_UPLOAD_MAX_MEMORY_SIZE = 52428800
+

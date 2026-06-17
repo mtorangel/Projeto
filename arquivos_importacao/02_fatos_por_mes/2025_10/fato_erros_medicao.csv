@@ -1,0 +1,4 @@
+id_evento;id_medicamento;id_paciente;id_tempo;tipo_erro;severidade
+40004;5;1069;20251003;Omissão de Dose;Alta
+40005;6;1292;20251005;Omissão de Dose;Alta
+40006;6;1173;20251028;Horário Incorreto;Média

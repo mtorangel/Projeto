@@ -8,6 +8,7 @@ import {
 } from 'recharts';
 import KPICard from '../components/KPICard';
 import FilterBar from '../components/FilterBar';
+import AITrigger from '../components/AITrigger';
 
 const COLORS = ['#8884d8', '#83a6ed', '#8dd1e1', '#82ca9d', '#a4de6c', '#d0ed57', '#ffc658'];
 
@@ -76,7 +77,7 @@ function MedicosDashboard() {
         <p style={{ color: '#94a3b8' }}>Adesão a Protocolos, Produtividade e Qualidade de Registros</p>
       </header>
 
-      <FilterBar filters={filters} setFilters={setFilters} onClear={handleClearFilters} />
+      <FilterBar filters={filters} setFilters={setFilters} onClear={handleClearFilters} filteredCount={stats?.registros_afetados} />
 
       {loading ? (
         <div style={{ padding: '4rem', textAlign: 'center', color: '#2dd4bf' }}>Atualizando indicadores médicos...</div>
@@ -90,31 +91,44 @@ function MedicosDashboard() {
           </div>
 
           <div className="grid">
-            <div className="glass-card" style={{ padding: '2rem', height: '450px' }}>
-              <h3 style={{ marginBottom: '2rem' }}>Adesão aos Protocolos por Área</h3>
+            <div className="glass-card" style={{ padding: '2rem', height: '450px', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem' }}>
+                <h3 style={{ margin: 0, fontSize: '1.1rem', color: '#f8fafc' }}>Adesão aos Protocolos por Área</h3>
+                <AITrigger indicador="Adesão Protocolos" valorAtual="Geral" color="#2dd4bf" iconSize={15} buttonStyle={{ background: 'rgba(45, 212, 191, 0.1)', padding: '4px', borderRadius: '6px' }} />
+              </div>
+              <div style={{ flex: 1, minHeight: 0 }}>
               <ResponsiveContainer width="100%" height="80%">
                 <RadarChart cx="50%" cy="50%" outerRadius="80%" data={stats.adesao_protocolo}>
                   <PolarGrid stroke="#334155" />
                   <PolarAngleAxis dataKey="id_protocolo__area_medica" tick={{ fill: '#94a3b8', fontSize: 10 }} />
                   <PolarRadiusAxis angle={30} domain={[0, 100]} stroke="#334155" tick={{ fill: '#94a3b8' }} />
                   <Radar name="Adesão (%)" dataKey="valor" stroke="#2dd4bf" fill="#2dd4bf" fillOpacity={0.6} />
-                  <Tooltip contentStyle={{ backgroundColor: '#1e293b', border: 'none' }} />
+                  <Tooltip contentStyle={{ backgroundColor: '#1e293b', border: 'none' }} itemStyle={{ color: '#f8fafc' }} labelStyle={{ color: '#94a3b8' }} />
                 </RadarChart>
               </ResponsiveContainer>
+              </div>
             </div>
 
-            <div className="glass-card" style={{ padding: '2rem', height: '450px' }}>
-              <h3 style={{ marginBottom: '2rem' }}>Volume de Atendimentos (Especialidade)</h3>
+            <div className="glass-card" style={{ padding: '2rem', height: '450px', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem' }}>
+                <h3 style={{ margin: 0, fontSize: '1.1rem', color: '#f8fafc' }}>Volume de Atendimentos (Especialidade)</h3>
+                <AITrigger indicador="Tempo Prontuário" valorAtual="Geral" color="#8884d8" iconSize={15} buttonStyle={{ background: 'rgba(136, 132, 216, 0.1)', padding: '4px', borderRadius: '6px' }} />
+              </div>
+              <div style={{ flex: 1, minHeight: 0 }}>
               <ResponsiveContainer width="100%" height="80%">
                 <Treemap data={treemapData} dataKey="size" stroke="#1e293b" fill="#8884d8">
                   <Tooltip contentStyle={{ backgroundColor: '#1e293b', border: 'none', borderRadius: '8px' }} itemStyle={{ color: '#f8fafc' }} labelStyle={{ color: '#94a3b8' }} />
                 </Treemap>
               </ResponsiveContainer>
+              </div>
             </div>
           </div>
 
           <div className="glass-card" style={{ padding: '2rem', marginTop: '2rem' }}>
-            <h3 style={{ marginBottom: '1.5rem' }}>Tempo de Fechamento de Prontuário por Especialidade</h3>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
+              <h3 style={{ margin: 0, fontSize: '1.1rem', color: '#f8fafc' }}>Tempo de Fechamento de Prontuário por Especialidade</h3>
+              <AITrigger indicador="Tempo Prontuário" valorAtual="Geral" color="#818cf8" iconSize={15} buttonStyle={{ background: 'rgba(129, 140, 248, 0.1)', padding: '4px', borderRadius: '6px' }} />
+            </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {stats.tempo_prontuario.map((item, idx) => (
                 <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px', background: 'rgba(255,255,255,0.05)', borderRadius: '8px' }}>

@@ -7,6 +7,7 @@ import {
 } from 'recharts';
 import KPICard from '../components/KPICard';
 import FilterBar from '../components/FilterBar';
+import AITrigger from '../components/AITrigger';
 
 function HospitalDashboard() {
   const navigate = useNavigate();
@@ -68,6 +69,7 @@ function HospitalDashboard() {
         filters={filters} 
         setFilters={setFilters} 
         onClear={handleClearFilters} 
+        filteredCount={stats?.registros_afetados}
       />
 
       {loading ? (
@@ -82,11 +84,15 @@ function HospitalDashboard() {
           </div>
 
           <div className="grid">
-            <div className="glass-card" style={{ padding: '2rem', height: '400px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '2rem' }}>
-                <Droplets color="#3b82f6" />
-                <h3>Consumo de Água (m³)</h3>
+            <div className="glass-card" style={{ padding: '2rem', height: '400px', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <Droplets color="#3b82f6" />
+                  <h3 style={{ margin: 0, fontSize: '1.1rem', color: '#f8fafc' }}>Consumo de Água (m³)</h3>
+                </div>
+                <AITrigger indicador="Consumo Água/Energia" valorAtual="Geral" color="#3b82f6" iconSize={15} buttonStyle={{ background: 'rgba(59, 130, 246, 0.1)', padding: '4px', borderRadius: '6px' }} />
               </div>
+              <div style={{ flex: 1, minHeight: 0 }}>
               <ResponsiveContainer width="100%" height="70%">
                 <AreaChart data={stats.consumo_tendencia}>
                   <defs>
@@ -95,17 +101,22 @@ function HospitalDashboard() {
                   <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
                   <XAxis dataKey="id_tempo__data_registro" stroke="#94a3b8" fontSize={10} />
                   <YAxis stroke="#94a3b8" />
-                  <Tooltip contentStyle={{ backgroundColor: '#1e293b', border: 'none' }} />
+                  <Tooltip contentStyle={{ backgroundColor: '#1e293b', border: 'none' }} itemStyle={{ color: '#f8fafc' }} labelStyle={{ color: '#94a3b8' }} />
                   <Area type="monotone" dataKey="agua" stroke="#3b82f6" fillOpacity={1} fill="url(#colorAgua)" />
                 </AreaChart>
               </ResponsiveContainer>
+              </div>
             </div>
 
-            <div className="glass-card" style={{ padding: '2rem', height: '400px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '2rem' }}>
-                <Zap color="#fbbf24" />
-                <h3>Consumo de Energia (kWh)</h3>
+            <div className="glass-card" style={{ padding: '2rem', height: '400px', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <Zap color="#fbbf24" />
+                  <h3 style={{ margin: 0, fontSize: '1.1rem', color: '#f8fafc' }}>Consumo de Energia (kWh)</h3>
+                </div>
+                <AITrigger indicador="Consumo Água/Energia" valorAtual="Geral" color="#fbbf24" iconSize={15} buttonStyle={{ background: 'rgba(251, 191, 36, 0.1)', padding: '4px', borderRadius: '6px' }} />
               </div>
+              <div style={{ flex: 1, minHeight: 0 }}>
               <ResponsiveContainer width="100%" height="70%">
                 <AreaChart data={stats.consumo_tendencia}>
                   <defs>
@@ -114,10 +125,11 @@ function HospitalDashboard() {
                   <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
                   <XAxis dataKey="id_tempo__data_registro" stroke="#94a3b8" fontSize={10} />
                   <YAxis stroke="#94a3b8" />
-                  <Tooltip contentStyle={{ backgroundColor: '#1e293b', border: 'none' }} />
+                  <Tooltip contentStyle={{ backgroundColor: '#1e293b', border: 'none' }} itemStyle={{ color: '#f8fafc' }} labelStyle={{ color: '#94a3b8' }} />
                   <Area type="monotone" dataKey="energia" stroke="#fbbf24" fillOpacity={1} fill="url(#colorEnergia)" />
                 </AreaChart>
               </ResponsiveContainer>
+              </div>
             </div>
           </div>
         </>

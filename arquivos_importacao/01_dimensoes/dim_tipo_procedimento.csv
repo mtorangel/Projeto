@@ -1,0 +1,7 @@
+id_tipo_procedimento;nome_procedimento;especialidade;valor_base
+1;Consulta Médica de Emergência;Clínica Geral;180.0
+2;Cirurgia Cardíaca de Revascularização;Cardiologia;12500.0
+3;Angioplastia Coronária;Cardiologia;6800.0
+4;Raio-X de Tórax (Digital);Radiologia;95.0
+5;Ressonância Magnética de Crânio;Radiologia;850.0
+6;Apendicectomia Videolaparoscópica;Cirurgia Geral;4200.0

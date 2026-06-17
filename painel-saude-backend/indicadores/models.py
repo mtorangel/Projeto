@@ -257,3 +257,49 @@ class FatoFinanceiro(models.Model):
 
     def __str__(self):
         return f"Transação {self.id_transacao} - {self.id_convenio.nome_operadora}"
+
+
+class DocumentoConhecimento(models.Model):
+    id_documento = models.AutoField(primary_key=True)
+    nome_arquivo = models.CharField(max_length=255)
+    tipo_documento = models.CharField(max_length=50)
+    tamanho_bytes = models.IntegerField()
+    data_upload = models.DateTimeField(auto_now_add=True)
+    conteudo_completo = models.TextField()
+
+    class Meta:
+        verbose_name = "Documento de Conhecimento"
+        verbose_name_plural = "Documentos de Conhecimento"
+
+    def __str__(self):
+        return self.nome_arquivo
+
+
+class BlocoDocumento(models.Model):
+    id_bloco = models.AutoField(primary_key=True)
+    documento = models.ForeignKey(DocumentoConhecimento, on_delete=models.CASCADE, related_name="blocos")
+    indice_bloco = models.IntegerField()
+    conteudo = models.TextField()
+    embedding = models.JSONField(null=True, blank=True)
+
+    class Meta:
+        verbose_name = "Bloco de Documento"
+        verbose_name_plural = "Blocos de Documentos"
+
+    def __str__(self):
+        return f"{self.documento.nome_arquivo} - Bloco {self.indice_bloco}"
+
+
+class ResumoExecutivo(models.Model):
+    id_resumo = models.AutoField(primary_key=True)
+    data_geracao = models.DateField(auto_now_add=True)
+    dados_anomalias = models.JSONField()
+    conteudo_resumo = models.TextField()
+
+    class Meta:
+        verbose_name = "Resumo Executivo"
+        verbose_name_plural = "Resumos Executivos"
+
+    def __str__(self):
+        return f"Resumo Diário - {self.data_geracao}"
+

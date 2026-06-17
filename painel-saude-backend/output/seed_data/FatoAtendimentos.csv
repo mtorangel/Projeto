@@ -1,0 +1,501 @@
+id_atendimento,id_tempo_id,id_unidade_id,id_paciente_id,tempo_permanencia_dias,status_alta,reinternacao_30d
+1,637,13,774,14,Alta Médica,False
+2,263,15,246,13,Transferência,False
+3,468,14,547,18,A/O,False
+4,279,18,639,13,Alta Médica,False
+5,83,22,242,13,Evasão,False
+6,477,15,525,13,Transferência,False
+7,261,12,706,12,Alta Médica,True
+8,478,21,667,2,Alta Médica,False
+9,408,19,524,6,Alta Médica,False
+10,343,13,341,11,Transferência,False
+11,688,22,297,8,Alta Médica,False
+12,383,20,380,6,Alta Médica,False
+13,281,22,172,3,Alta Médica,True
+14,318,11,383,19,Transferência,False
+15,571,12,599,19,Alta Médica,False
+16,700,21,488,7,Transferência,False
+17,172,13,451,15,Alta Médica,False
+18,273,14,345,8,Transferência,False
+19,132,18,200,14,Alta Médica,True
+20,455,20,542,12,Transferência,False
+21,304,23,535,6,Alta Médica,False
+22,467,23,759,18,Alta Médica,False
+23,568,14,424,12,Transferência,False
+24,386,12,440,18,Transferência,False
+25,214,12,676,15,Alta Médica,False
+26,382,12,532,9,Alta Médica,False
+27,103,20,389,8,Evasão,False
+28,645,23,270,8,Alta Médica,False
+29,331,20,683,2,Óbito,False
+30,708,13,714,13,Alta Médica,False
+31,568,22,750,11,Alta Médica,True
+32,117,12,549,12,Alta Médica,False
+33,598,22,467,13,Alta Médica,False
+34,671,16,531,1,Alta Médica,False
+35,535,13,367,5,A/O,False
+36,739,12,513,6,Alta Médica,False
+37,770,16,284,4,Alta Médica,False
+38,476,15,388,7,A/O,False
+39,203,20,470,18,Alta Médica,False
+40,445,23,763,16,Alta Médica,False
+41,436,21,780,19,Evasão,False
+42,767,21,351,5,Alta Médica,False
+43,77,23,451,11,Alta Médica,False
+44,292,15,528,5,Alta Médica,False
+45,513,14,679,12,Alta Médica,False
+46,688,12,317,7,A/O,False
+47,74,23,330,6,Alta Médica,False
+48,656,12,581,16,Alta Médica,False
+49,199,14,400,2,Alta Médica,False
+50,262,14,226,2,Alta Médica,False
+51,785,18,385,9,Alta Médica,False
+52,620,20,317,10,Alta Médica,False
+53,87,16,206,10,Óbito,False
+54,64,15,617,16,A/O,False
+55,699,18,180,12,Alta Médica,True
+56,468,23,752,12,Alta Médica,False
+57,260,12,584,3,Alta Médica,True
+58,735,17,174,18,Alta Médica,False
+59,372,17,146,10,Alta Médica,False
+60,349,23,649,13,Transferência,False
+61,261,13,382,8,Alta Médica,False
+62,728,19,501,2,A/O,False
+63,266,13,320,12,Evasão,False
+64,351,19,605,9,Alta Médica,False
+65,110,21,174,19,Alta Médica,False
+66,332,11,630,11,Alta Médica,False
+67,221,18,627,20,A/O,False
+68,599,13,490,5,Óbito,False
+69,479,11,736,18,Alta Médica,True
+70,301,19,431,3,Alta Médica,False
+71,388,17,471,20,Alta Médica,False
+72,469,16,571,11,Evasão,False
+73,168,14,511,20,Alta Médica,False
+74,393,20,455,18,A/O,False
+75,343,18,545,8,Alta Médica,False
+76,78,20,497,6,Alta Médica,False
+77,275,17,488,17,Alta Médica,True
+78,710,16,271,8,Alta Médica,False
+79,767,15,490,6,Alta Médica,False
+80,272,21,763,4,Evasão,False
+81,423,23,558,15,Alta Médica,False
+82,556,20,573,10,Alta Médica,True
+83,73,20,534,13,Transferência,False
+84,196,11,423,11,Alta Médica,False
+85,777,15,284,15,Alta Médica,False
+86,490,19,270,12,Alta Médica,False
+87,290,21,441,2,Alta Médica,True
+88,114,13,221,7,Alta Médica,False
+89,638,15,389,10,Alta Médica,False
+90,283,16,212,17,Alta Médica,False
+91,701,20,106,16,Alta Médica,True
+92,475,15,513,10,Alta Médica,False
+93,368,18,213,13,Alta Médica,True
+94,719,18,604,11,Óbito,True
+95,203,22,519,13,Evasão,False
+96,196,21,231,16,Óbito,False
+97,272,20,516,3,A/O,False
+98,229,21,202,2,Alta Médica,True
+99,413,11,612,17,Alta Médica,False
+100,306,11,573,17,A/O,True
+101,692,23,239,18,Alta Médica,False
+102,693,15,593,11,Alta Médica,False
+103,502,21,622,10,Transferência,False
+104,79,23,158,14,Alta Médica,False
+105,97,12,674,7,Alta Médica,False
+106,156,16,792,7,Alta Médica,False
+107,618,14,473,4,Alta Médica,False
+108,402,17,481,15,Alta Médica,True
+109,575,21,386,17,Alta Médica,False
+110,707,20,498,12,Alta Médica,False
+111,316,19,380,15,A/O,True
+112,79,22,173,13,Transferência,True
+113,231,18,458,19,Alta Médica,False
+114,600,12,103,3,A/O,False
+115,604,18,415,1,A/O,False
+116,493,12,367,9,Transferência,False
+117,686,13,330,19,Alta Médica,True
+118,429,20,397,7,A/O,True
+119,237,11,258,4,Alta Médica,False
+120,663,22,113,5,Transferência,False
+121,767,12,400,6,Transferência,False
+122,184,21,107,4,Alta Médica,False
+123,476,13,418,11,Alta Médica,False
+124,193,15,345,8,Óbito,False
+125,245,21,242,3,Óbito,False
+126,661,17,208,16,Transferência,False
+127,714,17,601,20,Alta Médica,True
+128,87,19,522,12,A/O,False
+129,756,21,650,6,Alta Médica,False
+130,774,21,702,20,Alta Médica,False
+131,601,18,322,5,Alta Médica,False
+132,237,23,188,5,Alta Médica,False
+133,716,12,119,5,Alta Médica,False
+134,317,15,215,18,Evasão,False
+135,713,13,626,19,Alta Médica,False
+136,404,19,349,10,Alta Médica,False
+137,90,11,610,15,Alta Médica,False
+138,489,16,200,7,Alta Médica,False
+139,634,12,278,17,Alta Médica,False
+140,347,17,314,11,Alta Médica,False
+141,407,13,326,16,A/O,False
+142,71,19,243,13,Alta Médica,False
+143,352,23,136,19,Alta Médica,True
+144,88,11,588,10,Alta Médica,False
+145,192,23,424,19,Alta Médica,False
+146,392,19,351,2,Alta Médica,False
+147,407,11,447,13,Evasão,False
+148,442,12,467,7,Alta Médica,False
+149,188,13,470,7,Alta Médica,False
+150,710,19,794,8,Transferência,False
+151,520,14,413,20,Alta Médica,False
+152,152,21,769,8,Alta Médica,False
+153,333,19,497,19,Transferência,False
+154,698,17,676,3,A/O,False
+155,80,13,594,2,Alta Médica,False
+156,562,17,690,14,Alta Médica,False
+157,64,20,554,4,Alta Médica,False
+158,165,11,478,3,Alta Médica,False
+159,361,21,783,7,A/O,False
+160,746,12,502,15,Transferência,False
+161,406,11,128,19,Alta Médica,False
+162,763,22,556,2,Alta Médica,False
+163,724,23,345,4,Alta Médica,False
+164,389,20,435,5,Alta Médica,True
+165,316,14,291,16,Alta Médica,False
+166,595,16,475,18,Alta Médica,False
+167,188,19,447,8,A/O,False
+168,682,11,607,13,Alta Médica,False
+169,593,17,316,1,Alta Médica,True
+170,307,21,716,8,Alta Médica,False
+171,718,18,231,6,Alta Médica,False
+172,584,14,596,16,Alta Médica,False
+173,275,15,160,2,Evasão,False
+174,82,22,119,12,Transferência,True
+175,720,11,434,9,Alta Médica,False
+176,750,12,129,17,Alta Médica,False
+177,585,12,747,8,Alta Médica,False
+178,113,22,547,12,Alta Médica,False
+179,558,21,643,2,Alta Médica,False
+180,384,17,188,15,Alta Médica,False
+181,600,16,452,12,Alta Médica,True
+182,661,19,764,4,Alta Médica,False
+183,780,15,506,6,Alta Médica,False
+184,190,18,569,7,Alta Médica,False
+185,576,23,325,9,Transferência,False
+186,472,16,132,7,Alta Médica,True
+187,749,12,480,11,Alta Médica,False
+188,776,13,390,15,Evasão,False
+189,716,23,716,5,Óbito,False
+190,140,18,156,9,Alta Médica,False
+191,366,22,699,19,A/O,False
+192,241,19,302,6,Alta Médica,False
+193,142,20,306,15,Alta Médica,False
+194,154,21,588,6,Alta Médica,False
+195,557,21,279,6,Alta Médica,False
+196,533,20,290,10,Alta Médica,False
+197,233,15,355,6,Alta Médica,False
+198,133,19,624,18,A/O,False
+199,306,17,371,11,Alta Médica,False
+200,135,21,670,4,Alta Médica,False
+201,377,15,532,13,Alta Médica,False
+202,647,12,454,10,Alta Médica,False
+203,361,23,697,6,Transferência,False
+204,412,14,489,16,Alta Médica,False
+205,639,22,782,7,Alta Médica,False
+206,362,11,471,14,Alta Médica,False
+207,655,17,133,2,Transferência,False
+208,453,15,321,2,A/O,False
+209,667,15,503,8,Alta Médica,False
+210,97,21,639,2,Transferência,False
+211,657,12,123,6,Transferência,False
+212,719,22,682,5,Transferência,False
+213,358,18,108,14,Alta Médica,False
+214,357,17,331,3,Óbito,False
+215,408,11,508,8,Alta Médica,True
+216,548,16,370,10,A/O,False
+217,702,16,192,19,Alta Médica,False
+218,71,13,253,2,Alta Médica,False
+219,532,14,580,17,Transferência,False
+220,126,18,381,10,Transferência,False
+221,546,13,577,12,Alta Médica,False
+222,737,12,615,1,Óbito,True
+223,139,23,730,16,Alta Médica,False
+224,474,22,522,10,Alta Médica,False
+225,261,20,621,10,Alta Médica,False
+226,133,20,766,20,Alta Médica,False
+227,423,22,323,20,Alta Médica,False
+228,346,22,520,14,Transferência,False
+229,280,11,734,9,A/O,False
+230,535,15,328,7,Evasão,False
+231,719,22,417,20,Alta Médica,False
+232,357,13,158,3,Alta Médica,True
+233,104,23,720,3,Alta Médica,False
+234,778,16,707,17,Alta Médica,False
+235,514,17,765,20,A/O,False
+236,715,13,441,6,Alta Médica,False
+237,265,11,415,11,Alta Médica,False
+238,684,23,591,17,Alta Médica,False
+239,299,19,680,11,Alta Médica,False
+240,176,20,728,4,Óbito,False
+241,64,16,617,2,Alta Médica,True
+242,89,15,570,16,Alta Médica,True
+243,554,20,150,9,Alta Médica,False
+244,118,17,586,15,Alta Médica,False
+245,544,16,539,1,A/O,False
+246,687,12,617,20,Alta Médica,False
+247,177,21,209,11,Transferência,False
+248,726,12,413,8,Evasão,False
+249,396,23,124,2,A/O,False
+250,770,13,539,12,A/O,False
+251,296,18,195,13,Óbito,False
+252,463,18,335,17,Óbito,False
+253,701,19,498,13,A/O,False
+254,482,17,372,9,A/O,False
+255,82,23,631,7,Alta Médica,False
+256,362,16,764,6,Evasão,False
+257,217,23,681,6,Alta Médica,False
+258,300,14,224,10,Alta Médica,False
+259,196,20,542,8,Alta Médica,True
+260,160,17,543,4,Alta Médica,False
+261,208,22,795,14,Alta Médica,False
+262,753,17,581,10,Transferência,False
+263,163,13,298,6,Alta Médica,True
+264,726,19,656,17,Evasão,False
+265,476,14,337,1,Alta Médica,False
+266,528,13,691,5,Alta Médica,False
+267,392,11,351,5,Evasão,False
+268,568,19,445,3,Evasão,False
+269,123,16,417,20,A/O,False
+270,471,11,344,11,Evasão,False
+271,439,12,224,10,Alta Médica,False
+272,97,21,379,2,Alta Médica,False
+273,689,15,195,17,Transferência,False
+274,570,13,511,7,Óbito,False
+275,662,22,519,1,A/O,False
+276,307,12,396,18,Alta Médica,False
+277,629,20,256,7,Alta Médica,False
+278,463,18,534,16,Óbito,False
+279,666,18,200,19,Alta Médica,True
+280,418,13,134,13,Alta Médica,False
+281,357,17,338,9,Transferência,False
+282,104,16,295,20,Alta Médica,False
+283,248,18,700,6,A/O,False
+284,654,15,702,7,Alta Médica,False
+285,740,13,740,7,Alta Médica,False
+286,322,23,316,16,Alta Médica,False
+287,730,15,174,13,Alta Médica,False
+288,426,20,558,7,Alta Médica,False
+289,344,15,221,20,Transferência,False
+290,615,14,739,18,Alta Médica,False
+291,358,12,160,2,Alta Médica,False
+292,734,12,539,5,Alta Médica,False
+293,706,14,193,8,Alta Médica,False
+294,594,14,791,16,Alta Médica,False
+295,642,15,736,16,Alta Médica,False
+296,441,18,257,5,Alta Médica,False
+297,532,16,173,20,Alta Médica,False
+298,215,12,214,9,Alta Médica,False
+299,666,15,529,9,Alta Médica,False
+300,264,13,588,9,Alta Médica,False
+301,775,17,663,16,Alta Médica,False
+302,783,12,172,6,Alta Médica,False
+303,275,19,693,5,Alta Médica,False
+304,367,12,734,9,Alta Médica,False
+305,554,23,529,19,Alta Médica,False
+306,583,23,344,10,Evasão,True
+307,451,11,204,15,Óbito,False
+308,104,19,711,16,Alta Médica,False
+309,260,20,173,17,Alta Médica,False
+310,648,16,107,1,Alta Médica,False
+311,497,18,777,10,A/O,False
+312,466,16,517,17,Alta Médica,True
+313,320,22,744,17,Alta Médica,False
+314,440,11,752,12,A/O,False
+315,450,19,368,1,Alta Médica,False
+316,788,12,746,2,Alta Médica,False
+317,723,22,178,14,Transferência,False
+318,175,12,639,12,Alta Médica,False
+319,323,11,143,3,Alta Médica,True
+320,317,14,322,2,Evasão,False
+321,506,12,758,19,Alta Médica,False
+322,605,20,297,17,Alta Médica,False
+323,458,14,533,17,Alta Médica,False
+324,545,17,361,16,Alta Médica,False
+325,403,23,484,11,Transferência,False
+326,474,12,364,12,Transferência,False
+327,461,17,147,20,Transferência,False
+328,503,18,614,3,Transferência,False
+329,601,12,407,10,Alta Médica,False
+330,323,22,218,9,Alta Médica,True
+331,312,22,481,14,Alta Médica,False
+332,335,22,357,15,Alta Médica,False
+333,308,12,496,3,Alta Médica,True
+334,577,22,676,11,Alta Médica,False
+335,315,13,337,17,Alta Médica,False
+336,439,13,457,8,Alta Médica,False
+337,187,18,246,5,Alta Médica,False
+338,251,13,576,15,Alta Médica,False
+339,165,22,112,17,Alta Médica,True
+340,581,14,352,9,Transferência,True
+341,570,16,634,19,A/O,False
+342,193,23,228,6,Alta Médica,True
+343,756,13,558,5,Alta Médica,True
+344,709,19,548,10,Óbito,False
+345,476,16,558,11,Óbito,False
+346,253,23,621,7,Alta Médica,False
+347,104,14,301,5,Alta Médica,False
+348,352,20,329,2,Evasão,False
+349,572,11,366,15,Alta Médica,False
+350,150,19,138,3,Alta Médica,False
+351,552,15,596,9,A/O,False
+352,314,15,351,20,A/O,False
+353,415,19,504,11,Alta Médica,False
+354,547,11,335,9,Alta Médica,False
+355,197,20,761,3,Alta Médica,True
+356,238,18,147,9,Alta Médica,False
+357,700,15,798,10,Alta Médica,False
+358,158,19,116,13,Alta Médica,False
+359,708,11,573,8,Alta Médica,False
+360,394,14,538,7,Alta Médica,False
+361,236,12,185,13,Alta Médica,False
+362,785,17,260,9,Alta Médica,False
+363,66,23,322,1,Alta Médica,False
+364,556,16,675,7,Alta Médica,True
+365,693,20,365,18,Alta Médica,False
+366,663,13,131,4,Alta Médica,False
+367,525,23,508,5,Óbito,False
+368,158,11,118,7,Óbito,False
+369,78,23,765,16,Transferência,False
+370,750,22,273,19,Alta Médica,False
+371,647,12,141,13,Alta Médica,False
+372,344,17,703,4,A/O,False
+373,248,13,647,14,A/O,False
+374,179,19,101,2,Alta Médica,True
+375,418,20,160,2,Alta Médica,False
+376,426,21,269,8,Alta Médica,False
+377,538,15,426,10,Alta Médica,False
+378,227,13,193,16,Transferência,False
+379,505,16,314,6,Alta Médica,True
+380,501,13,455,15,A/O,True
+381,302,13,293,17,Alta Médica,False
+382,172,22,717,16,Alta Médica,False
+383,89,11,506,5,Alta Médica,False
+384,207,21,231,14,A/O,False
+385,639,20,189,16,Alta Médica,False
+386,96,22,152,8,Alta Médica,False
+387,295,14,743,2,A/O,False
+388,90,18,226,7,Alta Médica,False
+389,430,22,434,12,Transferência,False
+390,780,11,376,11,Transferência,False
+391,127,19,421,13,Alta Médica,False
+392,180,23,141,16,Alta Médica,True
+393,147,23,439,1,Alta Médica,False
+394,187,18,388,7,Transferência,False
+395,567,21,752,4,A/O,False
+396,498,15,418,10,A/O,False
+397,274,21,111,5,A/O,False
+398,624,19,213,2,Alta Médica,False
+399,109,19,110,16,A/O,False
+400,348,19,731,1,Alta Médica,False
+401,324,13,217,3,Transferência,True
+402,265,18,334,6,Óbito,False
+403,267,19,634,16,Alta Médica,True
+404,274,11,465,17,Alta Médica,False
+405,67,15,238,6,Alta Médica,False
+406,331,15,782,13,Alta Médica,False
+407,113,15,586,15,Óbito,False
+408,177,12,751,15,Alta Médica,True
+409,370,18,703,17,Alta Médica,False
+410,419,11,565,8,Alta Médica,False
+411,347,13,720,3,Alta Médica,False
+412,206,22,236,1,Óbito,False
+413,595,16,785,20,Alta Médica,False
+414,354,13,667,2,Alta Médica,False
+415,578,14,137,8,Transferência,False
+416,729,22,399,7,Óbito,False
+417,136,18,269,15,Alta Médica,True
+418,300,14,176,8,Transferência,False
+419,534,12,219,10,Alta Médica,False
+420,755,15,533,20,Alta Médica,False
+421,575,18,130,19,Alta Médica,False
+422,169,22,284,17,A/O,False
+423,73,15,734,17,A/O,False
+424,634,17,190,5,Alta Médica,False
+425,640,18,717,19,Alta Médica,False
+426,317,16,204,20,Alta Médica,False
+427,551,15,711,20,Alta Médica,False
+428,599,16,797,19,Alta Médica,False
+429,632,11,153,16,A/O,False
+430,474,19,126,1,Alta Médica,False
+431,750,13,458,14,A/O,False
+432,469,23,580,1,Óbito,False
+433,514,23,555,2,Alta Médica,False
+434,481,22,584,8,Alta Médica,False
+435,782,17,528,11,Alta Médica,False
+436,76,20,148,2,Alta Médica,False
+437,764,17,448,10,Alta Médica,True
+438,515,18,379,1,Alta Médica,False
+439,455,20,271,8,Alta Médica,False
+440,511,23,787,9,Alta Médica,False
+441,221,17,323,4,Alta Médica,False
+442,694,20,240,12,Alta Médica,False
+443,685,21,541,6,Alta Médica,False
+444,647,18,419,8,Alta Médica,False
+445,243,14,292,14,Alta Médica,False
+446,176,21,104,12,Óbito,False
+447,754,14,655,14,A/O,False
+448,250,20,415,14,Alta Médica,False
+449,480,22,765,9,Alta Médica,False
+450,531,17,432,17,Alta Médica,True
+451,105,13,784,20,Óbito,False
+452,568,17,561,19,Alta Médica,False
+453,645,13,485,11,Alta Médica,False
+454,163,18,521,19,Alta Médica,False
+455,313,22,534,1,Alta Médica,False
+456,292,18,292,4,Alta Médica,False
+457,439,15,388,6,Alta Médica,False
+458,773,21,761,5,Alta Médica,False
+459,376,14,515,4,Alta Médica,False
+460,335,15,122,20,Alta Médica,True
+461,666,21,521,14,Transferência,False
+462,533,18,121,2,A/O,False
+463,185,22,647,14,Alta Médica,False
+464,125,14,129,5,Transferência,False
+465,207,23,555,18,Alta Médica,False
+466,611,18,212,10,Alta Médica,False
+467,85,15,274,2,Alta Médica,False
+468,65,18,795,14,Alta Médica,False
+469,146,22,755,1,Alta Médica,False
+470,372,16,572,20,Alta Médica,False
+471,336,15,649,12,Alta Médica,False
+472,339,11,415,12,A/O,True
+473,335,21,576,15,Óbito,True
+474,683,22,736,18,Alta Médica,False
+475,783,23,453,16,Alta Médica,False
+476,187,23,627,10,Alta Médica,True
+477,506,12,113,9,Alta Médica,False
+478,377,18,216,10,Alta Médica,False
+479,626,13,321,13,A/O,False
+480,565,20,111,12,Óbito,False
+481,106,14,521,3,Alta Médica,False
+482,405,14,783,4,Alta Médica,False
+483,401,11,467,15,Transferência,False
+484,230,17,785,2,A/O,False
+485,109,15,154,8,Óbito,True
+486,202,20,605,13,Alta Médica,False
+487,69,13,403,18,Alta Médica,True
+488,456,11,222,1,Alta Médica,False
+489,626,17,134,17,Evasão,False
+490,127,21,206,11,Alta Médica,False
+491,654,18,241,13,Alta Médica,False
+492,298,20,405,17,Alta Médica,False
+493,227,16,552,14,Evasão,False
+494,461,12,703,11,Alta Médica,False
+495,141,21,267,5,Alta Médica,False
+496,781,12,422,16,Alta Médica,False
+497,384,23,491,4,A/O,False
+498,158,18,154,19,Alta Médica,False
+499,406,17,223,14,Alta Médica,False
+500,154,22,595,8,Alta Médica,False

@@ -33,5 +33,14 @@ export const indicadoresExplicacoes = {
   ebitda: "Lucro antes de juros, impostos, depreciação e amortização. Representa a capacidade de geração de caixa puramente operacional.",
   ticket_medio: "Receita média gerada por cada atendimento realizado. Ajuda a entender o valor agregado de cada linha de serviço.",
   glosas: "Monitoramento de faturamentos negados pelos convênios. A taxa de recuperação mede a eficiência do setor de recursos de glosas.",
-  pmr: "Prazo Médio de Recebimento: Tempo decorrido entre a prestação do serviço e a entrada efetiva do dinheiro no caixa."
+  pmr: "Prazo Médio de Recebimento: Tempo decorrido entre a prestação do serviço e a entrada efetiva do dinheiro no caixa.",
+
+  // 7. Auditoria SUS
+  faturamento_sus: "Total faturado e homologado pelo Sistema Único de Saúde (SUS) no período selecionado.",
+  indice_glosa: "Percentual de faturamento inicialmente rejeitado ou retido pelo SUS/gestor por desconformidade cadastral, clínica ou de regras SIA/SIH.",
+  taxa_rec: "Eficiência do setor de auditoria em recuperar faturamentos inicialmente glosados através de recursos e retificações de AIH/APAC.",
+  evasao: "Valor financeiro permanentemente perdido devido a glosas não recuperadas (Glosa Inicial - Glosa Recuperada).",
+
+  // 8. Regulação e Filas
+  fila_backlog: "Volume de pacientes com exames ou cirurgias na regulação do AGHUse que se encontram atualmente com status 'Agendado' (fila de espera)."
 };

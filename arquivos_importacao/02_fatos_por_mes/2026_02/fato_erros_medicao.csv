@@ -1,0 +1,2 @@
+id_evento;id_medicamento;id_paciente;id_tempo;tipo_erro;severidade
+40012;1;1009;20260215;Omissão de Dose;Alta

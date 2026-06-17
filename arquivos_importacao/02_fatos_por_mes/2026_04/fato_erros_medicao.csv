@@ -1,0 +1,4 @@
+id_evento;id_medicamento;id_paciente;id_tempo;tipo_erro;severidade
+40016;6;1011;20260403;Dose Duplicada;Média
+40017;2;1125;20260413;Horário Incorreto;Alta
+40018;4;1142;20260423;Dose Duplicada;Média

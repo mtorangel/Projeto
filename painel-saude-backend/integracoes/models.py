@@ -2,12 +2,26 @@ from django.db import models
 
 class LogSincronizacao(models.Model):
     CATEGORIAS = [
-        ('pacientes', 'Pacientes'),
-        ('medicamentos', 'Medicamentos'),
-        ('procedimentos', 'Procedimentos'),
-        ('hospital', 'Hospital'),
-        ('medicos', 'Médicos'),
-        ('financeiro', 'Financeiro'),
+        # Dimensões
+        ('dim_tempo', 'Dimensão: Tempo'),
+        ('dim_unidade', 'Dimensão: Unidade'),
+        ('dim_paciente', 'Dimensão: Paciente'),
+        ('dim_medicamento', 'Dimensão: Medicamento'),
+        ('dim_tipo_procedimento', 'Dimensão: Tipo Procedimento'),
+        ('dim_equipamento', 'Dimensão: Equipamento'),
+        ('dim_protocolo', 'Dimensão: Protocolo'),
+        ('dim_medico', 'Dimensão: Médico'),
+        ('dim_convenio', 'Dimensão: Convênio'),
+        # Fatos
+        ('fato_atendimentos', 'Fato: Atendimentos'),
+        ('fato_estoque', 'Fato: Estoque'),
+        ('fato_erros_medicao', 'Fato: Erros de Medicação'),
+        ('fato_procedimentos', 'Fato: Procedimentos'),
+        ('fato_infraestrutura', 'Fato: Infraestrutura'),
+        ('fato_higienizacao', 'Fato: Higienização'),
+        ('fato_desempenho_clinico', 'Fato: Desempenho Clínico'),
+        ('fato_escala_medica', 'Fato: Escala Médica'),
+        ('fato_financeiro', 'Fato: Financeiro'),
     ]
     
     categoria = models.CharField(max_length=50, choices=CATEGORIAS, unique=True)

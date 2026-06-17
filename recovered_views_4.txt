@@ -1,0 +1,65 @@
+Created At: 2026-06-16T03:35:25Z
+Completed At: 2026-06-16T03:35:25Z
+File Path: `file:///c:/Users/Administrador/OneDrive/MBACD/Projeto/painel-saude-backend/indicadores/views.py`
+Total Lines: 1050
+Total Bytes: 68209
+Showing lines 980 to 1050
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+980:             {"tabela": "DimPaciente",          "label": "Dim. Paciente",          "count": DimPaciente.objects.count(),          "icon": "Users"},
+981:             {"tabela": "DimMedicamento",       "label": "Dim. Medicamento",       "count": DimMedicamento.objects.count(),       "icon": "Pill"},
+982:             {"tabela": "DimTipoProcedimento",  "label": "Dim. Tipo Procedimento", "count": DimTipoProcedimento.objects.count(),  "icon": "Stethoscope"},
+983:             {"tabela": "DimEquipamento",       "label": "Dim. Equipamento",       "count": DimEquipamento.objects.count(),       "icon": "Wrench"},
+984:             {"tabela": "DimMedico",            "label": "Dim. Médico",            "count": DimMedico.objects.count(),            "icon": "UserCheck"},
+985:             {"tabela": "DimProtocolo",         "label": "Dim. Protocolo",         "count": DimProtocolo.objects.count(),         "icon": "FileText"},
+986:             {"tabela": "DimConvenio",          "label": "Dim. Convênio",          "count": DimConvenio.objects.count(),          "icon": "CreditCard"},
+987:         ]
+988: 
+989:         fatos = [
+990:             {"tabela": "FatoAtendimentos",       "label": "Fato Atendimentos",        "count": FatoAtendimentos.objects.count(),       "icon": "Activity"},
+991:             {"tabela": "FatoEstoque",            "label": "Fato Estoque",             "count": FatoEstoque.objects.count(),            "icon": "Package"},
+992:             {"tabela": "FatoErrosMedicao",       "label": "Fato Erros Medicação",     "count": Fat
+<truncated 1480 bytes>
+ authentication_classes = [TokenAuthentication]
+1009:     permission_classes = [permissions.IsAuthenticated]
+1010: 
+1011:     def post(self, request):
+1012:         import subprocess
+1013:         import sys
+1014:         import os
+1015: 
+1016:         records = int(request.data.get("records", 100))
+1017:         mode = request.data.get("mode", "db")
+1018:         clear = request.data.get("clear", False)
+1019:         dims_only = request.data.get("dims_only", False)
+1020:         facts_only = request.data.get("facts_only", False)
+1021: 
+1022:             cmd.append("--facts-only")
+1023: 
+1024:         try:
+1025:             result = subprocess.run(
+1026:                 cmd,
+1027:                 capture_output=True,
+1028:                 text=True,
+1029:                 timeout=300,
+1030:                 cwd=os.path.dirname(manage_py)
+1031:             )
+1032:             if result.returncode == 0:
+1033:                 return response.Response({
+1034:                     "status": "ok",
+1035:                     "mensagem": "Geração de dados concluída com sucesso.",
+1036:                     "log": result.stdout,
+1037:                     "records": records,
+1038:                     "mode": mode,
+1039:                 })
+1040:             else:
+1041:                 return response.Response({
+1042:                     "status": "erro",
+1043:                     "mensagem": "Erro durante a geração de dados.",
+1044:                     "log": result.stderr or result.stdout,
+1045:                 }, status=500)
+1046:         except subprocess.TimeoutExpired:
+1047:             return response.Response({"erro": "Timeout: geração demorou mais de 5 minutos."}, status=504)
+1048:         except Exception as e:
+1049:             return response.Response({"erro": str(e)}, status=500)
+1050: 
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.
