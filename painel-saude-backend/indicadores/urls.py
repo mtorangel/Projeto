@@ -9,7 +9,7 @@ from .views import (
     DimMedicoViewSet, DimProtocoloViewSet, FatoDesempenhoClinicoViewSet, FatoEscalaMedicaViewSet,
     DimConvenioViewSet, FatoFinanceiroViewSet, AuditoriaFaturamentoView, RegulacaoFilaView,
     MatrizRiscoView, ExplicarIndicadorView, DatabaseStatsView, SeedDataView,
-    ChatExecutivoView, UploadDocumentoView, HistoricoResumosView
+    ChatExecutivoView, UploadDocumentoView, HistoricoResumosView, GerarResumoDiarioView
 )
 
 router = DefaultRouter()
@@ -40,6 +40,7 @@ urlpatterns = [
     path('ai/chat-executivo/', ChatExecutivoView.as_view(), name='ai_chat_executivo'),
     path('ai/upload-documento/', UploadDocumentoView.as_view(), name='ai_upload_documento'),
     path('ai/historico-resumos/', HistoricoResumosView.as_view(), name='ai_historico_resumos'),
+    path('ai/gerar-resumo-diario/', GerarResumoDiarioView.as_view(), name='ai_gerar_resumo_diario'),
     path('admin/database-stats/', DatabaseStatsView.as_view(), name='database_stats'),
     path('admin/seed-data/', SeedDataView.as_view(), name='seed_data'),
     path('', include(router.urls)),

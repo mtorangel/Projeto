@@ -1759,6 +1759,8 @@ class UploadDocumentoView(APIView):
         if not texto.strip():
             return response.Response({"erro": "O documento enviado não contém texto legível."}, status=400)
 
+        texto = texto.replace('\x00', '')
+
         # Criar documento
         doc_obj = DocumentoConhecimento.objects.create(
             nome_arquivo=filename,
@@ -1800,6 +1802,31 @@ class UploadDocumentoView(APIView):
             }
         }, status=201)
 
+import os
+from django.core.management import call_command
+
+class GerarResumoDiarioView(APIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request):
+        try:
+            gemini_key = request.headers.get("X-Gemini-Key")
+            openai_key = request.headers.get("X-OpenAI-Key")
+            if gemini_key:
+                os.environ["GEMINI_API_KEY"] = gemini_key
+            if openai_key:
+                os.environ["OPENAI_API_KEY"] = openai_key
+
+            call_command('gerar_insights_diarios')
+            return response.Response({
+                "status": "ok",
+                "mensagem": "Resumo executivo diário gerado com sucesso."
+            })
+        except Exception as e:
+            return response.Response({
+                "erro": f"Falha ao gerar resumo: {str(e)}"
+            }, status=500)
 
 class HistoricoResumosView(APIView):
     authentication_classes = [TokenAuthentication]
